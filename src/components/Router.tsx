@@ -17,15 +17,15 @@ export const router = createBrowserRouter([
     children: [
       { path: "/", element: <HomePage></HomePage> },
       {
-        path: "/hundarsomsokerhem",
+        path: "/hundar-soker-hem",
         element: <AllDogsPage></AllDogsPage>,
       },
       {
-        path: "/adopteradehundar",
+        path: "/adopterade-hundar",
         element: <AdoptedDogsPage></AdoptedDogsPage>,
       },
       {
-        path: "/hundarsomsokerhem/:id",
+        path: "/hundar-soker-hem/:id",
         element: <DogDetails></DogDetails>,
       },
       {
@@ -36,9 +36,9 @@ export const router = createBrowserRouter([
         path: "/kontakt",
         element: <ContactPage></ContactPage>,
       },
-      { path: "/omoss", element: <AboutPage></AboutPage> },
+      { path: "/om-oss", element: <AboutPage></AboutPage> },
       { path: "/donera", element: <DonatePage></DonatePage> },
-      { path: "/situationenispanien", element: <SpainPage></SpainPage> },
+      { path: "/situationen-i-spanien", element: <SpainPage></SpainPage> },
     ],
   },
 ]);
