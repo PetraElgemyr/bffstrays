@@ -2,10 +2,15 @@
 
 import { useCallback, useEffect } from "react";
 import { useAppContext } from "../contexts/AppContext";
-import { DogEntrySkeleton } from "../models/Dog";
+import { Dog } from "../models/Dog";
 import { client } from "../../client";
 import * as contentful from "contentful";
 import { Media } from "../models/Media";
+import {
+  DogCard,
+  Image,
+  ImageContainer,
+} from "../../styled/DogDetailsPage.tsx/DogCard";
 
 export const AllDogsPage = () => {
   // const navigate = useNavigate();
@@ -21,30 +26,25 @@ export const AllDogsPage = () => {
             string
           >
         ) => {
-          const theDogs: DogEntrySkeleton[] = [];
+          const theDogs: Dog[] = [];
 
           entries.items.map((item) => {
-            const name = item.fields.name as contentful.EntryFieldTypes.Text;
-            const age = item.fields.age as contentful.EntryFieldTypes.Text;
-            const gender = item.fields.age as contentful.EntryFieldTypes.Text;
-            const weight = item.fields
-              .weight as contentful.EntryFieldTypes.Integer;
-            const size = item.fields.size as contentful.EntryFieldTypes.Text;
-            const isNeutered = item.fields
-              .isNeutered as contentful.EntryFieldTypes.Boolean;
-            const description = item.fields
-              .description as contentful.EntryFieldTypes.Text;
+            const name = item.fields.name?.toString() ?? "";
+            const age = item.fields.age?.toString() ?? "";
+            const gender = item.fields.gender?.toString() ?? "";
+            const weight = parseInt(item.fields.weight?.toString() ?? "");
+            const size = item.fields.size?.toString() ?? "";
+            const isNeutered = item.fields.isNeutered ? true : false;
+            const description = item.fields.description?.toString() ?? "";
             const img = item.fields.img as Media[];
-            const isChildFriendly = item.fields
-              .isChildFriendly as contentful.EntryFieldTypes.Text;
-            const isPetFriendly = item.fields
-              .isPetFriendly as contentful.EntryFieldTypes.Text;
+            const isChildFriendly =
+              item.fields.isChildFriendly?.toString() ?? "";
+            const isPetFriendly = item.fields.isPetFriendly?.toString() ?? "";
             const medias = item.fields.medias as Media[];
-            const isAdopted = item.fields
-              .isAdopted as contentful.EntryFieldTypes.Boolean;
+            const isAdopted = item.fields.isAdopted ? true : false;
             const id = item.sys.id;
 
-            const dog: DogEntrySkeleton = {
+            const dog: Dog = {
               name,
               age,
               gender,
@@ -62,10 +62,9 @@ export const AllDogsPage = () => {
             theDogs.push(dog);
           });
           setDogs(theDogs);
-          console.log(theDogs);
         }
       );
-  }, []);
+  }, [setDogs]);
 
   useEffect(() => {
     if (dogs.length > 0) {
@@ -78,13 +77,15 @@ export const AllDogsPage = () => {
     <>
       <div>
         <h2>Hundar som söker hem</h2>
-        {dogs.map((dog: DogEntrySkeleton, key) => (
-          <div key={key}>
-            <img
-              alt={dog.name.toString()}
-              src={`https:${dog.img[0].fields.file.url}`}
-            />{" "}
-            <p>{dog.name.toString()}</p>
+        {dogs.map((dog: Dog, key) => (
+          <DogCard key={key}>
+            <ImageContainer>
+              <Image
+                src={`https:${dog.img[0].fields.file.url}`}
+                alt={dog.name}
+              />
+            </ImageContainer>
+            <p>{dog.name}</p>
             {/* {dog.medias.map((media: Media, key: number) => (
             <img
               key={key}
@@ -92,7 +93,7 @@ export const AllDogsPage = () => {
               src={`https:${media.fields.file.url}`}
             />
           ))} */}
-          </div>
+          </DogCard>
         ))}
       </div>
     </>
