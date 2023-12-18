@@ -9,3 +9,12 @@ export interface PostEntrySkeleton {
   img: Media[];
   medias: Media[];
 }
+
+export interface Post {
+  id: string;
+  title: string;
+  pageId: string;
+  postText: string;
+  img: Media[];
+  medias: Media[];
+}

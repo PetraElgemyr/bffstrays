@@ -2,7 +2,7 @@ import { useCallback, useEffect } from "react";
 import { client } from "../../client";
 import * as contentful from "contentful";
 import { Media } from "../models/Media";
-import { PostEntrySkeleton } from "../models/Post";
+import { Post } from "../models/Post";
 import { useAppContext } from "../contexts/AppContext";
 
 // type PostType = {
@@ -104,14 +104,12 @@ export const HomePage = () => {
             string
           >
         ) => {
-          const thePosts: PostEntrySkeleton[] = [];
+          const thePosts: Post[] = [];
           entries.items.map((item) => {
-            const id = item.fields.id as contentful.EntryFieldTypes.Integer;
-            const title = item.fields.title as contentful.EntryFieldTypes.Text;
-            const pageId = item.fields
-              .pageId as contentful.EntryFieldTypes.Text;
-            const postText = item.fields
-              .postText as contentful.EntryFieldTypes.Text;
+            const id = item.sys.id?.toString() ?? "";
+            const title = item.fields.title?.toString() ?? "";
+            const pageId = item.fields.pageId?.toString() ?? "";
+            const postText = item.fields.postText?.toString() ?? "";
             const img = item.fields.img as Media[];
             const medias = item.fields.medias as Media[];
 
@@ -136,7 +134,7 @@ export const HomePage = () => {
     } else {
       getAllPosts();
     }
-  }, []);
+  }, [getAllPosts]);
 
   return (
     <>
