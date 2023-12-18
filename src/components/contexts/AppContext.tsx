@@ -1,12 +1,12 @@
 import { createContext, useContext } from "react";
-import { DogEntrySkeleton } from "../models/Dog";
-import { PostEntrySkeleton } from "../models/Post";
+import { Dog } from "../models/Dog";
+import { Post } from "../models/Post";
 
 export type AppState = {
-  dogs: DogEntrySkeleton[];
-  setDogs: React.Dispatch<React.SetStateAction<DogEntrySkeleton[]>>;
-  posts: PostEntrySkeleton[];
-  setPosts: React.Dispatch<React.SetStateAction<PostEntrySkeleton[]>>;
+  dogs: Dog[];
+  setDogs: React.Dispatch<React.SetStateAction<Dog[]>>;
+  posts: Post[];
+  setPosts: React.Dispatch<React.SetStateAction<Post[]>>;
   pageId: string;
 };
 
