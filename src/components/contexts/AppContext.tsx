@@ -7,6 +7,7 @@ export type AppState = {
   setDogs: React.Dispatch<React.SetStateAction<DogEntrySkeleton[]>>;
   posts: PostEntrySkeleton[];
   setPosts: React.Dispatch<React.SetStateAction<PostEntrySkeleton[]>>;
+  pageId: string;
 };
 
 export const AppContext = createContext<AppState>({} as AppState);
