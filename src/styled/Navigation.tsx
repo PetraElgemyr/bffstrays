@@ -38,6 +38,7 @@ export const Menu = styled.div`
   z-index: 1;
   cursor: pointer;
   margin: 10px 15px;
+  margin-right: 30px;
 `;
 
 export const DropDownMenu = styled.div<IToggled>`
