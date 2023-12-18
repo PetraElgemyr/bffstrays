@@ -9,12 +9,15 @@ import { AppContext } from "./components/contexts/AppContext";
 function App() {
   const [posts, setPosts] = useState<PostEntrySkeleton[]>([]);
   const [dogs, setDogs] = useState<DogEntrySkeleton[]>([]);
+  const [pageId, setPageId] = useState<string>("");
 
   const contextValue = {
     posts,
     setPosts,
     dogs,
     setDogs,
+    pageId,
+    setPageId,
   };
 
   return (

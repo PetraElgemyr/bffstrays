@@ -28,6 +28,9 @@ export const router = createBrowserRouter([
         path: "/hundar-soker-hem/:id",
         element: <DogDetails></DogDetails>,
       },
+      { path: "/om-oss", element: <AboutPage></AboutPage> },
+      { path: "/situationen-i-spanien", element: <SpainPage></SpainPage> },
+      { path: "/donera", element: <DonatePage></DonatePage> },
       {
         path: "/intresseanmalan",
         element: <RegisterInterestPage></RegisterInterestPage>,
@@ -36,9 +39,6 @@ export const router = createBrowserRouter([
         path: "/kontakt",
         element: <ContactPage></ContactPage>,
       },
-      { path: "/om-oss", element: <AboutPage></AboutPage> },
-      { path: "/donera", element: <DonatePage></DonatePage> },
-      { path: "/situationen-i-spanien", element: <SpainPage></SpainPage> },
     ],
   },
 ]);
