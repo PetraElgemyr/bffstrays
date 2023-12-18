@@ -13,4 +13,22 @@ export interface DogEntrySkeleton {
   isChildFriendly: contentful.EntryFieldTypes.Text;
   isPetFriendly: contentful.EntryFieldTypes.Text;
   medias: Media[];
+  isAdopted: contentful.EntryFieldTypes.Boolean;
+  id: string;
 }
+
+// export interface Dog {
+//   name: string;
+//   age: string;
+//   gender: string;
+//   weight: number;
+//   isNeutered: boolean;
+//   description: string;
+//   img: Media[];
+//   size: string;
+//   isChildFriendly: string;
+//   isPetFriendly: string;
+//   medias: Media[];
+//   isAdopted: boolean;
+//   id: string;
+// }

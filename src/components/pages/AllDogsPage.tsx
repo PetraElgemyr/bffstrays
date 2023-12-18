@@ -22,6 +22,7 @@ export const AllDogsPage = () => {
           >
         ) => {
           const theDogs: DogEntrySkeleton[] = [];
+
           entries.items.map((item) => {
             const name = item.fields.name as contentful.EntryFieldTypes.Text;
             const age = item.fields.age as contentful.EntryFieldTypes.Text;
@@ -39,6 +40,9 @@ export const AllDogsPage = () => {
             const isPetFriendly = item.fields
               .isPetFriendly as contentful.EntryFieldTypes.Text;
             const medias = item.fields.medias as Media[];
+            const isAdopted = item.fields
+              .isAdopted as contentful.EntryFieldTypes.Boolean;
+            const id = item.sys.id;
 
             const dog: DogEntrySkeleton = {
               name,
@@ -52,10 +56,13 @@ export const AllDogsPage = () => {
               isChildFriendly,
               isPetFriendly,
               medias,
+              isAdopted,
+              id,
             };
             theDogs.push(dog);
           });
           setDogs(theDogs);
+          console.log(theDogs);
         }
       );
   }, []);
