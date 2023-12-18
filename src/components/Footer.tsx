@@ -2,7 +2,12 @@ import { useCallback, useEffect, useState } from "react";
 import { FooterEntrySkeleton } from "./models/Footer";
 import { client } from "../client";
 import * as contentful from "contentful";
-import { FooterColumn, FooterRow, StyledFooter } from "../styled/StyledFooter";
+import {
+  FooterColumn,
+  FooterRow,
+  StyledFooter,
+  StyledLink,
+} from "../styled/StyledFooter";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 
@@ -63,29 +68,30 @@ export const Footer = () => {
     <StyledFooter>
       <FooterColumn>
         <FooterRow>
-          <a href={footerInfo?.facebook.toString()}>
+          <StyledLink href={footerInfo?.facebook.toString()}>
             Facebook
             <i>
               <FacebookIcon />{" "}
             </i>
-          </a>
+          </StyledLink>
         </FooterRow>
         <FooterRow>
-          <a href={footerInfo?.instagram.toString()}>
+          <StyledLink href={footerInfo?.instagram.toString()}>
             Instagram{" "}
             <i>
               <InstagramIcon />
             </i>
-          </a>
+          </StyledLink>
         </FooterRow>
-        <FooterRow>Mejl: {footerInfo?.email.toString()}</FooterRow>
+        <FooterRow>{footerInfo?.email.toString()}</FooterRow>
+      </FooterColumn>
+      <FooterColumn>
         <FooterRow>Bankgiro: {footerInfo?.bankgiro.toString()}</FooterRow>
         <FooterRow>Swish: {footerInfo?.swish.toString()}</FooterRow>
         <FooterRow>
           Organisationsnummer: {footerInfo?.organisationsNummer.toString()}
         </FooterRow>
       </FooterColumn>
-
       <FooterColumn>
         <FooterRow>{footerInfo?.personMedAdressen.toString()}</FooterRow>
         <FooterRow>{footerInfo?.adress.toString()}</FooterRow>
