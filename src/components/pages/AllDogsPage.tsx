@@ -7,9 +7,13 @@ import { client } from "../../client";
 import * as contentful from "contentful";
 import { Media } from "../models/Media";
 import {
+  CardText,
+  CardTextContainer,
+  CardTitle,
   DogCard,
   Image,
   ImageContainer,
+  StyledDiv,
 } from "../../styled/DogDetailsPage.tsx/DogCard";
 
 export const AllDogsPage = () => {
@@ -75,8 +79,9 @@ export const AllDogsPage = () => {
   }, []);
   return (
     <>
-      <div>
-        <h2>Hundar som söker hem</h2>
+      {" "}
+      <h2>Hundar som söker hem</h2>
+      <StyledDiv>
         {dogs.map((dog: Dog, key) => (
           <DogCard key={key}>
             <ImageContainer>
@@ -85,7 +90,13 @@ export const AllDogsPage = () => {
                 alt={dog.name}
               />
             </ImageContainer>
-            <p>{dog.name}</p>
+            <CardTitle>{dog.name}</CardTitle>
+            <CardTextContainer>
+              <CardText>Ålder: {dog.age}</CardText>
+              <CardText>Kön: {dog.gender}</CardText>
+              <CardText>Kastrerad: {dog.isNeutered ? "Ja" : "Nej"}</CardText>
+              <button>Läs mer</button>
+            </CardTextContainer>
             {/* {dog.medias.map((media: Media, key: number) => (
             <img
               key={key}
@@ -95,7 +106,7 @@ export const AllDogsPage = () => {
           ))} */}
           </DogCard>
         ))}
-      </div>
+      </StyledDiv>
     </>
   );
 };
