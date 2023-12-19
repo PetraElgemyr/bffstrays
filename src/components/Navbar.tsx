@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import {
   Nav,
@@ -15,6 +15,7 @@ export const Navbar = () => {
   const [toggled, setToggled] = useState(false);
   const [dropDownToShow, setDropDownToShow] = useState<string>("");
   const [dropDownLinks, setDropDownLinks] = useState<JSX.Element>(<></>);
+  const navigate = useNavigate();
   const checkDropDownToShow = (dropDownText: string) => {
     if (dropDownText === "hundarna") {
       setDropDownLinks(
@@ -65,7 +66,11 @@ export const Navbar = () => {
 
   return (
     <Nav>
-      <Logo>
+      <Logo
+        onClick={() => {
+          navigate("/");
+        }}
+      >
         <img src="" alt="Bff Strays logo" />
       </Logo>
       <Menu

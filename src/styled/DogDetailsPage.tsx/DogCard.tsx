@@ -6,6 +6,8 @@ export const StyledDiv = styled(Col)`
   justify-content: space-evenly;
   align-items: center;
   padding-top: 5%;
+  margin-top: 15%;
+  color: black;
 `;
 export const DogCard = styled(Col)`
   justify-content: center;
@@ -18,6 +20,7 @@ export const DogCard = styled(Col)`
   outline: 1px ${colors.primary};
   overflow: hidden;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  color: white;
 `;
 
 export const ImageContainer = styled.div`
@@ -54,7 +57,7 @@ export const CardText = styled.span`
   font-size: 1rem;
 `;
 
-export const SortButton = styled.button`
+export const PrimaryButton = styled.button`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -75,4 +78,25 @@ export const SortButton = styled.button`
 export const ButtonContainer = styled(Row)<{ width?: string }>`
   width: ${({ width }) => (width ? width : "100%")};
   justify-content: space-between;
+`;
+
+export const FilterButton = styled.button`
+  border: none;
+  background-color: ${colors.primary};
+  color: ${colors.secondary_green};
+  margin: 2%;
+  padding: 5%;
+  display: flex;
+  flex-direction: row;
+  border-radius: 15px;
+  justify-content: center;
+`;
+
+export const FilterOptionsContainers = styled(Col)`
+  background-color: ${colors.secondary_green};
+  padding: 15%;
+  border-radius: 15px;
+  width: 100%;
+  max-height: 35vh;
+  overflow: scroll;
 `;

@@ -3,6 +3,7 @@ import { Media } from "./Media";
 export interface Dog {
   name: string;
   age: string;
+  ageGroup: string;
   gender: string;
   weight: number;
   isNeutered: boolean;
