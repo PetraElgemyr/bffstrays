@@ -14,4 +14,6 @@ export interface Dog {
   medias: Media[];
   isAdopted: boolean;
   id: string;
+  breed: string;
+  price: number;
 }

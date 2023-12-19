@@ -7,14 +7,18 @@ import { client } from "../../client";
 import * as contentful from "contentful";
 import { Media } from "../models/Media";
 import {
+  ButtonContainer,
   CardText,
   CardTextContainer,
   CardTitle,
   DogCard,
   Image,
   ImageContainer,
+  SortButton,
   StyledDiv,
 } from "../../styled/DogDetailsPage.tsx/DogCard";
+import SortRoundedIcon from "@mui/icons-material/SortRounded";
+import FilterAltRoundedIcon from "@mui/icons-material/FilterAltRounded";
 
 export const AllDogsPage = () => {
   // const navigate = useNavigate();
@@ -31,7 +35,6 @@ export const AllDogsPage = () => {
           >
         ) => {
           const theDogs: Dog[] = [];
-
           entries.items.map((item) => {
             const name = item.fields.name?.toString() ?? "";
             const age = item.fields.age?.toString() ?? "";
@@ -47,6 +50,8 @@ export const AllDogsPage = () => {
             const medias = item.fields.medias as Media[];
             const isAdopted = item.fields.isAdopted ? true : false;
             const id = item.sys.id;
+            const breed = item.fields.breed?.toString() ?? "";
+            const price = parseInt(item.fields.price?.toString() ?? "");
 
             const dog: Dog = {
               name,
@@ -62,6 +67,8 @@ export const AllDogsPage = () => {
               medias,
               isAdopted,
               id,
+              breed,
+              price,
             };
             theDogs.push(dog);
           });
@@ -79,9 +86,16 @@ export const AllDogsPage = () => {
   }, []);
   return (
     <>
-      {" "}
       <h2>Hundar som söker hem</h2>
       <StyledDiv>
+        <ButtonContainer width="80%">
+          <SortButton>
+            Filtrera <FilterAltRoundedIcon />{" "}
+          </SortButton>
+          <SortButton>
+            Sortera <SortRoundedIcon />{" "}
+          </SortButton>
+        </ButtonContainer>
         {dogs.map((dog: Dog, key) => (
           <DogCard key={key}>
             <ImageContainer>
@@ -93,9 +107,14 @@ export const AllDogsPage = () => {
             <CardTitle>{dog.name}</CardTitle>
             <CardTextContainer>
               <CardText>Ålder: {dog.age}</CardText>
-              <CardText>Kön: {dog.gender}</CardText>
+              <CardText>Ras: {dog.breed}</CardText>
               <CardText>Kastrerad: {dog.isNeutered ? "Ja" : "Nej"}</CardText>
-              <button>Läs mer</button>
+              <CardText>Pris: {dog.price}</CardText>
+              <ButtonContainer>
+                {" "}
+                <CardText>Storlek: {dog.size}</CardText>
+                <SortButton>Läs mer</SortButton>
+              </ButtonContainer>
             </CardTextContainer>
             {/* {dog.medias.map((media: Media, key: number) => (
             <img
