@@ -15,18 +15,13 @@ export const Nav = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  color: white;
 `;
 
 export const Logo = styled.div`
   font-size: 2em;
   padding: 0.4em;
   margin: 0;
-  transition: all 0.2s ease-out;
-
-  &:hover {
-    padding: 0.3em;
-    font-size: 2.2em;
-  }
 `;
 
 export const Menu = styled.div`
@@ -84,7 +79,7 @@ export const DropDownMenu = styled.div<IToggled>`
     padding-top: 5%;
     padding-bottom: 5%;
   }
-  @media screen and (${devices.desktop}) {
+  @media screen and (${devices.laptop}) {
     top: ${({ toggled }) => (toggled ? "0" : "-1500px")};
   }
 `;

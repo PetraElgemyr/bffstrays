@@ -8,13 +8,14 @@ export const StyledFooter = styled.footer`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-start;
-  padding-left: 10%;
   background-color: ${colors.primary};
+  overflow-x: hidden;
 
   @media screen and (${devices.tablet}) {
     flex-direction: row;
     align-items: center;
-    padding-left: 2%;
+    /* padding-left: 2%; */
+    padding-left: 0;
     padding-top: 3%;
     padding-bottom: 3%;
   }

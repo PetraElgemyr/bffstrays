@@ -3,6 +3,7 @@ import { Media } from "./Media";
 export interface Dog {
   name: string;
   age: string;
+  ageGroup: string;
   gender: string;
   weight: number;
   isNeutered: boolean;
@@ -14,4 +15,6 @@ export interface Dog {
   medias: Media[];
   isAdopted: boolean;
   id: string;
+  breed: string;
+  price: number;
 }

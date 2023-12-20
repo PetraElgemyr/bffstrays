@@ -5,16 +5,6 @@ import { Media } from "../models/Media";
 import { Post } from "../models/Post";
 import { useAppContext } from "../contexts/AppContext";
 
-// type PostType = {
-//   contentTypeId: "post";
-//   fields: {
-//     id: EntryFieldTypes.Number;
-//     postText: EntryFieldTypes.RichText;
-//     title: EntryFieldTypes.Text;
-//     pageId: EntryFieldTypes.Text;
-//   };
-// };
-
 export const HomePage = () => {
   const { posts, setPosts } = useAppContext();
   /*
