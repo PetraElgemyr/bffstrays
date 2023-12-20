@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import { colors } from "../colors";
 import { Col, Row } from "../Common/Common";
+import { devices } from "../devices";
 
 export const StyledDiv = styled(Col)`
   justify-content: space-evenly;
@@ -8,31 +9,62 @@ export const StyledDiv = styled(Col)`
   padding-top: 5%;
   margin-top: 15%;
   color: black;
+
+  @media screen and (${devices.laptop}) {
+    margin-top: 5%;
+  }
 `;
+
+export const ColContainer = styled(Col)`
+  width: 80%;
+  @media screen and (${devices.tablet}) {
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    /* justify-content: flex-start; */
+  }
+`;
+
 export const DogCard = styled(Col)`
   justify-content: center;
   align-items: flex-start;
   width: 80vw;
   padding: 0;
-  margin: 5%;
+  margin-top: 10%;
+  margin-bottom: 5%;
   background-color: ${colors.primary};
   border-radius: 15px;
   outline: 1px ${colors.primary};
   overflow: hidden;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   color: white;
+
+  @media screen and (${devices.tablet}) {
+    width: 30vw;
+    margin: 3%;
+  }
+
+  @media screen and (${devices.laptop}) {
+    width: 25vw;
+  }
 `;
 
 export const ImageContainer = styled.div`
   width: 100%;
+  height: 65%;
   margin: 0;
   padding: 0;
+  object-fit: cover;
+  object-position: center;
+
+  @media screen and (${devices.laptop}) {
+    height: 70%;
+  }
 `;
 
 export const Image = styled.img`
   width: 100%;
-  object-fit: cover;
-  object-position: center;
+  /* height: 100%; */
   border-radius: 10px 10px 0 0;
   margin: 0;
   padding: 0;
@@ -78,6 +110,7 @@ export const PrimaryButton = styled.button`
 export const ButtonContainer = styled(Row)<{ width?: string }>`
   width: ${({ width }) => (width ? width : "100%")};
   justify-content: space-between;
+  margin-top: 5%;
 `;
 
 export const FilterButton = styled.button`

@@ -10,6 +10,7 @@ import {
   CardText,
   CardTextContainer,
   CardTitle,
+  ColContainer,
   DogCard,
   FilterButton,
   FilterOptionsContainers,
@@ -238,39 +239,41 @@ export const AllDogsPage = () => {
             </PrimaryButton>
           </Col>
         </ButtonContainer>
-        {filteredDogs.map((dog: Dog, key) => (
-          <DogCard
-            onClick={() => {
-              navigate(`/hundar-soker-hem/${dog.id}`);
-            }}
-            key={key}
-          >
-            <ImageContainer>
-              <Image
-                src={`https:${dog.img[0].fields.file.url}`}
-                alt={dog.name}
-              />
-            </ImageContainer>
-            <CardTitle>{dog.name}</CardTitle>
-            <CardTextContainer>
-              <CardText>Ålder: {dog.age}</CardText>
-              <CardText>Ras: {dog.breed}</CardText>
-              <CardText>Kastrerad: {dog.isNeutered ? "Ja" : "Nej"}</CardText>
-              <CardText>Pris: {dog.price}kr</CardText>
-              <ButtonContainer>
-                {" "}
-                <CardText>Storlek: {dog.size}</CardText>
-                <PrimaryButton
-                  onClick={() => {
-                    navigate(`/hundar-soker-hem/${dog.id}`);
-                  }}
-                >
-                  Läs mer
-                </PrimaryButton>
-              </ButtonContainer>
-            </CardTextContainer>
-          </DogCard>
-        ))}
+        <ColContainer>
+          {filteredDogs.map((dog: Dog, key) => (
+            <DogCard
+              onClick={() => {
+                navigate(`/hundar-soker-hem/${dog.id}`);
+              }}
+              key={key}
+            >
+              <ImageContainer>
+                <Image
+                  src={`https:${dog.img[0].fields.file.url}`}
+                  alt={dog.name}
+                />
+              </ImageContainer>
+              <CardTitle>{dog.name}</CardTitle>
+              <CardTextContainer>
+                <CardText>Ålder: {dog.age}</CardText>
+                <CardText>Ras: {dog.breed}</CardText>
+                <CardText>Kastrerad: {dog.isNeutered ? "Ja" : "Nej"}</CardText>
+                <CardText>Pris: {dog.price}kr</CardText>
+                <ButtonContainer>
+                  {" "}
+                  <CardText>Storlek: {dog.size}</CardText>
+                  <PrimaryButton
+                    onClick={() => {
+                      navigate(`/hundar-soker-hem/${dog.id}`);
+                    }}
+                  >
+                    Läs mer
+                  </PrimaryButton>
+                </ButtonContainer>
+              </CardTextContainer>
+            </DogCard>
+          ))}
+        </ColContainer>
       </StyledDiv>
     </>
   );

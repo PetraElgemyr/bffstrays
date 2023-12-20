@@ -8,8 +8,8 @@ export const StyledFooter = styled.footer`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-start;
-  padding-left: 10%;
   background-color: ${colors.primary};
+  overflow-x: hidden;
 
   @media screen and (${devices.tablet}) {
     flex-direction: row;
