@@ -79,7 +79,7 @@ export const DropDownMenu = styled.div<IToggled>`
     padding-top: 5%;
     padding-bottom: 5%;
   }
-  @media screen and (${devices.desktop}) {
+  @media screen and (${devices.laptop}) {
     top: ${({ toggled }) => (toggled ? "0" : "-1500px")};
   }
 `;
