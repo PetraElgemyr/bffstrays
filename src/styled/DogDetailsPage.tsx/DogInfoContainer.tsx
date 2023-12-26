@@ -8,6 +8,7 @@ export const DogInfoContainer = styled(Col)`
   align-items: center;
   gap: 15px;
   width: 85vw;
+
   @media screen and (${devices.tablet}) {
     width: 100vw;
     flex-direction: row;
@@ -17,6 +18,11 @@ export const DogInfoContainer = styled(Col)`
     background-color: ${colors.primary};
     padding: 0;
     margin: 0;
-    height: 60vh;
+    height: 70vh;
+  }
+
+  @media screen and (${devices.laptop}) {
+    height: 85vh;
+    justify-content: space-between;
   }
 `;

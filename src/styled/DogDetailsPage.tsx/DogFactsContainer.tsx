@@ -10,9 +10,10 @@ export const DogFactsContainer = styled(Col)`
   /* height: 100%; */
   align-items: center;
   padding-bottom: 5%;
+
   @media screen and (${devices.tablet}) {
     outline: none;
-    width: 40vw;
+    width: 50%;
     border-radius: 0;
     height: 80%;
     color: white;
