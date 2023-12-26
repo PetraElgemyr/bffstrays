@@ -65,7 +65,7 @@ export const Navbar = () => {
   };
 
   return (
-    <Nav>
+    <Nav style={{ zIndex: 1 }}>
       <Logo
         onClick={() => {
           navigate("/");

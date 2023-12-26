@@ -106,7 +106,15 @@ export const DogDetails = () => {
         </CCarouselItem>
       ))}
     </CCarousel> */}
-          <CCarousel controls indicators style={{ width: "90%" }}>
+          <CCarousel
+            controls
+            indicators
+            style={{
+              width: "90%",
+              marginBottom: "10%",
+              marginTop: "10%",
+            }}
+          >
             <CCarouselItem>
               <CImage
                 className="d-block w-100"
