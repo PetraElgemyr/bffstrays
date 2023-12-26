@@ -13,13 +13,13 @@ import {
   FilterOptionsContainers,
   Image,
   ImageContainer,
-  PrimaryButton,
   StyledDiv,
 } from "../../styled/AllDogsPage.tsx/DogCard";
 import SortRoundedIcon from "@mui/icons-material/SortRounded";
 import FilterAltRoundedIcon from "@mui/icons-material/FilterAltRounded";
 import { Col } from "../../styled/Common/Common";
 import { getAllDogs } from "../helpers/RepositoryHelper";
+import { PrimaryButton } from "../../styled/Buttons/PrimaryButton";
 
 export const AllDogsPage = () => {
   const navigate = useNavigate();

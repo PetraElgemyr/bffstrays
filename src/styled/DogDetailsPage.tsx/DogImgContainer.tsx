@@ -15,10 +15,12 @@ export const DogImgContainer = styled.div<IDogImgContainerProps>`
   background-size: cover;
 
   @media screen and (${devices.tablet}) {
-    width: 55vw;
-    height: auto;
-    border-radius: 0; /*
-    flex-shrink: 0; */
+    width: 50vw;
+    height: 100%;
+    border-radius: 0;
     flex-grow: 1;
+  }
+
+  @media screen and (${devices.laptop}) {
   }
 `;
