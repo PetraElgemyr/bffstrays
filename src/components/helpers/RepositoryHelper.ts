@@ -54,7 +54,6 @@ export const getAllDogs = async (): Promise<Dog[]> => {
 
       theDogs.push(dog);
     });
-    console.log(theDogs, "just nu");
     return theDogs; // Return the array of dogs
   } catch (error) {
     console.log(error);

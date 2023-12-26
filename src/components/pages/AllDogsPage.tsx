@@ -34,12 +34,11 @@ export const AllDogsPage = () => {
     } else {
       getAllDogs()
         .then((theDogs) => {
-          console.log(theDogs, "nuuu kommit");
           if (theDogs) {
             setDogs(theDogs);
             setFilteredDogs(theDogs);
           } else {
-            console.log("no dogs");
+            console.log("Inga hundar");
           }
         })
         .catch((error) => console.error(error));
@@ -53,7 +52,6 @@ export const AllDogsPage = () => {
     if (option === "clear") {
       setFilters([]);
       setFilteredDogs(dogs);
-      console.log(filters);
       return;
     }
 
@@ -66,7 +64,6 @@ export const AllDogsPage = () => {
     } else {
       newFilters.push(option);
     }
-    console.log(filters);
     setFilters(newFilters);
     filterDogs(newFilters);
   };

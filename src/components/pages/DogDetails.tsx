@@ -23,6 +23,17 @@ export const DogDetails = () => {
   const { id } = useParams();
   const [dog, setDog] = useState<Dog>();
   const navigate = useNavigate();
+  const [images, setImages] = useState<string[]>([]);
+
+  const findImages = (dogExists: Dog | undefined) => {
+    const urls: string[] = [];
+    dogExists?.medias.map((imgObject) => {
+      urls.push(`https:${imgObject.fields.file.url}`);
+      setImages(urls);
+      console.log(urls, "url för hunden", dogExists.name);
+    });
+  };
+
   useEffect(() => {
     if (id) {
       if (dogs.length === 0) {
@@ -32,6 +43,9 @@ export const DogDetails = () => {
               setDogs(theDogs);
               const dogExists = theDogs.find((dog) => dog.id === id);
               setDog(dogExists);
+              console.log(dogExists);
+
+              findImages(dogExists);
             } else {
               console.log("inga hundar");
             }
@@ -40,6 +54,10 @@ export const DogDetails = () => {
       } else {
         const dogExists = dogs.find((dog) => dog.id === id);
         setDog(dogExists);
+
+        console.log(dogExists);
+
+        findImages(dogExists);
       }
     }
   }, [id, dogs, setDogs]);
@@ -99,14 +117,26 @@ export const DogDetails = () => {
           >
             Gör en intresseanmälan
           </PrimaryButton>
-          {/* <CCarousel>
-      {images.map((url, index) => (
-        <CCarouselItem key={index}>
-          <img src={url} alt={`Slide ${index}`} />
-        </CCarouselItem>
-      ))}
-    </CCarousel> */}
           <CCarousel
+            controls
+            indicators
+            style={{
+              width: "90%",
+              marginBottom: "10%",
+              marginTop: "10%",
+            }}
+          >
+            {images.map((imgUrl, index) => (
+              <CCarouselItem key={index}>
+                <CImage
+                  className="d-block w-100"
+                  src={imgUrl}
+                  alt={dog.name + index}
+                />{" "}
+              </CCarouselItem>
+            ))}
+          </CCarousel>
+          {/* <CCarousel
             controls
             indicators
             style={{
@@ -136,7 +166,7 @@ export const DogDetails = () => {
                 alt="slide 3"
               />
             </CCarouselItem>
-          </CCarousel>
+          </CCarousel> */}
         </div>
       ) : (
         // {dog.medias.map((media: Media, key: number) => (
