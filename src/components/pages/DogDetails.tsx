@@ -4,6 +4,7 @@ import { Dog } from "../models/Dog";
 import { useAppContext } from "../contexts/AppContext";
 import "../../scss/DogDetails.scss";
 import {
+  Carousel,
   DogImg,
   DogImgContainer1,
 } from "../../styled/DogDetailsPage.tsx/DogImgContainer";
@@ -17,7 +18,7 @@ import {
   DogDescription,
 } from "../../styled/DogDetailsPage.tsx/DogFactText";
 import { CardTitle } from "../../styled/AllDogsPage.tsx/DogCard";
-import { CCarousel, CCarouselItem, CImage } from "@coreui/react";
+import { CCarouselItem, CImage } from "@coreui/react";
 import "@coreui/coreui/dist/css/coreui.min.css";
 import { PrimaryButton } from "../../styled/Buttons/PrimaryButton";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
@@ -131,15 +132,7 @@ export const DogDetails = () => {
               Gör en intresseanmälan
             </PrimaryButton>
             {images.length > 0 ? (
-              <CCarousel
-                controls
-                indicators
-                style={{
-                  width: "90%",
-                  marginBottom: "10%",
-                  marginTop: "10%",
-                }}
-              >
+              <Carousel controls indicators>
                 {images.map((imgUrl, index) => (
                   <CCarouselItem key={index}>
                     <CImage
@@ -149,7 +142,7 @@ export const DogDetails = () => {
                     />{" "}
                   </CCarouselItem>
                 ))}
-              </CCarousel>
+              </Carousel>
             ) : (
               <p>Fler bilder kommer snart</p>
             )}

@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { devices } from "../devices";
+import { CCarousel } from "@coreui/react";
 // import { CImage } from "@coreui/react";
 
 export const DogImgContainer1 = styled.div`
@@ -33,3 +34,14 @@ export const DogImg = styled.img`
 // export const CarouselImage = styled(CImage)`
 //   border-radius: 15px;
 // `;
+
+export const Carousel = styled(CCarousel)`
+  width: 90%;
+  margin-bottom: 10%;
+  margin-top: 10%;
+
+  @media screen and (${devices.tablet}) {
+    width: 70%;
+    margin-top: 5%;
+  }
+`;
