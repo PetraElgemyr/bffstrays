@@ -7,17 +7,17 @@ import {
   Carousel,
   DogImg,
   DogImgContainer1,
-} from "../../styled/DogDetailsPage.tsx/DogImgContainer";
-import { DogInfoContainer } from "../../styled/DogDetailsPage.tsx/DogInfoContainer";
+} from "../../styled/DogDetails/DogImgContainer";
+import { DogInfoContainer } from "../../styled/DogDetails/DogInfoContainer";
 import { getAllDogs } from "../helpers/RepositoryHelper";
-import { DogFactsContainer } from "../../styled/DogDetailsPage.tsx/DogFactsContainer";
+import { DogFactsContainer } from "../../styled/DogDetails/DogFactsContainer";
 import { Col } from "../../styled/Common/Common";
 import {
   DogFactTextBold,
   DogFactText,
   DogDescription,
-} from "../../styled/DogDetailsPage.tsx/DogFactText";
-import { CardTitle } from "../../styled/AllDogsPage.tsx/DogCard";
+} from "../../styled/DogDetails/DogFactText";
+import { CardTitle } from "../../styled/AllDogs/DogCard";
 import { CCarouselItem, CImage } from "@coreui/react";
 import "@coreui/coreui/dist/css/coreui.min.css";
 import { PrimaryButton } from "../../styled/Buttons/PrimaryButton";

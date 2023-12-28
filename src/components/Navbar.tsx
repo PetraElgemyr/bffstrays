@@ -22,7 +22,7 @@ export const Navbar = () => {
         <>
           <li>
             <Link
-              to="/hundar-soker-hem"
+              to="/hundar-som-soker-hem"
               onClick={() => {
                 setToggled(!toggled);
               }}

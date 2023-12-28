@@ -3,6 +3,7 @@ import * as contentful from "contentful";
 import { Dog } from "../models/Dog";
 import { Media } from "../models/Media";
 import { Post } from "../models/Post";
+import { Slide } from "../models/Slide";
 
 export const getAllDogs = async (): Promise<Dog[]> => {
   try {
@@ -149,6 +150,36 @@ export const getAllPosts = async (): Promise<Post[]> => {
       thePosts.push(post);
     });
     return thePosts;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+export const getSlides = async (): Promise<Slide[]> => {
+  try {
+    const response: contentful.EntryCollection<
+      contentful.EntrySkeletonType,
+      undefined,
+      string
+    > = await client.getEntries({
+      content_type: "slideImage",
+    });
+
+    const theSlideImages: Slide[] = [];
+
+    response.items.map((item) => {
+      const slideTitle = item.fields.slideTitle?.toString() ?? "";
+      const slideImage = item.fields.slideImage as Media[];
+
+      const slide: Slide = {
+        slideTitle,
+        slideImage,
+      };
+
+      theSlideImages.push(slide);
+    });
+    return theSlideImages;
   } catch (error) {
     console.log(error);
     return [];

@@ -9,7 +9,7 @@ export const Layout = () => {
         <Navbar></Navbar>
       </header>
       <main>
-        <div style={{ height: "80px", width: "100vw" }}></div>
+        <div style={{ height: "78px", width: "100vw" }}></div>
         <Outlet></Outlet>
       </main>
       <footer>

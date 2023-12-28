@@ -1,9 +1,9 @@
 export enum PageName {
   Home = "Hem",
-  Dogs = "Hundar",
+  Dogs = "Hundar som söker hem",
   Adoption = "Adoption",
   About = "Om oss",
-  Spain = "Spanien",
+  Spain = "Situationen i Spanien",
   Donate = "Donera",
   RegisterInterest = "Intresseanmälan",
   Contact = "Kontakt",

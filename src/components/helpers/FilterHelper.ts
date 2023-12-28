@@ -5,7 +5,7 @@ export const filterPostsPerPage = (allPosts: Post[], pageName: string) => {
   const postsToDisplay: Post[] = allPosts.filter(
     (post: Post) => post.pageId.toLowerCase() === pageName.toLowerCase()
   );
-  console.log(postsToDisplay, "ska visas");
+  const reversedArray = postsToDisplay.slice().reverse();
 
-  return postsToDisplay;
+  return reversedArray;
 };
