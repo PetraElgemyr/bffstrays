@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage } from "../helpers/FilterHelper";
@@ -9,7 +9,8 @@ export const DonatePage = () => {
   const { posts, setPosts } = useAppContext();
   const [donatePosts, setDonatePosts] = useState<Post[]>([]);
 
-  const fetchPosts = async () => {
+  const fetchPosts = useCallback(async () => {
+    // Fetch posts, filter them and set them to state
     if (posts.length > 0) {
       const filteredPosts = filterPostsPerPage(posts, PageName.Donate);
       setDonatePosts(filteredPosts);
@@ -27,11 +28,11 @@ export const DonatePage = () => {
         console.error(error);
       }
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [fetchPosts]);
 
   return (
     <>

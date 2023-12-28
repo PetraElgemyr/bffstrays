@@ -8,30 +8,32 @@ import { Post } from "../models/Post";
 export const HomePage = () => {
   const { posts, setPosts } = useAppContext();
   const [homePosts, setHomePosts] = useState<Post[]>([]);
-  const fetchPosts = useCallback(async () => {
-    try {
-      const response = await getAllPosts();
-      if (response) {
-        setPosts(response);
-        const filteredPosts = filterPostsPerPage(response, PageName.Home);
-        setHomePosts(filteredPosts);
-      } else {
-        console.log("Inga inlägg");
-        setPosts([]);
-        setHomePosts([]);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
 
-  useEffect(() => {
+  const fetchPosts = useCallback(async () => {
+    // Fetch posts, filter them and set them to state
     if (posts.length > 0) {
       const filteredPosts = filterPostsPerPage(posts, PageName.Home);
       setPosts(filteredPosts);
     } else {
-      fetchPosts();
+      try {
+        const response = await getAllPosts();
+        if (response) {
+          setPosts(response);
+          const filteredPosts = filterPostsPerPage(response, PageName.Home);
+          setHomePosts(filteredPosts);
+        } else {
+          console.log("Inga inlägg");
+          setPosts([]);
+          setHomePosts([]);
+        }
+      } catch (error) {
+        console.error(error);
+      }
     }
+  }, []);
+
+  useEffect(() => {
+    fetchPosts();
   }, [fetchPosts]);
 
   return (
