@@ -3,7 +3,10 @@ import { useNavigate, useParams } from "react-router";
 import { Dog } from "../models/Dog";
 import { useAppContext } from "../contexts/AppContext";
 import "../../scss/DogDetails.scss";
-import { DogImgContainer } from "../../styled/DogDetailsPage.tsx/DogImgContainer";
+import {
+  DogImg,
+  DogImgContainer1,
+} from "../../styled/DogDetailsPage.tsx/DogImgContainer";
 import { DogInfoContainer } from "../../styled/DogDetailsPage.tsx/DogInfoContainer";
 import { getAllDogs } from "../helpers/RepositoryHelper";
 import { DogFactsContainer } from "../../styled/DogDetailsPage.tsx/DogFactsContainer";
@@ -25,12 +28,11 @@ export const DogDetails = () => {
   const navigate = useNavigate();
   const [images, setImages] = useState<string[]>([]);
 
-  const findImages = (dogExists: Dog | undefined) => {
+  const findImages = (dogExists: Dog) => {
     const urls: string[] = [];
-    dogExists?.medias.map((imgObject) => {
+    dogExists.medias.map((imgObject) => {
       urls.push(`https:${imgObject.fields.file.url}`);
       setImages(urls);
-      console.log(urls, "url för hunden", dogExists.name);
     });
   };
 
@@ -43,9 +45,9 @@ export const DogDetails = () => {
               setDogs(theDogs);
               const dogExists = theDogs.find((dog) => dog.id === id);
               setDog(dogExists);
-              console.log(dogExists);
-
-              findImages(dogExists);
+              if (dogExists && dogExists.medias) {
+                findImages(dogExists);
+              }
             } else {
               console.log("inga hundar");
             }
@@ -55,9 +57,9 @@ export const DogDetails = () => {
         const dogExists = dogs.find((dog) => dog.id === id);
         setDog(dogExists);
 
-        console.log(dogExists);
-
-        findImages(dogExists);
+        if (dogExists && dogExists.medias) {
+          findImages(dogExists);
+        }
       }
     }
   }, [id, dogs, setDogs]);
@@ -82,9 +84,12 @@ export const DogDetails = () => {
             Tillbaka
           </p>
           <DogInfoContainer>
-            <DogImgContainer
-              url={`https:${dog.img[0].fields.file.url}`}
-            ></DogImgContainer>
+            <DogImgContainer1>
+              <DogImg
+                src={`https:${dog.img[0].fields.file.url}`}
+                alt={dog.name}
+              ></DogImg>
+            </DogImgContainer1>
             <DogFactsContainer>
               <CardTitle>{dog.name}</CardTitle>
               <DogFactTextBold>
@@ -117,67 +122,32 @@ export const DogDetails = () => {
           >
             Gör en intresseanmälan
           </PrimaryButton>
-          <CCarousel
-            controls
-            indicators
-            style={{
-              width: "90%",
-              marginBottom: "10%",
-              marginTop: "10%",
-            }}
-          >
-            {images.map((imgUrl, index) => (
-              <CCarouselItem key={index}>
-                <CImage
-                  className="d-block w-100"
-                  src={imgUrl}
-                  alt={dog.name + index}
-                />{" "}
-              </CCarouselItem>
-            ))}
-          </CCarousel>
-          {/* <CCarousel
-            controls
-            indicators
-            style={{
-              width: "90%",
-              marginBottom: "10%",
-              marginTop: "10%",
-            }}
-          >
-            <CCarouselItem>
-              <CImage
-                className="d-block w-100"
-                src="https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg"
-                alt="slide 1"
-              />
-            </CCarouselItem>
-            <CCarouselItem>
-              <CImage
-                className="d-block w-100"
-                src="https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg"
-                alt="slide 2"
-              />
-            </CCarouselItem>
-            <CCarouselItem>
-              <CImage
-                className="d-block w-100"
-                src="https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg"
-                alt="slide 3"
-              />
-            </CCarouselItem>
-          </CCarousel> */}
+          {images.length > 0 ? (
+            <CCarousel
+              controls
+              indicators
+              style={{
+                width: "90%",
+                marginBottom: "10%",
+                marginTop: "10%",
+              }}
+            >
+              {images.map((imgUrl, index) => (
+                <CCarouselItem key={index}>
+                  <CImage
+                    className="d-block w-100"
+                    src={imgUrl}
+                    alt={dog.name + index}
+                  />{" "}
+                </CCarouselItem>
+              ))}
+            </CCarousel>
+          ) : (
+            <p>Fler bilder kommer snart</p>
+          )}
         </div>
       ) : (
-        // {dog.medias.map((media: Media, key: number) => (
-        //     <img
-        //       key={key}
-        //       alt={dog.name.toString()}
-        //       src={`https:${media.fields.file.url}`}
-        //     />
-        //   ))}
-
-        <p className="black">hund med id {id} hittades inte</p>
+        <p className="black">Hunden du söker finns inte</p>
       )}
     </>
   );

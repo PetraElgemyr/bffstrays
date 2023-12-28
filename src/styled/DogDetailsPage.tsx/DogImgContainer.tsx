@@ -1,19 +1,24 @@
 import { styled } from "styled-components";
 import { devices } from "../devices";
 
-interface IDogImgContainerProps {
-  url: string;
-}
-
-export const DogImgContainer = styled.div<IDogImgContainerProps>`
+export const DogImgContainer1 = styled.div`
   width: 100%;
-  height: 50vh;
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (${devices.tablet}) {
+    height: 100%;
+    border-radius: 0;
+    max-width: 50%;
+  }
+`;
+
+export const DogImg = styled.img`
+  width: 100%;
   border-radius: 15px;
-  background: url(${({ url }) => (url ? url : "")});
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 
   @media screen and (${devices.tablet}) {
     height: 100%;
@@ -21,11 +26,5 @@ export const DogImgContainer = styled.div<IDogImgContainerProps>`
     max-width: 50%;
     background-size: contain;
     background-repeat: no-repeat;
-  }
-
-  @media screen and (${devices.laptop}) {
-    max-width: 40%;
-
-    margin: 0;
   }
 `;
