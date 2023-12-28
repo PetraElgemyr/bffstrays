@@ -44,6 +44,7 @@ export const AllDogsPage = () => {
         .catch((error) => console.error(error));
     }
   }, [dogs]);
+
   useEffect(() => {
     fetchDogData();
   }, [fetchDogData]);
