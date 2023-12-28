@@ -43,6 +43,16 @@ export const Navbar = () => {
         <>
           <li>
             <Link
+              to="/situationen-i-spanien"
+              onClick={() => {
+                setToggled(!toggled);
+              }}
+            >
+              Situationen i Spanien
+            </Link>
+          </li>
+          <li>
+            <Link
               to="/myter-om-gatuhundar"
               onClick={() => {
                 setToggled(!toggled);
@@ -76,6 +86,8 @@ export const Navbar = () => {
       <Menu
         onClick={() => {
           setToggled(!toggled);
+          setDropDownToShow("");
+          setDropDownLinks(<></>);
         }}
       >
         <HamMenu>
