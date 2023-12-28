@@ -17,5 +17,6 @@ export const DogFactsContainer = styled(Col)`
     border-radius: 0;
     height: 80%;
     color: white;
+    padding-bottom: 2%;
   }
 `;

@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { devices } from "../devices";
+// import { CImage } from "@coreui/react";
 
 export const DogImgContainer1 = styled.div`
   width: 100%;
@@ -12,7 +13,9 @@ export const DogImgContainer1 = styled.div`
   @media screen and (${devices.tablet}) {
     height: 100%;
     border-radius: 0;
-    max-width: 50%;
+    max-width: 55%;
+    margin: 0;
+    padding: 0;
   }
 `;
 
@@ -21,10 +24,12 @@ export const DogImg = styled.img`
   border-radius: 15px;
 
   @media screen and (${devices.tablet}) {
-    height: 100%;
+    width: 100%;
+    margin: 0;
     border-radius: 0;
-    max-width: 50%;
-    background-size: contain;
-    background-repeat: no-repeat;
   }
 `;
+
+// export const CarouselImage = styled(CImage)`
+//   border-radius: 15px;
+// `;
