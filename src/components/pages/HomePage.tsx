@@ -1,17 +1,24 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useAppContext } from "../contexts/AppContext";
 import { getAllPosts } from "../helpers/RepositoryHelper";
+import { filterPostsPerPage } from "../helpers/FilterHelper";
+import { PageName } from "../enums/PageName";
+import { Post } from "../models/Post";
 
 export const HomePage = () => {
   const { posts, setPosts } = useAppContext();
-
+  const [homePosts, setHomePosts] = useState<Post[]>([]);
   const fetchPosts = useCallback(async () => {
     try {
       const response = await getAllPosts();
       if (response) {
         setPosts(response);
+        const filteredPosts = filterPostsPerPage(response, PageName.Home);
+        setHomePosts(filteredPosts);
       } else {
         console.log("Inga inlägg");
+        setPosts([]);
+        setHomePosts([]);
       }
     } catch (error) {
       console.error(error);
@@ -20,7 +27,8 @@ export const HomePage = () => {
 
   useEffect(() => {
     if (posts.length > 0) {
-      return;
+      const filteredPosts = filterPostsPerPage(posts, PageName.Home);
+      setPosts(filteredPosts);
     } else {
       fetchPosts();
     }
@@ -30,8 +38,8 @@ export const HomePage = () => {
     <>
       <h1>Bff Strays</h1>
       <div>
-        <h4>Inlägg</h4>
-        {posts.map((post, key) => (
+        <h4>Inlägg för startsidan</h4>
+        {homePosts.map((post, key) => (
           <article key={key}>
             <h6>{post.title.toString()}</h6>
             <p>{post.postText.toString()}</p>
