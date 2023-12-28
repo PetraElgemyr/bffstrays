@@ -8,6 +8,7 @@ export interface PostEntrySkeleton {
   postText: contentful.EntryFieldTypes.Text;
   img: Media[];
   medias: Media[];
+  infoText: contentful.EntryFieldTypes.Text;
 }
 
 export interface Post {
@@ -17,4 +18,5 @@ export interface Post {
   postText: string;
   img: Media[];
   medias: Media[];
+  infoText: string;
 }

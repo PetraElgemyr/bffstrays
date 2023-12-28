@@ -135,6 +135,7 @@ export const getAllPosts = async (): Promise<Post[]> => {
       const postText = item.fields.postText?.toString() ?? "";
       const img = item.fields.img as Media[];
       const medias = item.fields.medias as Media[];
+      const infoText = item.fields.infoText?.toString() ?? "";
 
       const post = {
         id,
@@ -143,6 +144,7 @@ export const getAllPosts = async (): Promise<Post[]> => {
         postText,
         img,
         medias,
+        infoText,
       };
       thePosts.push(post);
     });
