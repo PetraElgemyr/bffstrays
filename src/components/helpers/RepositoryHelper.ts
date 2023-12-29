@@ -4,6 +4,7 @@ import { Dog } from "../models/Dog";
 import { Media } from "../models/Media";
 import { Post } from "../models/Post";
 import { Slide } from "../models/Slide";
+import { PostDescription } from "../models/PostDescription";
 
 export const getAllDogs = async (): Promise<Dog[]> => {
   try {
@@ -261,3 +262,37 @@ export const getSlides = async (): Promise<Slide[]> => {
       );
   };
 */
+
+export const getPageDescriptions = async (): Promise<PostDescription[]> => {
+  try {
+    const response: contentful.EntryCollection<
+      contentful.EntrySkeletonType,
+      undefined,
+      string
+    > = await client.getEntries({
+      content_type: "postDescription",
+    });
+
+    const descriptions: PostDescription[] = [];
+
+    response.items.map((item) => {
+      const title = item.fields.title?.toString() ?? "";
+      const img = item.fields.img as Media;
+      const description = item.fields.description?.toString() ?? "";
+
+      const postDescription: PostDescription = {
+        title,
+        img,
+        description,
+      };
+
+      descriptions.push(postDescription);
+    });
+    return descriptions;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+//postDescription

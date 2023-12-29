@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAppContext } from "../contexts/AppContext";
-import { getAllPosts, getSlides } from "../helpers/RepositoryHelper";
-import { filterPostsPerPage } from "../helpers/FilterHelper";
+import {
+  getAllPosts,
+  getPageDescriptions,
+  getSlides,
+} from "../helpers/RepositoryHelper";
 import { PageName } from "../enums/PageName";
-import { Post } from "../models/Post";
 import { CCarousel, CCarouselItem } from "@coreui/react";
 import { Slide } from "../models/Slide";
 import {
@@ -13,28 +15,37 @@ import {
   StyledSlideImage,
 } from "../../styled/Home/Slide";
 import { useNavigate } from "react-router";
-
+import {
+  CardTextContainer,
+  ColContainer,
+  DogCard,
+  Image,
+  ImageContainer,
+  StyledDiv,
+} from "../../styled/AllDogs/DogCard";
+import "../../scss/HomePage.scss";
+import {
+  DescriptiveCardTitle,
+  DescriptiveCardText,
+} from "../../styled/Home/DescriptiveCard";
+import { PostDescription } from "../models/PostDescription";
 export const HomePage = () => {
   const { posts, setPosts } = useAppContext();
-  const [homePosts, setHomePosts] = useState<Post[]>([]);
+  // const [homePosts, setHomePosts] = useState<Post[]>([]);
   const [slides, setSlides] = useState<Slide[]>([]);
+  const [descriptions, setDescriptions] = useState<PostDescription[]>([]);
   const navigate = useNavigate();
+
   const fetchPosts = useCallback(async () => {
     // Fetch posts, filter them and set them to state
-    if (posts.length > 0) {
-      const filteredPosts = filterPostsPerPage(posts, PageName.Home);
-      setHomePosts(filteredPosts);
-    } else {
+    if (posts.length === 0) {
       try {
         const response = await getAllPosts();
         if (response) {
           setPosts(response);
-          const filteredPosts = filterPostsPerPage(response, PageName.Home);
-          setHomePosts(filteredPosts);
         } else {
           console.log("Inga inlägg");
           setPosts([]);
-          setHomePosts([]);
         }
       } catch (error) {
         console.error(error);
@@ -48,7 +59,19 @@ export const HomePage = () => {
       try {
         const response = await getSlides();
         response ? setSlides(response) : setSlides([]);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }, []);
+
+  const fetchDescriptions = useCallback(async () => {
+    if (descriptions.length === 0) {
+      try {
+        const response = await getPageDescriptions();
         console.log(response);
+
+        response ? setDescriptions(response) : setDescriptions([]);
       } catch (error) {
         console.error(error);
       }
@@ -58,7 +81,8 @@ export const HomePage = () => {
   useEffect(() => {
     fetchPosts();
     fetchSlides();
-  }, [fetchPosts, fetchSlides]);
+    fetchDescriptions();
+  }, [fetchPosts, fetchSlides, fetchDescriptions]);
 
   return (
     <>
@@ -81,11 +105,9 @@ export const HomePage = () => {
                       case PageName.Dogs.toLowerCase():
                         navigate("/hundar-som-soker-hem");
                         break;
-
                       case PageName.Spain.toLowerCase():
                         navigate("/situationen-i-spanien");
                         break;
-
                       default:
                         break;
                     }
@@ -97,13 +119,28 @@ export const HomePage = () => {
             </CCarouselItem>
           ))}
         </CCarousel>
-
-        {homePosts.map((post, key) => (
-          <article key={key}>
-            <h6>{post.title.toString()}</h6>
-            <p>{post.postText.toString()}</p>
-          </article>
-        ))}
+        <StyledDiv>
+          <ColContainer>
+            {descriptions.map((post, key) => (
+              <DogCard bgcolor={key % 2 === 0 ? "green" : "blue"} key={key}>
+                <ImageContainer>
+                  <Image
+                    src={`https:${post.img.fields.file.url}`}
+                    alt={post.title}
+                  />
+                </ImageContainer>
+                <CardTextContainer>
+                  <DescriptiveCardTitle>
+                    {post.title.toString()}
+                  </DescriptiveCardTitle>
+                  <DescriptiveCardText>
+                    {post.description.toString()}
+                  </DescriptiveCardText>
+                </CardTextContainer>
+              </DogCard>
+            ))}
+          </ColContainer>
+        </StyledDiv>
       </div>
     </>
   );
