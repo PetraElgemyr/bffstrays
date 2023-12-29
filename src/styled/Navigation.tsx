@@ -66,10 +66,12 @@ export const DropDownMenu = styled.div<IToggled>`
       color: white;
       &:hover {
         border-bottom: solid white 1px;
+        cursor: pointer;
       }
 
       & > a {
         color: white;
+        text-decoration: none;
       }
     }
   }

@@ -36,7 +36,7 @@ export const StyledSlideImage = styled(CImage)`
   }
 
   @media screen and (${devices.laptop}) {
-    height: 50vh;
+    height: 55vh;
     position: relative;
     left: 0;
   }
