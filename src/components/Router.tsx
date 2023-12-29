@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
     children: [
       { path: "/", element: <HomePage></HomePage> },
       {
-        path: "/hundar-soker-hem",
+        path: "/hundar-som-soker-hem/",
         element: <AllDogsPage></AllDogsPage>,
       },
       {
@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
         element: <AdoptedDogsPage></AdoptedDogsPage>,
       },
       {
-        path: "/hundar-soker-hem/:id",
+        path: "/hundar-som-soker-hem/:id",
         element: <DogDetails></DogDetails>,
       },
       { path: "/om-oss", element: <AboutPage></AboutPage> },

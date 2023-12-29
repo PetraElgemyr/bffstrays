@@ -22,7 +22,7 @@ export const Navbar = () => {
         <>
           <li>
             <Link
-              to="/hundar-soker-hem"
+              to="/hundar-som-soker-hem"
               onClick={() => {
                 setToggled(!toggled);
               }}
@@ -41,6 +41,16 @@ export const Navbar = () => {
     } else if (dropDownText === "spanien") {
       setDropDownLinks(
         <>
+          <li>
+            <Link
+              to="/situationen-i-spanien"
+              onClick={() => {
+                setToggled(!toggled);
+              }}
+            >
+              Situationen i Spanien
+            </Link>
+          </li>
           <li>
             <Link
               to="/myter-om-gatuhundar"
@@ -76,6 +86,8 @@ export const Navbar = () => {
       <Menu
         onClick={() => {
           setToggled(!toggled);
+          setDropDownToShow("");
+          setDropDownLinks(<></>);
         }}
       >
         <HamMenu>

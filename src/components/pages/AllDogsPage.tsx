@@ -14,7 +14,7 @@ import {
   Image,
   ImageContainer,
   StyledDiv,
-} from "../../styled/AllDogsPage.tsx/DogCard";
+} from "../../styled/AllDogs/DogCard";
 import SortRoundedIcon from "@mui/icons-material/SortRounded";
 import FilterAltRoundedIcon from "@mui/icons-material/FilterAltRounded";
 import { Col } from "../../styled/Common/Common";
@@ -44,6 +44,7 @@ export const AllDogsPage = () => {
         .catch((error) => console.error(error));
     }
   }, [dogs]);
+
   useEffect(() => {
     fetchDogData();
   }, [fetchDogData]);
@@ -195,7 +196,7 @@ export const AllDogsPage = () => {
           {filteredDogs.map((dog: Dog, key) => (
             <DogCard
               onClick={() => {
-                navigate(`/hundar-soker-hem/${dog.id}`);
+                navigate(`/hundar-som-soker-hem/${dog.id}`);
               }}
               key={key}
             >
@@ -216,7 +217,7 @@ export const AllDogsPage = () => {
                   <CardText>Storlek: {dog.size}</CardText>
                   <PrimaryButton
                     onClick={() => {
-                      navigate(`/hundar-soker-hem/${dog.id}`);
+                      navigate(`/hundar-som-soker-hem/${dog.id}`);
                     }}
                   >
                     Läs mer
