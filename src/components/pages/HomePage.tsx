@@ -4,11 +4,12 @@ import { getAllPosts, getSlides } from "../helpers/RepositoryHelper";
 import { filterPostsPerPage } from "../helpers/FilterHelper";
 import { PageName } from "../enums/PageName";
 import { Post } from "../models/Post";
-import { CCarousel, CCarouselCaption, CCarouselItem } from "@coreui/react";
+import { CCarousel, CCarouselItem } from "@coreui/react";
 import { Slide } from "../models/Slide";
 import {
   SlideTitleContainer,
   SlideTitleText,
+  StyledCarouselCaption,
   StyledSlideImage,
 } from "../../styled/Home/Slide";
 import { useNavigate } from "react-router";
@@ -70,7 +71,7 @@ export const HomePage = () => {
                 src={slide.slideImage[0].fields.file.url}
                 alt={slide.slideTitle}
               />
-              <CCarouselCaption style={{ display: "flex" }}>
+              <StyledCarouselCaption className="w-100">
                 <SlideTitleContainer
                   onClick={() => {
                     switch (slide.slideTitle.toLowerCase()) {
@@ -92,7 +93,7 @@ export const HomePage = () => {
                 >
                   <SlideTitleText>{slide.slideTitle}</SlideTitleText>
                 </SlideTitleContainer>
-              </CCarouselCaption>
+              </StyledCarouselCaption>
             </CCarouselItem>
           ))}
         </CCarousel>
