@@ -129,6 +129,11 @@ export const Navbar = () => {
               Om oss
             </Link>
           </li>
+          <li>
+            <Link to="/adoption" onClick={() => setToggled(!toggled)}>
+              Adoption via Bff Strays
+            </Link>
+          </li>
           <li
             onClick={() => {
               if (dropDownToShow === "spanien") {

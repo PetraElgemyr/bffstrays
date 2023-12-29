@@ -9,6 +9,7 @@ import { AdoptedDogsPage } from "./pages/AdoptedDogs";
 import { DonatePage } from "./pages/DonatePage";
 import { RegisterInterestPage } from "./pages/RegisterInterestPage";
 import { SpainPage } from "./pages/SpainPage";
+import { AdoptionPage } from "./pages/AdoptionPage";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ export const router = createBrowserRouter([
       },
       { path: "/om-oss", element: <AboutPage></AboutPage> },
       { path: "/situationen-i-spanien", element: <SpainPage></SpainPage> },
+      { path: "/adoption", element: <AdoptionPage></AdoptionPage> },
       { path: "/donera", element: <DonatePage></DonatePage> },
       {
         path: "/intresseanmalan",

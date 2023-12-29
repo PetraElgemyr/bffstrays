@@ -23,7 +23,7 @@ export const HomePage = () => {
     // Fetch posts, filter them and set them to state
     if (posts.length > 0) {
       const filteredPosts = filterPostsPerPage(posts, PageName.Home);
-      setPosts(filteredPosts);
+      setHomePosts(filteredPosts);
     } else {
       try {
         const response = await getAllPosts();
