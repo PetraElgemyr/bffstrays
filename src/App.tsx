@@ -55,7 +55,6 @@ function App() {
     if (dogs.length === 0) {
       try {
         const response = await getAllDogs();
-        console.log(response);
 
         if (response) {
           setDogs(response);
@@ -85,7 +84,6 @@ function App() {
     if (descriptions.length === 0) {
       try {
         const response = await getPageDescriptions();
-        console.log(response);
 
         response ? setDescriptions(response) : setDescriptions([]);
       } catch (error) {

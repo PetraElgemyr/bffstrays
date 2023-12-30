@@ -30,13 +30,13 @@ export const StyledCarouselCaption = styled(CCarouselCaption)`
 export const StyledSlideImage = styled(CImage)`
   width: 100%;
   object-fit: cover;
+  object-position: center;
 
   @media screen and (${devices.tablet}) {
-    height: 60vh;
+    height: 65vh;
   }
 
   @media screen and (${devices.laptop}) {
-    height: 55vh;
     position: relative;
     left: 0;
   }

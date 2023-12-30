@@ -3,10 +3,6 @@ import { colors } from "../colors";
 import { Col, Row } from "../Common/Common";
 import { devices } from "../devices";
 
-interface IDogCardProps {
-  bgcolor: string;
-}
-
 export const StyledDiv = styled(Col)`
   justify-content: space-evenly;
   align-items: center;
@@ -35,15 +31,14 @@ export const ColContainer = styled(Col)`
   }
 `;
 
-export const DogCard = styled(Col)<IDogCardProps>`
+export const DogCard = styled(Col)`
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
   padding: 0;
   margin-top: 10%;
   margin-bottom: 5%;
-  background-color: ${({ bgcolor }) =>
-    bgcolor === "blue" ? colors.primary_blue : colors.primary};
+  background-color: ${colors.primary};
   border-radius: 15px;
   outline: 1px ${colors.primary};
   overflow: hidden;

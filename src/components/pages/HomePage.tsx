@@ -8,18 +8,16 @@ import {
   StyledSlideImage,
 } from "../../styled/Home/Slide";
 import { useNavigate } from "react-router";
-import {
-  CardTextContainer,
-  ColContainer,
-  DogCard,
-  Image,
-  ImageContainer,
-  StyledDiv,
-} from "../../styled/AllDogs/DogCard";
+import { ImageContainer } from "../../styled/AllDogs/DogCard";
 import "../../scss/HomePage.scss";
 import {
   DescriptiveCardTitle,
   DescriptiveCardText,
+  DescriptiveCard,
+  CardContainer,
+  StyledDivCardContainer,
+  DescriptiveImage,
+  TextContainer,
 } from "../../styled/Home/DescriptiveCard";
 
 export const HomePage = () => {
@@ -61,28 +59,47 @@ export const HomePage = () => {
             </CCarouselItem>
           ))}
         </CCarousel>
-        <StyledDiv>
-          <ColContainer>
+        <StyledDivCardContainer>
+          <CardContainer>
             {descriptions.map((post, key) => (
-              <DogCard bgcolor={key % 2 === 0 ? "green" : "blue"} key={key}>
+              <DescriptiveCard
+                bgcolor={key % 2 === 0 ? "green" : "blue"}
+                key={key}
+              >
+                {key % 2 !== 0 ? (
+                  <TextContainer>
+                    <DescriptiveCardTitle>
+                      {post.title.toString()}
+                    </DescriptiveCardTitle>
+                    <DescriptiveCardText>
+                      {post.description.toString()}
+                    </DescriptiveCardText>
+                  </TextContainer>
+                ) : (
+                  <></>
+                )}
                 <ImageContainer>
-                  <Image
+                  <DescriptiveImage
                     src={`https:${post.img.fields.file.url}`}
                     alt={post.title}
                   />
                 </ImageContainer>
-                <CardTextContainer>
-                  <DescriptiveCardTitle>
-                    {post.title.toString()}
-                  </DescriptiveCardTitle>
-                  <DescriptiveCardText>
-                    {post.description.toString()}
-                  </DescriptiveCardText>
-                </CardTextContainer>
-              </DogCard>
+                {key % 2 === 0 ? (
+                  <TextContainer>
+                    <DescriptiveCardTitle>
+                      {post.title.toString()}
+                    </DescriptiveCardTitle>
+                    <DescriptiveCardText>
+                      {post.description.toString()}
+                    </DescriptiveCardText>
+                  </TextContainer>
+                ) : (
+                  <></>
+                )}
+              </DescriptiveCard>
             ))}
-          </ColContainer>
-        </StyledDiv>
+          </CardContainer>
+        </StyledDivCardContainer>
       </div>
     </>
   );
