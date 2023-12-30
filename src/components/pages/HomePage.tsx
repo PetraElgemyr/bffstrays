@@ -1,13 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
 import { useAppContext } from "../contexts/AppContext";
-import {
-  getAllPosts,
-  getPageDescriptions,
-  getSlides,
-} from "../helpers/RepositoryHelper";
 import { PageName } from "../enums/PageName";
 import { CCarousel, CCarouselItem } from "@coreui/react";
-import { Slide } from "../models/Slide";
 import {
   SlideTitleContainer,
   SlideTitleText,
@@ -28,61 +21,10 @@ import {
   DescriptiveCardTitle,
   DescriptiveCardText,
 } from "../../styled/Home/DescriptiveCard";
-import { PostDescription } from "../models/PostDescription";
+
 export const HomePage = () => {
-  const { posts, setPosts } = useAppContext();
-  // const [homePosts, setHomePosts] = useState<Post[]>([]);
-  const [slides, setSlides] = useState<Slide[]>([]);
-  const [descriptions, setDescriptions] = useState<PostDescription[]>([]);
+  const { slides, descriptions } = useAppContext();
   const navigate = useNavigate();
-
-  const fetchPosts = useCallback(async () => {
-    // Fetch posts, filter them and set them to state
-    if (posts.length === 0) {
-      try {
-        const response = await getAllPosts();
-        if (response) {
-          setPosts(response);
-        } else {
-          console.log("Inga inlägg");
-          setPosts([]);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }, []);
-
-  const fetchSlides = useCallback(async () => {
-    //Fetch slides and set them to state
-    if (slides.length === 0) {
-      try {
-        const response = await getSlides();
-        response ? setSlides(response) : setSlides([]);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }, []);
-
-  const fetchDescriptions = useCallback(async () => {
-    if (descriptions.length === 0) {
-      try {
-        const response = await getPageDescriptions();
-        console.log(response);
-
-        response ? setDescriptions(response) : setDescriptions([]);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchPosts();
-    fetchSlides();
-    fetchDescriptions();
-  }, [fetchPosts, fetchSlides, fetchDescriptions]);
 
   return (
     <>

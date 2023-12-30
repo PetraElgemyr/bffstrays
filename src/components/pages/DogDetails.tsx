@@ -9,7 +9,6 @@ import {
   DogImgContainer1,
 } from "../../styled/DogDetails/DogImgContainer";
 import { DogInfoContainer } from "../../styled/DogDetails/DogInfoContainer";
-import { getAllDogs } from "../helpers/RepositoryHelper";
 import { DogFactsContainer } from "../../styled/DogDetails/DogFactsContainer";
 import { Col } from "../../styled/Common/Common";
 import {
@@ -39,29 +38,12 @@ export const DogDetails = () => {
   };
 
   useEffect(() => {
-    if (id) {
-      if (dogs.length === 0) {
-        getAllDogs()
-          .then((theDogs) => {
-            if (theDogs) {
-              setDogs(theDogs);
-              const dogExists = theDogs.find((dog) => dog.id === id);
-              setDog(dogExists);
-              if (dogExists && dogExists.medias) {
-                findImages(dogExists);
-              }
-            } else {
-              console.log("inga hundar");
-            }
-          })
-          .catch((error) => console.error(error));
-      } else {
-        const dogExists = dogs.find((dog) => dog.id === id);
-        setDog(dogExists);
+    if (id && dogs.length > 0) {
+      const dogExists = dogs.find((dog) => dog.id === id);
+      setDog(dogExists);
 
-        if (dogExists && dogExists.medias) {
-          findImages(dogExists);
-        }
+      if (dogExists && dogExists.medias) {
+        findImages(dogExists);
       }
     }
   }, [id, dogs, setDogs]);

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useAppContext } from "../contexts/AppContext";
 import { Dog } from "../models/Dog";
@@ -18,36 +18,14 @@ import {
 import SortRoundedIcon from "@mui/icons-material/SortRounded";
 import FilterAltRoundedIcon from "@mui/icons-material/FilterAltRounded";
 import { Col } from "../../styled/Common/Common";
-import { getAllDogs } from "../helpers/RepositoryHelper";
 import { PrimaryButton } from "../../styled/Buttons/PrimaryButton";
 
 export const AllDogsPage = () => {
   const navigate = useNavigate();
-  const { dogs, setDogs } = useAppContext();
+  const { dogs } = useAppContext();
   const [filters, setFilters] = useState<string[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const [filteredDogs, setFilteredDogs] = useState<Dog[]>([]);
-
-  const fetchDogData = useCallback(() => {
-    if (dogs.length > 0) {
-      setFilteredDogs(dogs);
-    } else {
-      getAllDogs()
-        .then((theDogs) => {
-          if (theDogs) {
-            setDogs(theDogs);
-            setFilteredDogs(theDogs);
-          } else {
-            console.log("Inga hundar");
-          }
-        })
-        .catch((error) => console.error(error));
-    }
-  }, [dogs]);
-
-  useEffect(() => {
-    fetchDogData();
-  }, [fetchDogData]);
 
   const handleFilterChange = (option: string) => {
     if (option === "clear") {
@@ -131,6 +109,9 @@ export const AllDogsPage = () => {
     }
   }
 
+  useEffect(() => {
+    setFilteredDogs(dogs);
+  }, [dogs]);
   return (
     <>
       <StyledDiv>
