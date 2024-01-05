@@ -12,3 +12,13 @@ export const AdoptionImage = styled.img`
     left: 0;
   }
 `;
+
+export const AdoptionImageContainer = styled.div`
+  display: block;
+  width: 100%;
+  @media screen and (${devices.tablet}) {
+    height: 70vh;
+    position: relative;
+    left: 0;
+  }
+`;
