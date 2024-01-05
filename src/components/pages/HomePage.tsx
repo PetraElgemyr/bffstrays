@@ -8,8 +8,7 @@ import {
   StyledSlideImage,
 } from "../../styled/Home/Slide";
 import { useNavigate } from "react-router";
-import { ImageContainer } from "../../styled/AllDogs/DogCard";
-import "../../scss/HomePage.scss";
+import "../../scss/home.scss";
 import {
   DescriptiveCardTitle,
   DescriptiveCardText,
@@ -18,6 +17,7 @@ import {
   StyledDivCardContainer,
   DescriptiveImage,
   TextContainer,
+  DescriptiveImageContainer,
 } from "../../styled/Home/DescriptiveCard";
 
 export const HomePage = () => {
@@ -66,7 +66,23 @@ export const HomePage = () => {
                 bgcolor={key % 2 === 0 ? "green" : "blue"}
                 key={key}
               >
-                {key % 2 !== 0 ? (
+                <>
+                  <DescriptiveImageContainer className="descriptive__img--mobile">
+                    <DescriptiveImage
+                      src={`https:${post.img.fields.file.url}`}
+                      alt={post.title}
+                    />
+                  </DescriptiveImageContainer>
+                  {key % 2 === 0 ? (
+                    <DescriptiveImageContainer className="descriptive__img--tablet">
+                      <DescriptiveImage
+                        src={`https:${post.img.fields.file.url}`}
+                        alt={post.title}
+                      />
+                    </DescriptiveImageContainer>
+                  ) : (
+                    <></>
+                  )}
                   <TextContainer>
                     <DescriptiveCardTitle>
                       {post.title.toString()}
@@ -75,27 +91,17 @@ export const HomePage = () => {
                       {post.description.toString()}
                     </DescriptiveCardText>
                   </TextContainer>
-                ) : (
-                  <></>
-                )}
-                <ImageContainer>
-                  <DescriptiveImage
-                    src={`https:${post.img.fields.file.url}`}
-                    alt={post.title}
-                  />
-                </ImageContainer>
-                {key % 2 === 0 ? (
-                  <TextContainer>
-                    <DescriptiveCardTitle>
-                      {post.title.toString()}
-                    </DescriptiveCardTitle>
-                    <DescriptiveCardText>
-                      {post.description.toString()}
-                    </DescriptiveCardText>
-                  </TextContainer>
-                ) : (
-                  <></>
-                )}
+                  {key % 2 !== 0 ? (
+                    <DescriptiveImageContainer className="descriptive__img--tablet">
+                      <DescriptiveImage
+                        src={`https:${post.img.fields.file.url}`}
+                        alt={post.title}
+                      />
+                    </DescriptiveImageContainer>
+                  ) : (
+                    <></>
+                  )}
+                </>
               </DescriptiveCard>
             ))}
           </CardContainer>

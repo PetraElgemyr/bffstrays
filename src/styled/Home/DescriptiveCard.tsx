@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { Col } from "../Common/Common";
 import { colors } from "../colors";
 import { devices } from "../devices";
-import { CardTextContainer } from "../AllDogs/DogCard";
+import { CardTextContainer, ImageContainer } from "../AllDogs/DogCard";
 
 interface IDogCardProps {
   bgcolor: string;
@@ -55,6 +55,12 @@ export const DescriptiveCard = styled(Col)<IDogCardProps>`
   }
 `;
 
+export const DescriptiveImageContainer = styled(ImageContainer)`
+  @media screen and (${devices.tablet}) {
+    width: 65%;
+  }
+`;
+
 export const DescriptiveImage = styled.img`
   width: 100%;
   border-radius: 10px 10px 0 0;
@@ -75,7 +81,8 @@ export const DescriptiveCardTitle = styled.p`
   }
 
   @media screen and (${devices.laptop}) {
-    font-size: 2rem;
+    margin-top: 1%;
+    font-size: 1.8rem;
   }
 
   @media screen and (${devices.laptopL}) {
@@ -87,7 +94,7 @@ export const DescriptiveCardText = styled.p`
   font-size: 1rem;
 
   @media screen and (${devices.laptop}) {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   @media screen and (${devices.laptopL}) {

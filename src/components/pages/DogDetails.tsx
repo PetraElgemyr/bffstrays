@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { Dog } from "../models/Dog";
 import { useAppContext } from "../contexts/AppContext";
-import "../../scss/DogDetails.scss";
 import {
   Carousel,
   DogImg,
