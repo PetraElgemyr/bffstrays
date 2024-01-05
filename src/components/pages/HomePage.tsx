@@ -27,7 +27,11 @@ export const HomePage = () => {
   return (
     <>
       <div>
-        <CCarousel controls indicators>
+        <CCarousel
+          controls
+          indicators
+          style={{ boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)" }}
+        >
           {slides.map((slide, index) => (
             <CCarouselItem key={index}>
               <StyledSlideImage
