@@ -91,7 +91,7 @@ export const CardTitle = styled.h4`
 export const CardTextContainer = styled(Col)`
   justify-content: center;
   align-items: flex-start;
-  margin: 5%;
+  margin: 6%;
   margin-top: 0;
   width: 90%;
 `;

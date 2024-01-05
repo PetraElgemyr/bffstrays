@@ -1,11 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
 import { useAppContext } from "../contexts/AppContext";
-import { getAllPosts, getSlides } from "../helpers/RepositoryHelper";
-import { filterPostsPerPage } from "../helpers/FilterHelper";
 import { PageName } from "../enums/PageName";
-import { Post } from "../models/Post";
 import { CCarousel, CCarouselItem } from "@coreui/react";
-import { Slide } from "../models/Slide";
 import {
   SlideTitleContainer,
   SlideTitleText,
@@ -13,57 +8,30 @@ import {
   StyledSlideImage,
 } from "../../styled/Home/Slide";
 import { useNavigate } from "react-router";
+import "../../scss/home.scss";
+import {
+  DescriptiveCardTitle,
+  DescriptiveCardText,
+  DescriptiveCard,
+  CardContainer,
+  StyledDivCardContainer,
+  DescriptiveImage,
+  TextContainer,
+  DescriptiveImageContainer,
+} from "../../styled/Home/DescriptiveCard";
 
 export const HomePage = () => {
-  const { posts, setPosts } = useAppContext();
-  const [homePosts, setHomePosts] = useState<Post[]>([]);
-  const [slides, setSlides] = useState<Slide[]>([]);
+  const { slides, descriptions } = useAppContext();
   const navigate = useNavigate();
-  const fetchPosts = useCallback(async () => {
-    // Fetch posts, filter them and set them to state
-    if (posts.length > 0) {
-      const filteredPosts = filterPostsPerPage(posts, PageName.Home);
-      setHomePosts(filteredPosts);
-    } else {
-      try {
-        const response = await getAllPosts();
-        if (response) {
-          setPosts(response);
-          const filteredPosts = filterPostsPerPage(response, PageName.Home);
-          setHomePosts(filteredPosts);
-        } else {
-          console.log("Inga inlägg");
-          setPosts([]);
-          setHomePosts([]);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }, []);
-
-  const fetchSlides = useCallback(async () => {
-    //Fetch slides and set them to state
-    if (slides.length === 0) {
-      try {
-        const response = await getSlides();
-        response ? setSlides(response) : setSlides([]);
-        console.log(response);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchPosts();
-    fetchSlides();
-  }, [fetchPosts, fetchSlides]);
 
   return (
     <>
       <div>
-        <CCarousel controls indicators>
+        <CCarousel
+          controls
+          indicators
+          style={{ boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)" }}
+        >
           {slides.map((slide, index) => (
             <CCarouselItem key={index}>
               <StyledSlideImage
@@ -81,11 +49,9 @@ export const HomePage = () => {
                       case PageName.Dogs.toLowerCase():
                         navigate("/hundar-som-soker-hem");
                         break;
-
                       case PageName.Spain.toLowerCase():
                         navigate("/situationen-i-spanien");
                         break;
-
                       default:
                         break;
                     }
@@ -97,13 +63,53 @@ export const HomePage = () => {
             </CCarouselItem>
           ))}
         </CCarousel>
-
-        {homePosts.map((post, key) => (
-          <article key={key}>
-            <h6>{post.title.toString()}</h6>
-            <p>{post.postText.toString()}</p>
-          </article>
-        ))}
+        <StyledDivCardContainer>
+          <CardContainer>
+            {descriptions.map((post, key) => (
+              <DescriptiveCard
+                bgcolor={key % 2 === 0 ? "green" : "blue"}
+                key={key}
+              >
+                <>
+                  <DescriptiveImageContainer className="descriptive__img--mobile">
+                    <DescriptiveImage
+                      src={`https:${post.img.fields.file.url}`}
+                      alt={post.title}
+                    />
+                  </DescriptiveImageContainer>
+                  {key % 2 === 0 ? (
+                    <DescriptiveImageContainer className="descriptive__img--tablet">
+                      <DescriptiveImage
+                        src={`https:${post.img.fields.file.url}`}
+                        alt={post.title}
+                      />
+                    </DescriptiveImageContainer>
+                  ) : (
+                    <></>
+                  )}
+                  <TextContainer>
+                    <DescriptiveCardTitle>
+                      {post.title.toString()}
+                    </DescriptiveCardTitle>
+                    <DescriptiveCardText>
+                      {post.description.toString()}
+                    </DescriptiveCardText>
+                  </TextContainer>
+                  {key % 2 !== 0 ? (
+                    <DescriptiveImageContainer className="descriptive__img--tablet">
+                      <DescriptiveImage
+                        src={`https:${post.img.fields.file.url}`}
+                        alt={post.title}
+                      />
+                    </DescriptiveImageContainer>
+                  ) : (
+                    <></>
+                  )}
+                </>
+              </DescriptiveCard>
+            ))}
+          </CardContainer>
+        </StyledDivCardContainer>
       </div>
     </>
   );

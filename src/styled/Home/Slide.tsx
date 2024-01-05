@@ -18,8 +18,10 @@ export const StyledCarouselCaption = styled(CCarouselCaption)`
   margin: 0;
   padding: 0;
   width: 100vw !important;
+  margin-bottom: 6%;
 
-  @media screen and (${devices.laptop}) {
+  @media screen and (${devices.tablet}) {
+    margin-bottom: 4%;
     position: absolute;
     left: 0;
     right: 0;
@@ -30,13 +32,10 @@ export const StyledCarouselCaption = styled(CCarouselCaption)`
 export const StyledSlideImage = styled(CImage)`
   width: 100%;
   object-fit: cover;
+  object-position: center;
 
   @media screen and (${devices.tablet}) {
-    height: 60vh;
-  }
-
-  @media screen and (${devices.laptop}) {
-    height: 55vh;
+    height: 70vh;
     position: relative;
     left: 0;
   }
@@ -46,7 +45,7 @@ export const SlideTitleContainer = styled.div`
   border-radius: 40px;
   background: rgba(236, 236, 236, 0.6);
   width: 80%;
-  height: 55px;
+  height: 50px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -57,12 +56,12 @@ export const SlideTitleContainer = styled.div`
 
   @media screen and (${devices.tablet}) {
     height: 70px;
+    border-radius: 0;
+    width: 100vw;
   }
 
   @media screen and (${devices.laptop}) {
     height: 75px;
-    border-radius: 0;
-    width: 100vw;
   }
 `;
 

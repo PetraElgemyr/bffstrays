@@ -1,0 +1,19 @@
+@use "variables" as v;
+
+* {
+  font-family: "Korolev Medium", sans-serif;
+}
+
+.descriptive__img--mobile {
+  @media screen and (min-width: v.$tablet) {
+    display: none;
+  }
+}
+
+.descriptive__img--tablet {
+  display: none;
+
+  @media screen and (min-width: v.$tablet) {
+    display: flex;
+  }
+}
