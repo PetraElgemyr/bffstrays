@@ -10,6 +10,9 @@ import { DonatePage } from "./pages/DonatePage";
 import { RegisterInterestPage } from "./pages/RegisterInterestPage";
 import { SpainPage } from "./pages/SpainPage";
 import { AdoptionPage } from "./pages/AdoptionPage";
+import { RequirementsForAdoptionPage } from "./pages/RequirementsForAdoptionPage";
+import { DiseasesPage } from "./pages/DiseasesPage";
+import { MythPage } from "./pages/MythPage";
 
 export const router = createBrowserRouter([
   {
@@ -31,7 +34,15 @@ export const router = createBrowserRouter([
       },
       { path: "/om-oss", element: <AboutPage></AboutPage> },
       { path: "/situationen-i-spanien", element: <SpainPage></SpainPage> },
+      { path: "/myter-om-gatuhundar", element: <MythPage></MythPage> },
+      { path: "/sjukdomar", element: <DiseasesPage></DiseasesPage> },
+
       { path: "/adoption", element: <AdoptionPage></AdoptionPage> },
+      {
+        path: "/krav-pa-adoptorer",
+        element: <RequirementsForAdoptionPage></RequirementsForAdoptionPage>,
+      },
+
       { path: "/donera", element: <DonatePage></DonatePage> },
       {
         path: "/intresseanmalan",
