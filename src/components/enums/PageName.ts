@@ -4,7 +4,7 @@ export enum PageName {
   DogsAdopted = "Adopterade hundar",
   Adoption = "Adoption via Bff Strays",
   Rquirements = "Krav på adoptörer",
-  About = "Om oss",
+  About = "Om föreningen",
   Spain = "Situationen i Spanien",
   Donate = "Donera",
   RegisterInterest = "Intresseanmälan",
