@@ -129,7 +129,7 @@ export const Navbar = () => {
                 setToggled(!toggled);
               }}
             >
-              Hem
+              {PageName.Home}
             </Link>
           </li>
           <li
@@ -142,7 +142,7 @@ export const Navbar = () => {
               }
             }}
           >
-            Hundarna{" "}
+            Hundarna
             {dropDownToShow !== PageName.Dogs.toLowerCase() ? (
               <KeyboardArrowDownRoundedIcon />
             ) : (
@@ -154,7 +154,7 @@ export const Navbar = () => {
             : null}
           <li>
             <Link to="/om-oss" onClick={() => setToggled(!toggled)}>
-              Om oss
+              {PageName.About}
             </Link>
           </li>
           {/* <li>
@@ -172,7 +172,7 @@ export const Navbar = () => {
               }
             }}
           >
-            Adoption via Bff Strays
+            {PageName.Adoption}
             {dropDownToShow !== PageName.Adoption.toLowerCase() ? (
               <KeyboardArrowDownRoundedIcon />
             ) : (
@@ -192,7 +192,7 @@ export const Navbar = () => {
               }
             }}
           >
-            Situationen i Spanien
+            {PageName.Spain}
             {dropDownToShow !== PageName.Spain.toLowerCase() ? (
               <KeyboardArrowDownRoundedIcon />
             ) : (
@@ -205,12 +205,12 @@ export const Navbar = () => {
 
           <li>
             <Link to="/donera" onClick={() => setToggled(!toggled)}>
-              Donera
+              {PageName.Donate}
             </Link>
           </li>
           <li>
             <Link to="/intresseanmalan" onClick={() => setToggled(!toggled)}>
-              Intresseanmälan
+              {PageName.RegisterInterest}
             </Link>
           </li>
           <li>
@@ -220,7 +220,7 @@ export const Navbar = () => {
                 setToggled(!toggled);
               }}
             >
-              Kontakt
+              {PageName.Contact}
             </Link>
           </li>
         </ul>
