@@ -10,6 +10,7 @@ import {
 } from "../styled/Navigation";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
+import { PageName } from "./enums/PageName";
 
 export const Navbar = () => {
   const [toggled, setToggled] = useState(false);
@@ -17,7 +18,7 @@ export const Navbar = () => {
   const [dropDownLinks, setDropDownLinks] = useState<JSX.Element>(<></>);
   const navigate = useNavigate();
   const checkDropDownToShow = (dropDownText: string) => {
-    if (dropDownText === "hundarna") {
+    if (dropDownText === PageName.Dogs.toLowerCase()) {
       setDropDownLinks(
         <>
           <li>
@@ -38,7 +39,7 @@ export const Navbar = () => {
           </li>
         </>
       );
-    } else if (dropDownText === "spanien") {
+    } else if (dropDownText === PageName.Spain.toLowerCase()) {
       setDropDownLinks(
         <>
           <li>
@@ -65,6 +66,31 @@ export const Navbar = () => {
           <li>
             <Link to="/sjukdomar" onClick={() => setToggled(!toggled)}>
               Sjukdomar
+            </Link>
+          </li>
+        </>
+      );
+    } else if (dropDownText === PageName.Adoption.toLowerCase()) {
+      setDropDownLinks(
+        <>
+          <li>
+            <Link
+              to="/adoption"
+              onClick={() => {
+                setToggled(!toggled);
+              }}
+            >
+              Adoption via Bff Strays
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/krav-pa-adoptorer"
+              onClick={() => {
+                setToggled(!toggled);
+              }}
+            >
+              Krav på adoptörer
             </Link>
           </li>
         </>
@@ -108,50 +134,74 @@ export const Navbar = () => {
           </li>
           <li
             onClick={() => {
-              if (dropDownToShow === "hundarna") {
+              if (dropDownToShow === PageName.Dogs.toLowerCase()) {
                 setDropDownToShow("");
               } else {
-                setDropDownToShow("hundarna");
-                checkDropDownToShow("hundarna");
+                setDropDownToShow(PageName.Dogs.toLowerCase());
+                checkDropDownToShow(PageName.Dogs.toLowerCase());
               }
             }}
           >
             Hundarna{" "}
-            {dropDownToShow !== "hundarna" ? (
+            {dropDownToShow !== PageName.Dogs.toLowerCase() ? (
               <KeyboardArrowDownRoundedIcon />
             ) : (
               <KeyboardArrowUpRoundedIcon />
             )}
           </li>
-          {dropDownToShow === "hundarna" ? dropDownLinks : null}
+          {dropDownToShow === PageName.Dogs.toLowerCase()
+            ? dropDownLinks
+            : null}
           <li>
             <Link to="/om-oss" onClick={() => setToggled(!toggled)}>
               Om oss
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/adoption" onClick={() => setToggled(!toggled)}>
               Adoption via Bff Strays
             </Link>
-          </li>
+          </li> */}
           <li
             onClick={() => {
-              if (dropDownToShow === "spanien") {
+              if (dropDownToShow === PageName.Adoption.toLowerCase()) {
                 setDropDownToShow("");
               } else {
-                setDropDownToShow("spanien");
-                checkDropDownToShow("spanien");
+                setDropDownToShow(PageName.Adoption.toLowerCase());
+                checkDropDownToShow(PageName.Adoption.toLowerCase());
               }
             }}
           >
-            Situationen i Spanien
-            {dropDownToShow !== "spanien" ? (
+            Adoption via Bff Strays
+            {dropDownToShow !== PageName.Adoption.toLowerCase() ? (
               <KeyboardArrowDownRoundedIcon />
             ) : (
               <KeyboardArrowUpRoundedIcon />
             )}
           </li>
-          {dropDownToShow === "spanien" ? dropDownLinks : null}
+          {dropDownToShow === PageName.Adoption.toLowerCase()
+            ? dropDownLinks
+            : null}
+          <li
+            onClick={() => {
+              if (dropDownToShow === PageName.Spain.toLowerCase()) {
+                setDropDownToShow("");
+              } else {
+                setDropDownToShow(PageName.Spain.toLowerCase());
+                checkDropDownToShow(PageName.Spain.toLowerCase());
+              }
+            }}
+          >
+            Situationen i Spanien
+            {dropDownToShow !== PageName.Spain.toLowerCase() ? (
+              <KeyboardArrowDownRoundedIcon />
+            ) : (
+              <KeyboardArrowUpRoundedIcon />
+            )}
+          </li>
+          {dropDownToShow === PageName.Spain.toLowerCase()
+            ? dropDownLinks
+            : null}
 
           <li>
             <Link to="/donera" onClick={() => setToggled(!toggled)}>
