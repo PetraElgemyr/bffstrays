@@ -59,6 +59,10 @@ export const DescriptiveImageContainer = styled(ImageContainer)`
   @media screen and (${devices.tablet}) {
     width: 65%;
   }
+
+  @media screen and (${devices.laptop}) {
+    width: 50%;
+  }
 `;
 
 export const DescriptiveImage = styled.img`
@@ -71,6 +75,7 @@ export const DescriptiveImage = styled.img`
     border-radius: 0;
   }
 `;
+
 export const DescriptiveCardTitle = styled.p`
   font-size: 1.5rem;
   margin-bottom: 3%;
@@ -86,7 +91,7 @@ export const DescriptiveCardTitle = styled.p`
   }
 
   @media screen and (${devices.laptopL}) {
-    font-size: 2.3rem;
+    font-size: 2.2rem;
   }
 `;
 
@@ -94,11 +99,11 @@ export const DescriptiveCardText = styled.p`
   font-size: 1rem;
 
   @media screen and (${devices.laptop}) {
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
   }
 
   @media screen and (${devices.laptopL}) {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 `;
 
