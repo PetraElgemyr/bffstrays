@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
-import { filterPostsPerPage } from "../helpers/FilterHelper";
+import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
 import { getAllPosts } from "../helpers/RepositoryHelper";
 import { Post } from "../models/Post";
 import { Slide } from "../models/Slide";
@@ -14,7 +14,10 @@ import {
 } from "../../styled/Home/Slide";
 import "../../scss/home.scss";
 import { useNavigate } from "react-router";
-import { SecondaryButton } from "../../styled/Buttons/PrimaryButton";
+import {
+  ColCenteredButtonContainer,
+  SecondaryButton,
+} from "../../styled/Buttons/PrimaryButton";
 import { ColCentered } from "../../styled/Common/Common";
 import { ColStart, StyledCarouselHeader } from "../../styled/Spain/Spain";
 
@@ -46,15 +49,9 @@ export const SpainPage = () => {
   }, []);
 
   useEffect(() => {
-    const fetchSpainSlide = () => {
-      const spainSlide = slides.find((slide) => {
-        return slide.slideTitle === PageName.Spain;
-      });
-      if (spainSlide) setSlideImg(spainSlide);
-    };
-
     fetchPosts();
-    fetchSpainSlide();
+    findSlide(slides, PageName.Spain) ??
+      setSlideImg(findSlide(slides, PageName.Spain));
   }, [fetchPosts, slides]);
 
   return (
@@ -93,14 +90,14 @@ export const SpainPage = () => {
             </ColStart>
           );
         })}
-        <ColCentered style={{ width: "85%" }}>
+        <ColCenteredButtonContainer>
           <SecondaryButton onClick={() => navigate("/myter-om-gatuhundar")}>
             Myter om gatuhundar
           </SecondaryButton>
           <SecondaryButton onClick={() => navigate("/sjukdomar")}>
             Sjukdomar
           </SecondaryButton>
-        </ColCentered>
+        </ColCenteredButtonContainer>
       </ColCentered>
     </>
   );
