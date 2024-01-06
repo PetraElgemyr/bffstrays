@@ -19,10 +19,25 @@ import {
   TextContainer,
   DescriptiveImageContainer,
 } from "../../styled/Home/DescriptiveCard";
+import { useEffect, useState } from "react";
+import { findSlide } from "../helpers/FilterHelper";
+import { Slide } from "../models/Slide";
 
 export const HomePage = () => {
   const { slides, descriptions } = useAppContext();
   const navigate = useNavigate();
+  const [homePageSlides, setHomePageSlides] = useState<Slide[]>([]);
+
+  useEffect(() => {
+    const homeSlides: Slide[] = [];
+    const dogSlide = findSlide(slides, PageName.Dogs);
+    const spainSlide = findSlide(slides, PageName.Spain);
+    const donateSlide = findSlide(slides, PageName.Donate);
+    if (dogSlide && spainSlide && donateSlide) {
+      homeSlides.push(dogSlide, spainSlide, donateSlide);
+      setHomePageSlides(homeSlides);
+    }
+  }, [slides]);
 
   return (
     <>
@@ -32,7 +47,7 @@ export const HomePage = () => {
           indicators
           style={{ boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)" }}
         >
-          {slides.map((slide, index) => (
+          {homePageSlides.map((slide, index) => (
             <CCarouselItem key={index}>
               <StyledSlideImage
                 className="d-block w-100"
