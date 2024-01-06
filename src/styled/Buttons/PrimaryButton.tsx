@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import { colors } from "../colors";
 import { devices } from "../devices";
+import { ColCentered } from "../Common/Common";
 
 export const PrimaryButton = styled.button`
   display: flex;
@@ -37,4 +38,8 @@ export const SecondaryButton = styled(PrimaryButton)`
 
 export const TertiaryButton = styled(SecondaryButton)`
   background-color: ${colors.primary};
+`;
+
+export const ColCenteredButtonContainer = styled(ColCentered)`
+  width: 85%;
 `;
