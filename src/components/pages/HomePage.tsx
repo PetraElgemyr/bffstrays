@@ -1,13 +1,5 @@
 import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
-import { CCarousel, CCarouselItem } from "@coreui/react";
-import {
-  SlideTitleContainer,
-  SlideTitleText,
-  StyledCarouselCaption,
-  StyledSlideImage,
-} from "../../styled/Home/Slide";
-import { useNavigate } from "react-router";
 import "../../scss/home.scss";
 import {
   DescriptiveCardTitle,
@@ -22,10 +14,10 @@ import {
 import { useEffect, useState } from "react";
 import { findSlide } from "../helpers/FilterHelper";
 import { Slide } from "../models/Slide";
+import { SlideCarousel } from "../SlideCarousel";
 
 export const HomePage = () => {
   const { slides, descriptions } = useAppContext();
-  const navigate = useNavigate();
   const [homePageSlides, setHomePageSlides] = useState<Slide[]>([]);
 
   useEffect(() => {
@@ -36,48 +28,14 @@ export const HomePage = () => {
     if (dogSlide && spainSlide && donateSlide) {
       homeSlides.push(dogSlide, spainSlide, donateSlide);
       setHomePageSlides(homeSlides);
+      console.log(homeSlides);
     }
   }, [slides]);
 
   return (
     <>
       <div>
-        <CCarousel
-          controls
-          indicators
-          style={{ boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)" }}
-        >
-          {homePageSlides.map((slide, index) => (
-            <CCarouselItem key={index}>
-              <StyledSlideImage
-                className="d-block w-100"
-                src={slide.slideImage[0].fields.file.url}
-                alt={slide.slideTitle}
-              />
-              <StyledCarouselCaption className="w-100">
-                <SlideTitleContainer
-                  onClick={() => {
-                    switch (slide.slideTitle.toLowerCase()) {
-                      case PageName.Donate.toLowerCase():
-                        navigate("/donera");
-                        break;
-                      case PageName.Dogs.toLowerCase():
-                        navigate("/hundar-som-soker-hem");
-                        break;
-                      case PageName.Spain.toLowerCase():
-                        navigate("/situationen-i-spanien");
-                        break;
-                      default:
-                        break;
-                    }
-                  }}
-                >
-                  <SlideTitleText>{slide.slideTitle}</SlideTitleText>
-                </SlideTitleContainer>
-              </StyledCarouselCaption>
-            </CCarouselItem>
-          ))}
-        </CCarousel>
+        <SlideCarousel slides={homePageSlides} />
         <StyledDivCardContainer>
           <CardContainer>
             {descriptions.map((post, key) => (
