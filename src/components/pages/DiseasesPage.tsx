@@ -1,5 +1,6 @@
-import { SecondaryButton } from "../../styled/Buttons/PrimaryButton";
 import { useNavigate } from "react-router";
+import { SecondaryButton } from "../../styled/Buttons/SecondaryButton";
+import { PageName } from "../enums/PageName";
 
 export const DiseasesPage = () => {
   const navigate = useNavigate();
@@ -10,10 +11,10 @@ export const DiseasesPage = () => {
 
       <p>Vill du läsa mer om hundarna vi räddar?</p>
       <SecondaryButton onClick={() => navigate("/situationen-i-spanien")}>
-        Siutationen i Spanien
+        {PageName.Spain}
       </SecondaryButton>
       <SecondaryButton onClick={() => navigate("/myter-om-gatuhundar")}>
-        Myter om gatuhundar
+        {PageName.Myths}
       </SecondaryButton>
     </>
   );

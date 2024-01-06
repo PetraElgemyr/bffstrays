@@ -75,7 +75,7 @@ export const AdoptionPage = () => {
 
       <h4>Klicka här för att läsa mer om de krav vi har på adoptörer</h4>
       <PrimaryButton onClick={() => navigate("/krav-pa-adoptorer")}>
-        Krav på adoptörer
+        {PageName.Requirements}
       </PrimaryButton>
     </>
   );

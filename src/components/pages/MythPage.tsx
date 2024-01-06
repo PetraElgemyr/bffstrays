@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { SecondaryButton } from "../../styled/Buttons/PrimaryButton";
+import { SecondaryButton } from "../../styled/Buttons/SecondaryButton";
 
 export const MythPage = () => {
   const navigate = useNavigate();

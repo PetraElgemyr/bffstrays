@@ -14,12 +14,11 @@ import {
 } from "../../styled/Home/Slide";
 import "../../scss/home.scss";
 import { useNavigate } from "react-router";
-import {
-  ColCenteredButtonContainer,
-  SecondaryButton,
-} from "../../styled/Buttons/PrimaryButton";
+
 import { ColCentered } from "../../styled/Common/Common";
 import { ColStart, StyledCarouselHeader } from "../../styled/Spain/Spain";
+import { ColCenteredButtonContainer } from "../../styled/Buttons/ColCenteredButtonContainer";
+import { SecondaryButton } from "../../styled/Buttons/SecondaryButton";
 
 export const SpainPage = () => {
   const { posts, setPosts, slides } = useAppContext();
