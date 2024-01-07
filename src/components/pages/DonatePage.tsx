@@ -37,7 +37,11 @@ export const DonatePage = () => {
   return (
     <>
       <h2>Donera</h2>
-
+      <p>
+        Alla bidrag är oerhört välkomna, stora som små! Om du inte har möjlighet
+        att adoptera en hund just nu så kan du hjälpa oss på flera olika sätt.
+        Nedan kan du läsa mer om hur du kan göra skillnad.
+      </p>
       {donatePosts.map((post, key) => (
         <article key={key}>
           <h6>{post.title.toString()}</h6>
