@@ -6,7 +6,6 @@ import { getAllPosts } from "../helpers/RepositoryHelper";
 import { Post } from "../models/Post";
 import { StyledDiv } from "../../styled/AllDogs/DogCard";
 import { ColCentered } from "../../styled/Common/Common";
-import { ColStart } from "../../styled/Spain/Spain";
 import {
   CardContainer,
   DescriptiveCard,

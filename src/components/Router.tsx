@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
         path: "/krav-pa-adoptorer",
         element: <RequirementsForAdoptionPage></RequirementsForAdoptionPage>,
       },
-      { path: "/arbetssatt", element: <WorkEthicsPage></WorkEthicsPage> },
+      { path: "/vart-arbetssatt", element: <WorkEthicsPage></WorkEthicsPage> },
       { path: "/donera", element: <DonatePage></DonatePage> },
       {
         path: "/intresseanmalan",

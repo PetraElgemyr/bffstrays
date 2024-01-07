@@ -42,7 +42,7 @@ export const StyledSlideImage = styled(CImage)`
   object-position: center;
 
   @media screen and (${devices.tablet}) {
-    height: 70vh;
+    max-height: 50vh;
     position: relative;
     left: 0;
   }
@@ -50,7 +50,7 @@ export const StyledSlideImage = styled(CImage)`
 
 export const SlideTitleContainer = styled.div`
   /* border-radius: 40px; */
-  background: rgba(236, 236, 236, 0.6);
+  background: rgba(236, 236, 236, 0.4);
   width: 100vw;
   height: 50px;
   display: flex;

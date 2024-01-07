@@ -98,6 +98,7 @@ export const DescriptiveInfoImage = styled(DescriptiveImage)`
 `;
 
 export const DescriptiveCardTitle = styled.p`
+  font-family: "Korolev medium", sans-serif;
   font-size: 1.5rem;
   margin-bottom: 3%;
   margin-top: 6%;

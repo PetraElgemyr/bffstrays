@@ -59,17 +59,6 @@ export const SpainPage = () => {
             <ColStart key={index}>
               <h2>{post.title}</h2>
               <p>{post.postText}</p>
-              {post.img && (
-                <img
-                  style={{
-                    width: "100%",
-                    borderRadius: "15px",
-                    marginTop: "5%",
-                  }}
-                  src={`https:${post.img[0].fields.file.url}`}
-                  alt={post.title}
-                />
-              )}
             </ColStart>
           );
         })}
