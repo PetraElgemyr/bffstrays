@@ -5,25 +5,18 @@ import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
 import { getAllPosts } from "../helpers/RepositoryHelper";
 import { Post } from "../models/Post";
 import { Slide } from "../models/Slide";
-import { CCarouselItem } from "@coreui/react";
-import {
-  StyledSlideImage,
-  StyledCarouselCaption,
-  SlideTitleContainer,
-  SlideTitleText,
-} from "../../styled/Home/Slide";
 import "../../scss/home.scss";
 import { useNavigate } from "react-router";
-
 import { ColCentered } from "../../styled/Common/Common";
-import { ColStart, StyledCarouselHeader } from "../../styled/Spain/Spain";
+import { ColStart } from "../../styled/Spain/Spain";
 import { ColCenteredButtonContainer } from "../../styled/Buttons/ColCenteredButtonContainer";
 import { SecondaryButton } from "../../styled/Buttons/SecondaryButton";
+import { SlideCarousel } from "../SlideCarousel";
 
 export const SpainPage = () => {
   const { posts, setPosts, slides } = useAppContext();
   const [spainPosts, setSpainPosts] = useState<Post[]>([]);
-  const [slideImg, setSlideImg] = useState<Slide>();
+  const [spainPageSlides, setSpainPageSlides] = useState<Slide[]>([]);
   const navigate = useNavigate();
 
   const fetchPosts = useCallback(async () => {
@@ -47,28 +40,25 @@ export const SpainPage = () => {
     }
   }, []);
 
+  // useEffect(() => {
+  //   fetchPosts();
+  //   findSlide(slides, PageName.Spain) ??
+  //     setSlideImg(findSlide(slides, PageName.Spain));
+  // }, [fetchPosts, slides]);
+
   useEffect(() => {
+    const spainSlides: Slide[] = [];
+    const slide = findSlide(slides, PageName.Spain);
+    if (slide) {
+      spainSlides.push(slide);
+      setSpainPageSlides(spainSlides);
+    }
     fetchPosts();
-    findSlide(slides, PageName.Spain) ??
-      setSlideImg(findSlide(slides, PageName.Spain));
   }, [fetchPosts, slides]);
 
   return (
     <>
-      <StyledCarouselHeader>
-        <CCarouselItem>
-          <StyledSlideImage
-            className="d-block w-100"
-            src={slideImg?.slideImage[0].fields.file.url}
-            alt={slideImg?.slideTitle}
-          />
-          <StyledCarouselCaption className="w-100 descriptive__img--tablet">
-            <SlideTitleContainer>
-              <SlideTitleText>{slideImg?.slideTitle}</SlideTitleText>
-            </SlideTitleContainer>
-          </StyledCarouselCaption>
-        </CCarouselItem>
-      </StyledCarouselHeader>
+      <SlideCarousel slides={spainPageSlides} />
       <ColCentered>
         {spainPosts.map((post, index) => {
           return (
