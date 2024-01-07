@@ -69,7 +69,7 @@ export const ContactPage = () => {
         ))}
 
         <ColCenteredButtonContainer>
-          <SecondaryButton onClick={() => navigate("/hundarsom-soker-hem")}>
+          <SecondaryButton onClick={() => navigate("/hundar-som-soker-hem")}>
             Hundar som söker hem
           </SecondaryButton>
           <SecondaryButton onClick={() => navigate("/om-oss")}>
