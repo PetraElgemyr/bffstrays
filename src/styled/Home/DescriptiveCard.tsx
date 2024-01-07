@@ -46,6 +46,10 @@ export const DescriptiveCard = styled(Col)<IDogCardProps>`
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   color: white;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   @media screen and (${devices.tablet}) {
     border-radius: 0;
     flex-direction: row;
@@ -56,12 +60,8 @@ export const DescriptiveCard = styled(Col)<IDogCardProps>`
 `;
 
 export const DescriptiveImageContainer = styled(ImageContainer)`
-  @media screen and (${devices.tablet}) {
-    width: 65%;
-  }
-
   @media screen and (${devices.laptop}) {
-    width: 50%;
+    width: 45%;
   }
 `;
 

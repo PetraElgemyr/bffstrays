@@ -7,11 +7,15 @@ export const StyledDiv = styled(Col)`
   justify-content: space-evenly;
   align-items: center;
   padding-top: 5%;
-  margin-top: 15%;
+  margin-top: 13%;
   color: black;
 
+  @media screen and (${devices.tablet}) {
+    margin-top: 3%;
+  }
+
   @media screen and (${devices.laptop}) {
-    margin-top: 5%;
+    margin-top: 0;
   }
 `;
 
@@ -47,13 +51,13 @@ export const DogCard = styled(Col)`
   cursor: pointer;
 
   @media screen and (${devices.tablet}) {
-    width: 30%;
+    width: 28%;
     margin: 0;
     margin-top: 5%;
   }
 
   @media screen and (${devices.laptop}) {
-    width: 27%;
+    width: 20%;
     margin-top: 2%;
     margin-bottom: 2%;
     /* height: max-content; */

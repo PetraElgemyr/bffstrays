@@ -30,6 +30,10 @@ export const CarouselCaptionLower = styled(StyledCarouselCaption)`
   @media screen and (${devices.tablet}) {
     margin-bottom: 2%;
   }
+
+  :hover {
+    cursor: unset;
+  }
 `;
 
 export const StyledSlideImage = styled(CImage)`
