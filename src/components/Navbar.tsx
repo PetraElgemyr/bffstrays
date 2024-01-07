@@ -11,6 +11,7 @@ import {
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
 import { PageName } from "./enums/PageName";
+import "../scss/navbar.scss";
 
 export const Navbar = () => {
   const [toggled, setToggled] = useState(false);
@@ -20,7 +21,7 @@ export const Navbar = () => {
   const checkDropDownToShow = (dropDownText: string) => {
     if (dropDownText === PageName.Dogs.toLowerCase()) {
       setDropDownLinks(
-        <>
+        <div className={"dropdown__content--active"}>
           <li>
             <Link
               to="/hundar-som-soker-hem"
@@ -31,17 +32,16 @@ export const Navbar = () => {
               Hundar som söker hem
             </Link>
           </li>
-
           <li>
             <Link to="/adopterade-hundar" onClick={() => setToggled(!toggled)}>
               Adopterade hundar
             </Link>
           </li>
-        </>
+        </div>
       );
     } else if (dropDownText === PageName.Spain.toLowerCase()) {
       setDropDownLinks(
-        <>
+        <div className={"dropdown__content--active"}>
           <li>
             <Link
               to="/situationen-i-spanien"
@@ -68,11 +68,11 @@ export const Navbar = () => {
               Sjukdomar
             </Link>
           </li>
-        </>
+        </div>
       );
     } else if (dropDownText === PageName.Adoption.toLowerCase()) {
       setDropDownLinks(
-        <>
+        <div className={"dropdown__content--active"}>
           <li>
             <Link
               to="/adoption"
@@ -93,7 +93,7 @@ export const Navbar = () => {
               Krav på adoptörer
             </Link>
           </li>
-        </>
+        </div>
       );
     } else {
       setDropDownLinks(<></>);
@@ -157,11 +157,7 @@ export const Navbar = () => {
               {PageName.About}
             </Link>
           </li>
-          {/* <li>
-            <Link to="/adoption" onClick={() => setToggled(!toggled)}>
-              Adoption via Bff Strays
-            </Link>
-          </li> */}
+
           <li
             onClick={() => {
               if (dropDownToShow === PageName.Adoption.toLowerCase()) {
