@@ -31,7 +31,11 @@ export const ColContainer = styled(Col)`
     padding: 0;
   }
   @media screen and (${devices.laptop}) {
-    width: 100%;
+    width: 95%;
+  }
+
+  @media screen and (${devices.laptop}) {
+    gap: 20px;
   }
 `;
 
@@ -57,10 +61,13 @@ export const DogCard = styled(Col)`
   }
 
   @media screen and (${devices.laptop}) {
-    width: 20%;
+    width: 22%;
     margin-top: 2%;
     margin-bottom: 2%;
-    /* height: max-content; */
+  }
+
+  @media screen and (${devices.laptopL}) {
+    width: 19%;
   }
 `;
 
@@ -82,9 +89,20 @@ export const ImageContainer = styled.div`
 
 export const Image = styled.img`
   width: 100%;
+  height: 240px;
+  object-fit: cover;
+  object-position: center;
   border-radius: 10px 10px 0 0;
   margin: 0;
   padding: 0;
+
+  @media screen and (${devices.tablet}) {
+    height: 270px;
+  }
+
+  @media screen and (${devices.tablet}) {
+    height: 300px;
+  }
 `;
 
 export const CardTitle = styled.h4`

@@ -24,7 +24,7 @@ import {
 } from "../../styled/Common/Common";
 import { PrimaryButton } from "../../styled/Buttons/PrimaryButton";
 import { PageName } from "../enums/PageName";
-import { filterPostsPerPage } from "../helpers/FilterHelper";
+import { filterPostsPerPage, filterAdoptedDogs } from "../helpers/FilterHelper";
 import { getAllPosts } from "../helpers/RepositoryHelper";
 import { Post } from "../models/Post";
 import {
@@ -64,7 +64,7 @@ export const AllDogsPage = () => {
     filterDogs(newFilters);
   };
 
-  function filterDogs(newFilters: string[]) {
+  const filterDogs = (newFilters: string[]) => {
     if (newFilters.length === 0) {
       setFilteredDogs(dogs);
     } else {
@@ -124,7 +124,7 @@ export const AllDogsPage = () => {
       });
       setFilteredDogs(newFilteredDogs);
     }
-  }
+  };
 
   const fetchPosts = useCallback(async () => {
     // Fetch posts, filter them and set them to state
@@ -152,8 +152,10 @@ export const AllDogsPage = () => {
   }, [fetchPosts]);
 
   useEffect(() => {
-    setFilteredDogs(dogs);
+    const unadoptedDogs: Dog[] = filterAdoptedDogs(dogs, false);
+    setFilteredDogs(unadoptedDogs);
   }, [dogs]);
+
   return (
     <>
       <StyledDiv>

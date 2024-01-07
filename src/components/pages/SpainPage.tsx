@@ -40,12 +40,6 @@ export const SpainPage = () => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   fetchPosts();
-  //   findSlide(slides, PageName.Spain) ??
-  //     setSlideImg(findSlide(slides, PageName.Spain));
-  // }, [fetchPosts, slides]);
-
   useEffect(() => {
     const spainSlides: Slide[] = [];
     const slide = findSlide(slides, PageName.Spain);

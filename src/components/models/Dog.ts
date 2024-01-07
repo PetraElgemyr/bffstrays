@@ -17,4 +17,5 @@ export interface Dog {
   id: string;
   breed: string;
   price: number;
+  yearAdopted: number;
 }

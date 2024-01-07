@@ -35,6 +35,7 @@ export const getAllDogs = async (): Promise<Dog[]> => {
       const id = item.sys.id;
       const breed = item.fields.breed?.toString() ?? "";
       const price = parseInt(item.fields.price?.toString() ?? "");
+      const yearAdopted = parseInt(item.fields.yearAdopted?.toString() ?? "");
 
       const dog: Dog = {
         name,
@@ -53,6 +54,7 @@ export const getAllDogs = async (): Promise<Dog[]> => {
         id,
         breed,
         price,
+        yearAdopted,
       };
 
       theDogs.push(dog);

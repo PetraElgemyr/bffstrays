@@ -1,3 +1,4 @@
+import { Dog } from "../models/Dog";
 import { Post } from "../models/Post";
 import { Slide } from "../models/Slide";
 
@@ -16,4 +17,9 @@ export const findSlide = (slides: Slide[], pageName: string) => {
     return slide.slideTitle.toLowerCase() === pageName.toLowerCase();
   });
   if (spainSlide) return spainSlide;
+};
+
+export const filterAdoptedDogs = (dogs: Dog[], isAdopted: boolean) => {
+  const dogsToReturn: Dog[] = dogs.filter((dog) => dog.isAdopted === isAdopted);
+  return dogsToReturn;
 };
