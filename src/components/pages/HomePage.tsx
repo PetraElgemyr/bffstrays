@@ -30,7 +30,6 @@ export const HomePage = () => {
     if (dogSlide && spainSlide && donateSlide) {
       homeSlides.push(dogSlide, spainSlide, donateSlide);
       setHomePageSlides(homeSlides);
-      console.log(homeSlides);
     }
   }, [slides]);
 
