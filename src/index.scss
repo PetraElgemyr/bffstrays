@@ -12,10 +12,14 @@ a {
 
 li {
   list-style: none;
+  &:hover {
+    border-bottom: solid white 1px;
+    cursor: pointer;
+  }
 }
 
 a:hover {
-  color: #294929bf;
+  cursor: pointer;
 }
 
 body {
