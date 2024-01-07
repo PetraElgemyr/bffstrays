@@ -13,6 +13,7 @@ import { AdoptionPage } from "./pages/AdoptionPage";
 import { RequirementsForAdoptionPage } from "./pages/RequirementsForAdoptionPage";
 import { DiseasesPage } from "./pages/DiseasesPage";
 import { MythPage } from "./pages/MythPage";
+import { WorkEthicsPage } from "./pages/WorkEthicsPage";
 
 export const router = createBrowserRouter([
   {
@@ -42,7 +43,7 @@ export const router = createBrowserRouter([
         path: "/krav-pa-adoptorer",
         element: <RequirementsForAdoptionPage></RequirementsForAdoptionPage>,
       },
-
+      { path: "/arbetssatt", element: <WorkEthicsPage></WorkEthicsPage> },
       { path: "/donera", element: <DonatePage></DonatePage> },
       {
         path: "/intresseanmalan",
