@@ -65,6 +65,12 @@ export const DescriptiveImageContainer = styled(ImageContainer)`
   }
 `;
 
+export const DescriptiveInfoImageContainer = styled(ImageContainer)`
+  @media screen and (${devices.tablet}) {
+    width: 45%;
+  }
+`;
+
 export const DescriptiveImage = styled.img`
   width: 100%;
   border-radius: 10px 10px 0 0;
@@ -73,6 +79,21 @@ export const DescriptiveImage = styled.img`
 
   @media screen and (${devices.tablet}) {
     border-radius: 0;
+  }
+`;
+
+export const DescriptiveInfoImage = styled(DescriptiveImage)`
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px 10px 0 0;
+  margin: 0;
+  padding: 0;
+
+  @media screen and (${devices.tablet}) {
+    border-radius: 0;
+    height: 300px;
   }
 `;
 

@@ -267,29 +267,6 @@ export const AllDogsPage = () => {
             {allDogsPosts.map((post, index) => {
               if (post.title.toLowerCase() !== PageName.Dogs.toLowerCase()) {
                 return (
-                  // <>
-                  //   <DescriptiveCard
-                  //     key={index}
-                  //     style={{ marginTop: "10px" }}
-                  //     bgcolor="blue"
-                  //   >
-                  //     {" "}
-                  //     <DescriptiveImageContainer>
-                  //       <DescriptiveImage
-                  //         src={`https:${post.img[0].fields.file.url}`}
-                  //         alt={post.title}
-                  //       />
-                  //     </DescriptiveImageContainer>
-                  //     <TextContainer>
-                  //       <DescriptiveCardTitle>
-                  //         {post.title}
-                  //       </DescriptiveCardTitle>
-                  //       <DescriptiveCardText>
-                  //         {post.postText}
-                  //       </DescriptiveCardText>
-                  //     </TextContainer>
-                  //   </DescriptiveCard>
-                  // </>
                   <DescriptiveCard
                     bgcolor="blue"
                     key={index}
