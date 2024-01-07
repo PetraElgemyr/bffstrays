@@ -95,6 +95,31 @@ export const Navbar = () => {
           </li>
         </div>
       );
+    } else if (dropDownText === PageName.About.toLowerCase()) {
+      setDropDownLinks(
+        <div className={"dropdown__content--active"}>
+          <li>
+            <Link
+              to="/om-oss"
+              onClick={() => {
+                setToggled(!toggled);
+              }}
+            >
+              {PageName.About}
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/vart-arbetssatt"
+              onClick={() => {
+                setToggled(!toggled);
+              }}
+            >
+              {PageName.WorkEthics}
+            </Link>
+          </li>
+        </div>
+      );
     } else {
       setDropDownLinks(<></>);
     }
@@ -152,11 +177,31 @@ export const Navbar = () => {
           {dropDownToShow === PageName.Dogs.toLowerCase()
             ? dropDownLinks
             : null}
-          <li>
+          {/* <li>
             <Link to="/om-oss" onClick={() => setToggled(!toggled)}>
               {PageName.About}
             </Link>
+          </li> */}
+          <li
+            onClick={() => {
+              if (dropDownToShow === PageName.About.toLowerCase()) {
+                setDropDownToShow("");
+              } else {
+                setDropDownToShow(PageName.About.toLowerCase());
+                checkDropDownToShow(PageName.About.toLowerCase());
+              }
+            }}
+          >
+            {PageName.About}
+            {dropDownToShow !== PageName.About.toLowerCase() ? (
+              <KeyboardArrowDownRoundedIcon />
+            ) : (
+              <KeyboardArrowUpRoundedIcon />
+            )}
           </li>
+          {dropDownToShow === PageName.About.toLowerCase()
+            ? dropDownLinks
+            : null}
 
           <li
             onClick={() => {
@@ -168,7 +213,7 @@ export const Navbar = () => {
               }
             }}
           >
-            {PageName.Adoption}
+            Adoption
             {dropDownToShow !== PageName.Adoption.toLowerCase() ? (
               <KeyboardArrowDownRoundedIcon />
             ) : (
