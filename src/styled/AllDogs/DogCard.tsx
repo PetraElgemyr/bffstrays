@@ -138,7 +138,19 @@ export const ButtonContainer = styled(Row)<{ width?: string }>`
   margin-top: 5%;
 
   @media screen and (${devices.tablet}) {
-    width: ${({ width }) => (width ? "90%" : "100%")};
+    width: ${({ width }) => (width ? "88%" : "100%")};
+  }
+
+  @media screen and (${devices.laptop}) {
+    width: ${({ width }) => (width ? "92%" : "100%")};
+  }
+
+  @media screen and (${devices.laptopL}) {
+    width: ${({ width }) => (width ? "87%" : "100%")};
+  }
+
+  @media screen and (${devices.fourK}) {
+    width: ${({ width }) => (width ? "86%" : "100%")};
   }
 `;
 
