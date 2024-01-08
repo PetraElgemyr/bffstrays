@@ -11,4 +11,5 @@ export enum PageName {
   Donate = "Donera",
   RegisterInterest = "Intresseanmälan",
   Contact = "Kontakt",
+  Diseases = "Sjukdomar",
 }
