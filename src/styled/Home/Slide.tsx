@@ -1,31 +1,38 @@
 import { styled } from "styled-components";
 import { devices } from "../devices";
-import { CCarouselCaption, CImage } from "@coreui/react";
+import { CCarousel, CCarouselCaption, CImage } from "@coreui/react";
 
-// export const StyledCarouselCaption = styled(CCarouselCaption)`
-//   display: flex;
-//   width: 100% !important;
+export const StyledCarousel = styled(CCarousel)`
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-bottom: 10%;
 
-//   @media screen and (${devices.laptop}) {
-//     width: 100vw !important;
-//     justify-content: center;
-//     align-items: center;
-//   }
-// `;
-
+  @media screen and (${devices.tablet}) {
+    margin-bottom: 5%;
+  }
+`;
 export const StyledCarouselCaption = styled(CCarouselCaption)`
   display: block;
   margin: 0;
   padding: 0;
   width: 100vw !important;
   margin-bottom: 6%;
-
+  position: absolute;
+  left: 0;
+  right: 0;
   @media screen and (${devices.tablet}) {
     margin-bottom: 4%;
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 100vw !important;
+  }
+`;
+
+export const CarouselCaptionLower = styled(StyledCarouselCaption)`
+  margin-bottom: 0;
+
+  @media screen and (${devices.tablet}) {
+    margin-bottom: 2%;
+  }
+
+  :hover {
+    cursor: unset;
   }
 `;
 
@@ -35,16 +42,16 @@ export const StyledSlideImage = styled(CImage)`
   object-position: center;
 
   @media screen and (${devices.tablet}) {
-    height: 70vh;
+    max-height: 50vh;
     position: relative;
     left: 0;
   }
 `;
 
 export const SlideTitleContainer = styled.div`
-  border-radius: 40px;
-  background: rgba(236, 236, 236, 0.6);
-  width: 80%;
+  /* border-radius: 40px; */
+  background: rgba(236, 236, 236, 0.4);
+  width: 100vw;
   height: 50px;
   display: flex;
   flex-direction: row;

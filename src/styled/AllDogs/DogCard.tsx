@@ -7,11 +7,15 @@ export const StyledDiv = styled(Col)`
   justify-content: space-evenly;
   align-items: center;
   padding-top: 5%;
-  margin-top: 15%;
+  margin-top: 13%;
   color: black;
 
+  @media screen and (${devices.tablet}) {
+    margin-top: 3%;
+  }
+
   @media screen and (${devices.laptop}) {
-    margin-top: 5%;
+    margin-top: 0;
   }
 `;
 
@@ -27,7 +31,11 @@ export const ColContainer = styled(Col)`
     padding: 0;
   }
   @media screen and (${devices.laptop}) {
-    width: 100%;
+    width: 95%;
+  }
+
+  @media screen and (${devices.laptop}) {
+    gap: 20px;
   }
 `;
 
@@ -44,18 +52,22 @@ export const DogCard = styled(Col)`
   overflow: hidden;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   color: white;
+  cursor: pointer;
 
   @media screen and (${devices.tablet}) {
-    width: 30%;
+    width: 28%;
     margin: 0;
     margin-top: 5%;
   }
 
   @media screen and (${devices.laptop}) {
-    width: 27%;
+    width: 22%;
     margin-top: 2%;
     margin-bottom: 2%;
-    /* height: max-content; */
+  }
+
+  @media screen and (${devices.laptopL}) {
+    width: 19%;
   }
 `;
 
@@ -77,9 +89,20 @@ export const ImageContainer = styled.div`
 
 export const Image = styled.img`
   width: 100%;
+  height: 240px;
+  object-fit: cover;
+  object-position: center;
   border-radius: 10px 10px 0 0;
   margin: 0;
   padding: 0;
+
+  @media screen and (${devices.tablet}) {
+    height: 270px;
+  }
+
+  @media screen and (${devices.tablet}) {
+    height: 300px;
+  }
 `;
 
 export const CardTitle = styled.h4`
@@ -115,7 +138,19 @@ export const ButtonContainer = styled(Row)<{ width?: string }>`
   margin-top: 5%;
 
   @media screen and (${devices.tablet}) {
-    width: ${({ width }) => (width ? "90%" : "100%")};
+    width: ${({ width }) => (width ? "88%" : "100%")};
+  }
+
+  @media screen and (${devices.laptop}) {
+    width: ${({ width }) => (width ? "92%" : "100%")};
+  }
+
+  @media screen and (${devices.laptopL}) {
+    width: ${({ width }) => (width ? "87%" : "100%")};
+  }
+
+  @media screen and (${devices.fourK}) {
+    width: ${({ width }) => (width ? "86%" : "100%")};
   }
 `;
 

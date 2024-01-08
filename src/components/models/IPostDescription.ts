@@ -1,14 +1,14 @@
 import * as contentful from "contentful";
-import { Media } from "./Media";
+import { IMedia } from "./IMedia";
 
 export interface PostDescriptionEntrySkeleton {
   title: contentful.EntryFieldTypes.Text;
-  img: Media[];
+  img: IMedia[];
   description: contentful.EntryFieldTypes.Text;
 }
 
-export interface PostDescription {
+export interface IPostDescription {
   title: string;
-  img: Media;
+  img: IMedia;
   description: string;
 }

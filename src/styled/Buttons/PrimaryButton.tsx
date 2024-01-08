@@ -17,4 +17,5 @@ export const PrimaryButton = styled.button`
   font-weight: 700;
   line-height: normal;
   padding: 0 15px 0 15px;
+  cursor: pointer;
 `;

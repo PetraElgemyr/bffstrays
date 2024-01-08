@@ -1,6 +1,6 @@
 import * as contentful from "contentful";
 
-export interface FooterEntrySkeleton {
+export interface IFooterEntrySkeleton {
   facebook: contentful.EntryFieldTypes.Text;
   instagram: contentful.EntryFieldTypes.Text;
   email: contentful.EntryFieldTypes.Text;

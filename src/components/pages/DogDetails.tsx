@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import { Dog } from "../models/Dog";
+import { IDog } from "../models/IDog";
 import { useAppContext } from "../contexts/AppContext";
 import {
   Carousel,
@@ -24,11 +24,11 @@ import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRound
 export const DogDetails = () => {
   const { dogs, setDogs } = useAppContext();
   const { id } = useParams();
-  const [dog, setDog] = useState<Dog>();
+  const [dog, setDog] = useState<IDog>();
   const navigate = useNavigate();
   const [images, setImages] = useState<string[]>([]);
 
-  const findImages = (dogExists: Dog) => {
+  const findImages = (dogExists: IDog) => {
     const urls: string[] = [];
     dogExists.medias.map((imgObject) => {
       urls.push(`https:${imgObject.fields.file.url}`);

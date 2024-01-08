@@ -1,4 +1,4 @@
-export interface Media {
+export interface IMedia {
   fields: {
     file: {
       url: string;

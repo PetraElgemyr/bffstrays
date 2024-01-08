@@ -1,0 +1,20 @@
+@use "variables" as v;
+
+.dropdown__content {
+  height: 0;
+  overflow: hidden;
+  transition: height 1s ease-out;
+}
+
+.dropdown__content--active {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+
+  @media screen and (min-width: v.$tablet) {
+    gap: 30px;
+  }
+}

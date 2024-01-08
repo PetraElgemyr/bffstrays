@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   Nav,
   Logo,
@@ -7,19 +7,28 @@ import {
   HamMenu,
   HamStick,
   DropDownMenu,
+  NavLogoImage,
 } from "../styled/Navigation";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
+import { PageName } from "./enums/PageName";
+import "../scss/navbar.scss";
+import { useAppContext } from "./contexts/AppContext";
+import { getLogo } from "./helpers/RepositoryHelper";
+import { ILogo } from "./models/ILogo";
 
 export const Navbar = () => {
+  const { logo, setLogo } = useAppContext();
   const [toggled, setToggled] = useState(false);
   const [dropDownToShow, setDropDownToShow] = useState<string>("");
   const [dropDownLinks, setDropDownLinks] = useState<JSX.Element>(<></>);
+  // const [logo, setLogo] = useState<ILogo>({} as ILogo);
   const navigate = useNavigate();
+
   const checkDropDownToShow = (dropDownText: string) => {
-    if (dropDownText === "hundarna") {
+    if (dropDownText === PageName.Dogs.toLowerCase()) {
       setDropDownLinks(
-        <>
+        <div className={"dropdown__content--active"}>
           <li>
             <Link
               to="/hundar-som-soker-hem"
@@ -30,17 +39,16 @@ export const Navbar = () => {
               Hundar som söker hem
             </Link>
           </li>
-
           <li>
             <Link to="/adopterade-hundar" onClick={() => setToggled(!toggled)}>
               Adopterade hundar
             </Link>
           </li>
-        </>
+        </div>
       );
-    } else if (dropDownText === "spanien") {
+    } else if (dropDownText === PageName.Spain.toLowerCase()) {
       setDropDownLinks(
-        <>
+        <div className={"dropdown__content--active"}>
           <li>
             <Link
               to="/situationen-i-spanien"
@@ -67,12 +75,86 @@ export const Navbar = () => {
               Sjukdomar
             </Link>
           </li>
-        </>
+        </div>
+      );
+    } else if (dropDownText === PageName.Adoption.toLowerCase()) {
+      setDropDownLinks(
+        <div className={"dropdown__content--active"}>
+          <li>
+            <Link
+              to="/adoption"
+              onClick={() => {
+                setToggled(!toggled);
+              }}
+            >
+              Adoption via Bff Strays
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/krav-pa-adoptorer"
+              onClick={() => {
+                setToggled(!toggled);
+              }}
+            >
+              Krav på adoptörer
+            </Link>
+          </li>
+        </div>
+      );
+    } else if (dropDownText === PageName.About.toLowerCase()) {
+      setDropDownLinks(
+        <div className={"dropdown__content--active"}>
+          <li>
+            <Link
+              to="/om-oss"
+              onClick={() => {
+                setToggled(!toggled);
+              }}
+            >
+              {PageName.About}
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/vart-arbetssatt"
+              onClick={() => {
+                setToggled(!toggled);
+              }}
+            >
+              {PageName.WorkEthics}
+            </Link>
+          </li>
+        </div>
       );
     } else {
       setDropDownLinks(<></>);
     }
   };
+  // const imageUrl = logo.logoImg.fields.file.url
+  //   ? `https:${logo.logoImg.fields.file.url.toString()}`
+  //   : "";
+
+  const imageUrl =
+    `https:${logo?.logoImg?.fields?.file?.url?.toString()}` || "";
+
+  const fetchLogo = useCallback(async () => {
+    if (!logo) {
+      try {
+        const fetchedLogo: ILogo | null = await getLogo();
+        if (fetchedLogo) {
+          setLogo(fetchedLogo as ILogo);
+          console.log(fetchedLogo);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchLogo();
+  }, [fetchLogo]);
 
   return (
     <Nav style={{ zIndex: 999 }}>
@@ -81,7 +163,7 @@ export const Navbar = () => {
           navigate("/");
         }}
       >
-        <img src="" alt="Bff Strays logo" />
+        <NavLogoImage src={imageUrl} alt="Bff Strays logo" />
       </Logo>
       <Menu
         onClick={() => {
@@ -103,64 +185,104 @@ export const Navbar = () => {
                 setToggled(!toggled);
               }}
             >
-              Hem
+              {PageName.Home}
             </Link>
           </li>
           <li
             onClick={() => {
-              if (dropDownToShow === "hundarna") {
+              if (dropDownToShow === PageName.Dogs.toLowerCase()) {
                 setDropDownToShow("");
               } else {
-                setDropDownToShow("hundarna");
-                checkDropDownToShow("hundarna");
+                setDropDownToShow(PageName.Dogs.toLowerCase());
+                checkDropDownToShow(PageName.Dogs.toLowerCase());
               }
             }}
           >
-            Hundarna{" "}
-            {dropDownToShow !== "hundarna" ? (
+            Hundarna
+            {dropDownToShow !== PageName.Dogs.toLowerCase() ? (
               <KeyboardArrowDownRoundedIcon />
             ) : (
               <KeyboardArrowUpRoundedIcon />
             )}
           </li>
-          {dropDownToShow === "hundarna" ? dropDownLinks : null}
-          <li>
+          {dropDownToShow === PageName.Dogs.toLowerCase()
+            ? dropDownLinks
+            : null}
+          {/* <li>
             <Link to="/om-oss" onClick={() => setToggled(!toggled)}>
-              Om oss
+              {PageName.About}
             </Link>
-          </li>
-          <li>
-            <Link to="/adoption" onClick={() => setToggled(!toggled)}>
-              Adoption via Bff Strays
-            </Link>
-          </li>
+          </li> */}
           <li
             onClick={() => {
-              if (dropDownToShow === "spanien") {
+              if (dropDownToShow === PageName.About.toLowerCase()) {
                 setDropDownToShow("");
               } else {
-                setDropDownToShow("spanien");
-                checkDropDownToShow("spanien");
+                setDropDownToShow(PageName.About.toLowerCase());
+                checkDropDownToShow(PageName.About.toLowerCase());
               }
             }}
           >
-            Situationen i Spanien
-            {dropDownToShow !== "spanien" ? (
+            {PageName.About}
+            {dropDownToShow !== PageName.About.toLowerCase() ? (
               <KeyboardArrowDownRoundedIcon />
             ) : (
               <KeyboardArrowUpRoundedIcon />
             )}
           </li>
-          {dropDownToShow === "spanien" ? dropDownLinks : null}
+          {dropDownToShow === PageName.About.toLowerCase()
+            ? dropDownLinks
+            : null}
+
+          <li
+            onClick={() => {
+              if (dropDownToShow === PageName.Adoption.toLowerCase()) {
+                setDropDownToShow("");
+              } else {
+                setDropDownToShow(PageName.Adoption.toLowerCase());
+                checkDropDownToShow(PageName.Adoption.toLowerCase());
+              }
+            }}
+          >
+            Adoption
+            {dropDownToShow !== PageName.Adoption.toLowerCase() ? (
+              <KeyboardArrowDownRoundedIcon />
+            ) : (
+              <KeyboardArrowUpRoundedIcon />
+            )}
+          </li>
+          {dropDownToShow === PageName.Adoption.toLowerCase()
+            ? dropDownLinks
+            : null}
+          <li
+            onClick={() => {
+              if (dropDownToShow === PageName.Spain.toLowerCase()) {
+                setDropDownToShow("");
+              } else {
+                setDropDownToShow(PageName.Spain.toLowerCase());
+                checkDropDownToShow(PageName.Spain.toLowerCase());
+              }
+            }}
+          >
+            {PageName.Spain}
+            {dropDownToShow !== PageName.Spain.toLowerCase() ? (
+              <KeyboardArrowDownRoundedIcon />
+            ) : (
+              <KeyboardArrowUpRoundedIcon />
+            )}
+          </li>
+          {dropDownToShow === PageName.Spain.toLowerCase()
+            ? dropDownLinks
+            : null}
 
           <li>
             <Link to="/donera" onClick={() => setToggled(!toggled)}>
-              Donera
+              {PageName.Donate}
             </Link>
           </li>
           <li>
             <Link to="/intresseanmalan" onClick={() => setToggled(!toggled)}>
-              Intresseanmälan
+              {PageName.RegisterInterest}
             </Link>
           </li>
           <li>
@@ -170,7 +292,7 @@ export const Navbar = () => {
                 setToggled(!toggled);
               }}
             >
-              Kontakt
+              {PageName.Contact}
             </Link>
           </li>
         </ul>

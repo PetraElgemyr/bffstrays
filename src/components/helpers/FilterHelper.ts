@@ -1,11 +1,27 @@
-import { Post } from "../models/Post";
+import { IDog } from "../models/IDog";
+import { IPost } from "../models/IPost";
+import { ISlide } from "../models/ISlide";
 
-export const filterPostsPerPage = (allPosts: Post[], pageName: string) => {
+export const filterPostsPerPage = (allPosts: IPost[], pageName: string) => {
   // Filter posts to display on each page
-  const postsToDisplay: Post[] = allPosts.filter(
-    (post: Post) => post.pageId.toLowerCase() === pageName.toLowerCase()
+  const postsToDisplay: IPost[] = allPosts.filter(
+    (post: IPost) => post.pageId.toLowerCase() === pageName.toLowerCase()
   );
   // const reversedArray = postsToDisplay.slice().reverse();
 
   return postsToDisplay;
+};
+
+export const findSlide = (slides: ISlide[], pageName: string) => {
+  const spainSlide = slides.find((slide) => {
+    return slide.slideTitle.toLowerCase() === pageName.toLowerCase();
+  });
+  if (spainSlide) return spainSlide;
+};
+
+export const filterAdoptedDogs = (dogs: IDog[], isAdopted: boolean) => {
+  const dogsToReturn: IDog[] = dogs.filter(
+    (dog) => dog.isAdopted === isAdopted
+  );
+  return dogsToReturn;
 };
