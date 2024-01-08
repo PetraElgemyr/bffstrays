@@ -55,7 +55,7 @@ export const HomePage = () => {
                       navigate("/om-oss");
                       break;
                     case PageName.WorkEthics.toLowerCase():
-                      navigate("/arbetssatt");
+                      navigate("/vart-arbetssatt");
                       break;
                     case PageName.Requirements.toLowerCase():
                       navigate("/krav-pa-adoptorer");
