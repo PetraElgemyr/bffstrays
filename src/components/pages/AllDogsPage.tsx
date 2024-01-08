@@ -44,86 +44,86 @@ export const AllDogsPage = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [filteredDogs, setFilteredDogs] = useState<IDog[]>([]);
   const [allDogsPosts, setAllDogsPosts] = useState<IPost[]>([]);
+  const [unadoptedDogs, setUnadoptedDogs] = useState<IDog[]>([]);
+
   const handleFilterChange = (option: string) => {
     if (option === "clear") {
       setFilters([]);
-      setFilteredDogs(dogs);
+      setFilteredDogs(unadoptedDogs);
       return;
     }
 
-    const newFilters: string[] = [...filters];
-    const indexOfString = newFilters.findIndex(
-      (filter) => filter.toUpperCase() === option.toUpperCase()
-    );
-    if (indexOfString !== -1) {
-      newFilters.splice(indexOfString, 1);
-    } else {
-      newFilters.push(option);
-    }
-    setFilters(newFilters);
-    filterDogs(newFilters);
+    setFilters((prevFilters) => {
+      if (prevFilters.includes(option)) {
+        return prevFilters.filter((f) => f !== option);
+      } else {
+        return [...prevFilters, option];
+      }
+    });
   };
 
-  const filterDogs = (newFilters: string[]) => {
-    if (newFilters.length === 0) {
-      setFilteredDogs(dogs);
-    } else {
-      let newFilteredDogs: IDog[] = [];
-      newFilters.forEach((filter) => {
-        const matchingDogs = dogs.filter((dog) => {
-          if (
-            filter.toUpperCase() === "HANE" &&
-            dog.gender.toString().toUpperCase() === "HANE"
-          ) {
-            return true;
-          }
-          if (
-            filter.toUpperCase() === "TIK" &&
-            dog.gender.toString().toUpperCase() === "TIK"
-          ) {
-            return true;
-          }
-          if (
-            filter.toUpperCase() === "LITEN" &&
-            dog.size.toString().toUpperCase() === "LITEN"
-          ) {
-            return true;
-          }
-          if (
-            filter.toUpperCase() === "MELLAN" &&
-            dog.size.toString().toUpperCase() === "MELLAN"
-          ) {
-            return true;
-          }
-          if (
-            filter.toUpperCase() === "STOR" &&
-            dog.size.toString().toUpperCase() === "STOR"
-          ) {
-            return true;
-          }
-          if (
-            filter.toUpperCase() === "VALP" &&
-            dog.ageGroup.toString().toUpperCase() === "VALP"
-          ) {
-            return true;
-          }
-          if (
-            filter.toUpperCase() === "VUXEN" &&
-            dog.ageGroup.toString().toUpperCase() === "VUXEN"
-          ) {
-            return true;
-          }
-          if (
-            filter.toUpperCase() === "SENIOR" &&
-            dog.ageGroup.toString().toUpperCase() === "SENIOR"
-          ) {
-            return true;
-          }
-        });
-        newFilteredDogs = [...newFilteredDogs, ...matchingDogs];
+  useEffect(() => {
+    filterDogs();
+  }, [filters]);
+
+  const filterDogs = () => {
+    let newFilteredDogs = unadoptedDogs;
+
+    filters.forEach((filter) => {
+      newFilteredDogs = newFilteredDogs.filter((dog) => {
+        if (
+          filter.toUpperCase() === "HANE" &&
+          dog.gender.toString().toUpperCase() === "HANE"
+        ) {
+          return true;
+        }
+        if (
+          filter.toUpperCase() === "TIK" &&
+          dog.gender.toString().toUpperCase() === "TIK"
+        ) {
+          return true;
+        }
+        if (
+          filter.toUpperCase() === "LITEN" &&
+          dog.size.toString().toUpperCase() === "LITEN"
+        ) {
+          return true;
+        }
+        if (
+          filter.toUpperCase() === "MELLAN" &&
+          dog.size.toString().toUpperCase() === "MELLAN"
+        ) {
+          return true;
+        }
+        if (
+          filter.toUpperCase() === "STOR" &&
+          dog.size.toString().toUpperCase() === "STOR"
+        ) {
+          return true;
+        }
+        if (
+          filter.toUpperCase() === "VALP" &&
+          dog.ageGroup.toString().toUpperCase() === "VALP"
+        ) {
+          return true;
+        }
+        if (
+          filter.toUpperCase() === "VUXEN" &&
+          dog.ageGroup.toString().toUpperCase() === "VUXEN"
+        ) {
+          return true;
+        }
+        if (
+          filter.toUpperCase() === "SENIOR" &&
+          dog.ageGroup.toString().toUpperCase() === "SENIOR"
+        ) {
+          return true;
+        }
+        return false;
       });
-      setFilteredDogs(newFilteredDogs);
-    }
+    });
+
+    setFilteredDogs(newFilteredDogs);
   };
 
   const fetchPosts = useCallback(async () => {
@@ -153,6 +153,7 @@ export const AllDogsPage = () => {
 
   useEffect(() => {
     const unadoptedDogs: IDog[] = filterAdoptedDogs(dogs, false);
+    setUnadoptedDogs(unadoptedDogs);
     setFilteredDogs(unadoptedDogs);
   }, [dogs]);
 
@@ -183,7 +184,7 @@ export const AllDogsPage = () => {
                 <FilterOptionsContainers>
                   <p
                     onClick={() => {
-                      setFilteredDogs(dogs);
+                      setFilteredDogs(unadoptedDogs);
                       setFilters([]);
                     }}
                   >
