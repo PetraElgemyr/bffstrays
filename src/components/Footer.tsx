@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { IFooterEntrySkeleton } from "./models/Footer";
+import { IFooterEntrySkeleton } from "./models/IFooter";
 import { client } from "../client";
 import * as contentful from "contentful";
 import {
