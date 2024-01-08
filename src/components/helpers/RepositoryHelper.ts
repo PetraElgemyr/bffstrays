@@ -86,6 +86,7 @@ export const getAllPosts = async (): Promise<IPost[]> => {
       const img = item.fields.img as IMedia[];
       const medias = item.fields.medias as IMedia[];
       const infoText = item.fields.infoText?.toString() ?? "";
+      const list = item.fields.list as contentful.EntryFieldTypes.RichText;
 
       const post = {
         id,
@@ -95,6 +96,7 @@ export const getAllPosts = async (): Promise<IPost[]> => {
         img,
         medias,
         infoText,
+        list,
       };
       thePosts.push(post);
     });
@@ -104,6 +106,8 @@ export const getAllPosts = async (): Promise<IPost[]> => {
     return [];
   }
 };
+
+
 
 export const getSlides = async (): Promise<ISlide[]> => {
   try {

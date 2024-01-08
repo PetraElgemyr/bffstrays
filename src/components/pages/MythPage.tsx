@@ -54,15 +54,14 @@ export const MythPage = () => {
 
       <ColCentered>
         <ColStart>
-          {" "}
           <h2>Myter om gatuhundar</h2>
         </ColStart>
 
         {mythPosts.map((post, index) => (
           <ColStart key={index}>
-            <h4 style={{ fontFamily: "Korolev medium, sans-serif" }}>
+            <p style={{ fontFamily: "Korolev medium, sans-serif" }}>
               {post.title}
-            </h4>
+            </p>
             {/* <DescriptiveCardTitle>{post.title}</DescriptiveCardTitle> */}
             <p>{post.postText}</p>
           </ColStart>

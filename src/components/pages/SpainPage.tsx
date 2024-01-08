@@ -57,7 +57,9 @@ export const SpainPage = () => {
         {spainPosts.map((post, index) => {
           return (
             <ColStart key={index}>
-              <h2>{post.title}</h2>
+              <p style={{ fontFamily: "Korolev medium, sans-serif" }}>
+                {post.title}
+              </p>
               <p>{post.postText}</p>
             </ColStart>
           );

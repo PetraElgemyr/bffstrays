@@ -224,4 +224,8 @@ export const NavLogoImage = styled.img`
   @media screen and (${devices.tablet}) {
     width: 35%;
   }
+
+  @media screen and (${devices.laptop}) {
+    width: 22%;
+  }
 `;

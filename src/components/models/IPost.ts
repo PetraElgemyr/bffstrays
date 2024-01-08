@@ -1,4 +1,4 @@
-// import * as contentful from "contentful";
+import * as contentful from "contentful";
 import { IMedia } from "./IMedia";
 
 // export interface PostEntrySkeleton {
@@ -19,4 +19,5 @@ export interface IPost {
   img: IMedia[];
   medias: IMedia[];
   infoText: string;
+  list: contentful.EntryFieldTypes.RichText;
 }
