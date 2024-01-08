@@ -2,24 +2,27 @@ import { RouterProvider } from "react-router-dom";
 import "./App.css";
 import { router } from "./components/Router";
 import { useCallback, useEffect, useState } from "react";
-import { Post } from "./components/models/Post";
-import { Dog } from "./components/models/Dog";
+import { IPost } from "./components/models/Post";
+import { IDog } from "./components/models/Dog";
 import { AppContext } from "./components/contexts/AppContext";
 import {
   getAllDogs,
   getAllPosts,
+  getLogo,
   getPageDescriptions,
   getSlides,
 } from "./components/helpers/RepositoryHelper";
-import { Slide } from "./components/models/Slide";
-import { PostDescription } from "./components/models/PostDescription";
+import { ISlide } from "./components/models/Slide";
+import { IPostDescription } from "./components/models/PostDescription";
+import { ILogo } from "./components/models/Logo";
 
 function App() {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [dogs, setDogs] = useState<Dog[]>([]);
+  const [posts, setPosts] = useState<IPost[]>([]);
+  const [dogs, setDogs] = useState<IDog[]>([]);
   const [pageId, setPageId] = useState<string>("");
-  const [slides, setSlides] = useState<Slide[]>([]);
-  const [descriptions, setDescriptions] = useState<PostDescription[]>([]);
+  const [slides, setSlides] = useState<ISlide[]>([]);
+  const [descriptions, setDescriptions] = useState<IPostDescription[]>([]);
+  const [logo, setLogo] = useState<ILogo>({} as ILogo);
 
   const contextValue = {
     posts,
@@ -32,6 +35,8 @@ function App() {
     setSlides,
     descriptions,
     setDescriptions,
+    logo,
+    setLogo,
   };
 
   const fetchPosts = useCallback(async () => {
@@ -92,12 +97,24 @@ function App() {
     }
   }, []);
 
+  const fetchLogo = useCallback(async () => {
+    const fetchedLogo: ILogo | null = await getLogo();
+    if (fetchedLogo) {
+      setLogo(fetchedLogo as ILogo);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchLogo();
+  }, [fetchLogo]);
+
   useEffect(() => {
     fetchPosts();
     fetchDogData();
     fetchSlides();
     fetchDescriptions();
-  }, [fetchPosts, fetchDogData, fetchSlides, fetchDescriptions]);
+    fetchLogo();
+  }, [fetchPosts, fetchDogData, fetchSlides, fetchDescriptions, fetchLogo]);
 
   return (
     <>

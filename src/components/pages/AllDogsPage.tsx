@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useAppContext } from "../contexts/AppContext";
-import { Dog } from "../models/Dog";
+import { IDog } from "../models/Dog";
 import {
   ButtonContainer,
   CardText,
@@ -26,7 +26,7 @@ import { PrimaryButton } from "../../styled/Buttons/PrimaryButton";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage, filterAdoptedDogs } from "../helpers/FilterHelper";
 import { getAllPosts } from "../helpers/RepositoryHelper";
-import { Post } from "../models/Post";
+import { IPost } from "../models/Post";
 import {
   TextContainer,
   DescriptiveCardText,
@@ -42,8 +42,8 @@ export const AllDogsPage = () => {
   const { dogs, posts, setPosts } = useAppContext();
   const [filters, setFilters] = useState<string[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [filteredDogs, setFilteredDogs] = useState<Dog[]>([]);
-  const [allDogsPosts, setAllDogsPosts] = useState<Post[]>([]);
+  const [filteredDogs, setFilteredDogs] = useState<IDog[]>([]);
+  const [allDogsPosts, setAllDogsPosts] = useState<IPost[]>([]);
   const handleFilterChange = (option: string) => {
     if (option === "clear") {
       setFilters([]);
@@ -68,7 +68,7 @@ export const AllDogsPage = () => {
     if (newFilters.length === 0) {
       setFilteredDogs(dogs);
     } else {
-      let newFilteredDogs: Dog[] = [];
+      let newFilteredDogs: IDog[] = [];
       newFilters.forEach((filter) => {
         const matchingDogs = dogs.filter((dog) => {
           if (
@@ -152,7 +152,7 @@ export const AllDogsPage = () => {
   }, [fetchPosts]);
 
   useEffect(() => {
-    const unadoptedDogs: Dog[] = filterAdoptedDogs(dogs, false);
+    const unadoptedDogs: IDog[] = filterAdoptedDogs(dogs, false);
     setFilteredDogs(unadoptedDogs);
   }, [dogs]);
 
@@ -227,7 +227,7 @@ export const AllDogsPage = () => {
             </Col>
           </ButtonContainer>
           <ColContainer>
-            {filteredDogs.map((dog: Dog, index) => (
+            {filteredDogs.map((dog: IDog, index) => (
               <DogCard
                 onClick={() => {
                   navigate(`/hundar-som-soker-hem/${dog.id}`);

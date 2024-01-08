@@ -13,17 +13,17 @@ import {
 } from "../../styled/Home/DescriptiveCard";
 import { useEffect, useState } from "react";
 import { findSlide } from "../helpers/FilterHelper";
-import { Slide } from "../models/Slide";
+import { ISlide } from "../models/Slide";
 import { SlideCarousel } from "../SlideCarousel";
 import { useNavigate } from "react-router";
 
 export const HomePage = () => {
   const { slides, descriptions } = useAppContext();
-  const [homePageSlides, setHomePageSlides] = useState<Slide[]>([]);
+  const [homePageSlides, setHomePageSlides] = useState<ISlide[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const homeSlides: Slide[] = [];
+    const homeSlides: ISlide[] = [];
     const dogSlide = findSlide(slides, PageName.Dogs);
     const spainSlide = findSlide(slides, PageName.Spain);
     const donateSlide = findSlide(slides, PageName.Donate);

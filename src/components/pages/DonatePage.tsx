@@ -3,7 +3,7 @@ import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage } from "../helpers/FilterHelper";
 import { getAllPosts } from "../helpers/RepositoryHelper";
-import { Post } from "../models/Post";
+import { IPost } from "../models/Post";
 import { StyledDiv } from "../../styled/AllDogs/DogCard";
 import { ColCentered } from "../../styled/Common/Common";
 import {
@@ -20,7 +20,7 @@ import "../../scss/home.scss";
 
 export const DonatePage = () => {
   const { posts, setPosts } = useAppContext();
-  const [donatePosts, setDonatePosts] = useState<Post[]>([]);
+  const [donatePosts, setDonatePosts] = useState<IPost[]>([]);
 
   const fetchPosts = useCallback(async () => {
     // Fetch posts, filter them and set them to state

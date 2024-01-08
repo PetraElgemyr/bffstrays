@@ -3,8 +3,8 @@ import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
 import { getAllPosts } from "../helpers/RepositoryHelper";
-import { Post } from "../models/Post";
-import { Slide } from "../models/Slide";
+import { IPost } from "../models/Post";
+import { ISlide } from "../models/Slide";
 import { ColStart } from "../../styled/Spain/Spain";
 import { ColCentered } from "../../styled/Common/Common";
 import { SecondaryButton } from "../../styled/Buttons/SecondaryButton";
@@ -15,8 +15,8 @@ import { ColCenteredButtonContainer } from "../../styled/Buttons/ColCenteredButt
 
 export const ContactPage = () => {
   const { posts, setPosts, slides } = useAppContext();
-  const [contactPageSlides, setContactPageSlides] = useState<Slide[]>([]);
-  const [contactPosts, setContactPosts] = useState<Post[]>([]);
+  const [contactPageSlides, setContactPageSlides] = useState<ISlide[]>([]);
+  const [contactPosts, setContactPosts] = useState<IPost[]>([]);
   const navigate = useNavigate();
 
   const fetchPosts = useCallback(async () => {
@@ -41,7 +41,7 @@ export const ContactPage = () => {
   }, []);
 
   useEffect(() => {
-    const contactSlides: Slide[] = [];
+    const contactSlides: ISlide[] = [];
     const slide = findSlide(slides, PageName.Contact);
     if (slide) {
       contactSlides.push(slide);

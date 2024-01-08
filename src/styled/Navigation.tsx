@@ -96,6 +96,14 @@ export const HamMenu = styled.div`
   align-items: center;
   font-size: 0.7rem;
   padding: 0px;
+
+  @media screen and (${devices.tablet}) {
+    margin-right: 20px;
+  }
+
+  @media screen and (${devices.laptop}) {
+    margin-right: 50px;
+  }
 `;
 
 export const HamStick = styled.div<IToggled>`
@@ -210,8 +218,10 @@ export const HamStick = styled.div<IToggled>`
   }
 `;
 
-// export const HamStickWithProps = styled(HamStick).attrs((props) => ({
-//   toggled: undefined, // Filter out the "toggled" prop
-// }))`
-//   // Your styles here
-// `;
+export const NavLogoImage = styled.img`
+  width: 90%;
+
+  @media screen and (${devices.tablet}) {
+    width: 35%;
+  }
+`;

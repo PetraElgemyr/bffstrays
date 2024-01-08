@@ -3,11 +3,11 @@ import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage } from "../helpers/FilterHelper";
 import { getAllPosts } from "../helpers/RepositoryHelper";
-import { Post } from "../models/Post";
+import { IPost } from "../models/Post";
 
 export const RegisterInterestPage = () => {
   const { posts, setPosts } = useAppContext();
-  const [intrerestPosts, setInterestPosts] = useState<Post[]>([]);
+  const [intrerestPosts, setInterestPosts] = useState<IPost[]>([]);
 
   const fetchPosts = useCallback(async () => {
     // Fetch posts, filter them and set them to state

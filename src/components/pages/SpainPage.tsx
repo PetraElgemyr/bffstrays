@@ -3,8 +3,8 @@ import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
 import { getAllPosts } from "../helpers/RepositoryHelper";
-import { Post } from "../models/Post";
-import { Slide } from "../models/Slide";
+import { IPost } from "../models/Post";
+import { ISlide } from "../models/Slide";
 import "../../scss/home.scss";
 import { useNavigate } from "react-router";
 import { ColCentered } from "../../styled/Common/Common";
@@ -15,8 +15,8 @@ import { SlideCarousel } from "../SlideCarousel";
 
 export const SpainPage = () => {
   const { posts, setPosts, slides } = useAppContext();
-  const [spainPosts, setSpainPosts] = useState<Post[]>([]);
-  const [spainPageSlides, setSpainPageSlides] = useState<Slide[]>([]);
+  const [spainPosts, setSpainPosts] = useState<IPost[]>([]);
+  const [spainPageSlides, setSpainPageSlides] = useState<ISlide[]>([]);
   const navigate = useNavigate();
 
   const fetchPosts = useCallback(async () => {
@@ -41,7 +41,7 @@ export const SpainPage = () => {
   }, []);
 
   useEffect(() => {
-    const spainSlides: Slide[] = [];
+    const spainSlides: ISlide[] = [];
     const slide = findSlide(slides, PageName.Spain);
     if (slide) {
       spainSlides.push(slide);

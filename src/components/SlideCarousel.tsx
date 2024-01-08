@@ -1,5 +1,5 @@
 import { CCarousel, CCarouselItem } from "@coreui/react";
-import { Slide } from "./models/Slide";
+import { ISlide } from "./models/Slide";
 import {
   SlideTitleContainer,
   SlideTitleText,
@@ -12,7 +12,7 @@ import { useNavigate } from "react-router";
 import { PageName } from "./enums/PageName";
 
 interface CarouselProps {
-  slides: Slide[];
+  slides: ISlide[];
 }
 
 export const SlideCarousel = ({ slides }: CarouselProps) => {

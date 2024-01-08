@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
-import { Post } from "../models/Post";
+import { IPost } from "../models/Post";
 import { filterPostsPerPage } from "../helpers/FilterHelper";
 import { getAllPosts } from "../helpers/RepositoryHelper";
 import { AdoptionImage } from "../../styled/Adoption/AdoptionImage";
@@ -10,7 +10,7 @@ import { PrimaryButton } from "../../styled/Buttons/PrimaryButton";
 
 export const AdoptionPage = () => {
   const { posts, setPosts } = useAppContext();
-  const [adoptionPosts, setAdoptionPosts] = useState<Post[]>([]);
+  const [adoptionPosts, setAdoptionPosts] = useState<IPost[]>([]);
   const navigate = useNavigate();
   const fetchPosts = useCallback(async () => {
     // Fetch posts, filter them and set them to state

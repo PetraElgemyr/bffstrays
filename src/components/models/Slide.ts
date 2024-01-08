@@ -1,12 +1,12 @@
-import * as contentful from "contentful";
-import { Media } from "./Media";
+// import * as contentful from "contentful";
+import { IMedia } from "./Media";
 
-export interface SlideImageEntrySkeleton {
-  slideTitle: contentful.EntryFieldTypes.Text;
-  slideImage: Media[];
-}
+// export interface SlideImageEntrySkeleton {
+//   slideTitle: contentful.EntryFieldTypes.Text;
+//   slideImage: IMedia[];
+// }
 
-export interface Slide {
+export interface ISlide {
   slideTitle: string;
-  slideImage: Media[];
+  slideImage: IMedia[];
 }

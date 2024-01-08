@@ -1,19 +1,22 @@
 import { createContext, useContext } from "react";
-import { Dog } from "../models/Dog";
-import { Post } from "../models/Post";
-import { Slide } from "../models/Slide";
-import { PostDescription } from "../models/PostDescription";
+import { IDog } from "../models/Dog";
+import { IPost } from "../models/Post";
+import { ISlide } from "../models/Slide";
+import { IPostDescription } from "../models/PostDescription";
+import { ILogo } from "../models/Logo";
 
 export type AppState = {
-  dogs: Dog[];
-  setDogs: React.Dispatch<React.SetStateAction<Dog[]>>;
-  posts: Post[];
-  setPosts: React.Dispatch<React.SetStateAction<Post[]>>;
+  dogs: IDog[];
+  setDogs: React.Dispatch<React.SetStateAction<IDog[]>>;
+  posts: IPost[];
+  setPosts: React.Dispatch<React.SetStateAction<IPost[]>>;
   pageId: string;
-  slides: Slide[];
-  setSlides: React.Dispatch<React.SetStateAction<Slide[]>>;
-  descriptions: PostDescription[];
-  setDescriptions: React.Dispatch<React.SetStateAction<PostDescription[]>>;
+  slides: ISlide[];
+  setSlides: React.Dispatch<React.SetStateAction<ISlide[]>>;
+  descriptions: IPostDescription[];
+  setDescriptions: React.Dispatch<React.SetStateAction<IPostDescription[]>>;
+  logo: ILogo;
+  setLogo: React.Dispatch<React.SetStateAction<ILogo>>;
 };
 
 export const AppContext = createContext<AppState>({} as AppState);

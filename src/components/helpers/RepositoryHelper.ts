@@ -1,12 +1,13 @@
 import { client } from "../../client";
 import * as contentful from "contentful";
-import { Dog } from "../models/Dog";
-import { Media } from "../models/Media";
-import { Post } from "../models/Post";
-import { Slide } from "../models/Slide";
-import { PostDescription } from "../models/PostDescription";
+import { IDog } from "../models/Dog";
+import { IMedia } from "../models/Media";
+import { IPost } from "../models/Post";
+import { ISlide } from "../models/Slide";
+import { IPostDescription } from "../models/PostDescription";
+import { ILogo } from "../models/Logo";
 
-export const getAllDogs = async (): Promise<Dog[]> => {
+export const getAllDogs = async (): Promise<IDog[]> => {
   try {
     const response: contentful.EntryCollection<
       contentful.EntrySkeletonType,
@@ -16,7 +17,7 @@ export const getAllDogs = async (): Promise<Dog[]> => {
       content_type: "dog",
     });
 
-    const theDogs: Dog[] = [];
+    const theDogs: IDog[] = [];
 
     response.items.map((item) => {
       const name = item.fields.name?.toString() ?? "";
@@ -27,17 +28,17 @@ export const getAllDogs = async (): Promise<Dog[]> => {
       const size = item.fields.size?.toString() ?? "";
       const isNeutered = item.fields.isNeutered ? true : false;
       const description = item.fields.description?.toString() ?? "";
-      const img = item.fields.img as Media[];
+      const img = item.fields.img as IMedia[];
       const isChildFriendly = item.fields.isChildFriendly?.toString() ?? "";
       const isPetFriendly = item.fields.isPetFriendly?.toString() ?? "";
-      const medias = item.fields.medias as Media[];
+      const medias = item.fields.medias as IMedia[];
       const isAdopted = item.fields.isAdopted ? true : false;
       const id = item.sys.id;
       const breed = item.fields.breed?.toString() ?? "";
       const price = parseInt(item.fields.price?.toString() ?? "");
       const yearAdopted = parseInt(item.fields.yearAdopted?.toString() ?? "");
 
-      const dog: Dog = {
+      const dog: IDog = {
         name,
         age,
         ageGroup,
@@ -64,64 +65,9 @@ export const getAllDogs = async (): Promise<Dog[]> => {
     console.log(error);
     return [];
   }
-
-  //   client
-  //     .getEntries({ content_type: "dog" })
-  //     .then(
-  //       (
-  //         entries: contentful.EntryCollection<
-  //           contentful.EntrySkeletonType,
-  //           undefined,
-  //           string
-  //         >
-  //       ) => {
-  //         const theDogs: Dog[] = [];
-  //         entries.items.map((item) => {
-  //           const name = item.fields.name?.toString() ?? "";
-  //           const age = item.fields.age?.toString() ?? "";
-  //           const ageGroup = item.fields.ageGroup?.toString() ?? "";
-  //           const gender = item.fields.gender?.toString() ?? "";
-  //           const weight = parseInt(item.fields.weight?.toString() ?? "");
-  //           const size = item.fields.size?.toString() ?? "";
-  //           const isNeutered = item.fields.isNeutered ? true : false;
-  //           const description = item.fields.description?.toString() ?? "";
-  //           const img = item.fields.img as Media[];
-  //           const isChildFriendly = item.fields.isChildFriendly?.toString() ?? "";
-  //           const isPetFriendly = item.fields.isPetFriendly?.toString() ?? "";
-  //           const medias = item.fields.medias as Media[];
-  //           const isAdopted = item.fields.isAdopted ? true : false;
-  //           const id = item.sys.id;
-  //           const breed = item.fields.breed?.toString() ?? "";
-  //           const price = parseInt(item.fields.price?.toString() ?? "");
-
-  //           const dog: Dog = {
-  //             name,
-  //             age,
-  //             ageGroup,
-  //             gender,
-  //             weight,
-  //             size,
-  //             isNeutered,
-  //             description,
-  //             img,
-  //             isChildFriendly,
-  //             isPetFriendly,
-  //             medias,
-  //             isAdopted,
-  //             id,
-  //             breed,
-  //             price,
-  //           };
-  //           theDogs.push(dog);
-  //           console.log(theDogs, "hääääär");
-
-  //           return theDogs;
-  //         });
-  //       }
-  //     );
 };
 
-export const getAllPosts = async (): Promise<Post[]> => {
+export const getAllPosts = async (): Promise<IPost[]> => {
   try {
     const response: contentful.EntryCollection<
       contentful.EntrySkeletonType,
@@ -130,15 +76,15 @@ export const getAllPosts = async (): Promise<Post[]> => {
     > = await client.getEntries({
       content_type: "post",
     });
-    const thePosts: Post[] = [];
+    const thePosts: IPost[] = [];
 
     response.items.map((item) => {
       const id = item.sys.id?.toString() ?? "";
       const title = item.fields.title?.toString() ?? "";
       const pageId = item.fields.pageId?.toString() ?? "";
       const postText = item.fields.postText?.toString() ?? "";
-      const img = item.fields.img as Media[];
-      const medias = item.fields.medias as Media[];
+      const img = item.fields.img as IMedia[];
+      const medias = item.fields.medias as IMedia[];
       const infoText = item.fields.infoText?.toString() ?? "";
 
       const post = {
@@ -159,7 +105,7 @@ export const getAllPosts = async (): Promise<Post[]> => {
   }
 };
 
-export const getSlides = async (): Promise<Slide[]> => {
+export const getSlides = async (): Promise<ISlide[]> => {
   try {
     const response: contentful.EntryCollection<
       contentful.EntrySkeletonType,
@@ -169,13 +115,13 @@ export const getSlides = async (): Promise<Slide[]> => {
       content_type: "slideImage",
     });
 
-    const theSlideImages: Slide[] = [];
+    const theSlideImages: ISlide[] = [];
 
     response.items.map((item) => {
       const slideTitle = item.fields.slideTitle?.toString() ?? "";
-      const slideImage = item.fields.slideImage as Media[];
+      const slideImage = item.fields.slideImage as IMedia[];
 
-      const slide: Slide = {
+      const slide: ISlide = {
         slideTitle,
         slideImage,
       };
@@ -189,83 +135,7 @@ export const getSlides = async (): Promise<Slide[]> => {
   }
 };
 
-/*
-  const getAllContentfulData = () => {
-    client
-      .getEntries()
-      .then(
-        (
-          entries: contentful.EntryCollection<
-            contentful.EntrySkeletonType,
-            undefined,
-            string
-          >
-        ) => {
-          const theDogs: DogEntrySkeleton[] = [];
-          const thePosts: PostEntrySkeleton[] = [];
-          entries.items.map((item) => {
-            if (item.sys.contentType.sys.id === "dog") {
-              const name = item.fields.name as contentful.EntryFieldTypes.Text;
-              const age = item.fields.age as contentful.EntryFieldTypes.Text;
-              const gender = item.fields.age as contentful.EntryFieldTypes.Text;
-              const weight = item.fields
-                .weight as contentful.EntryFieldTypes.Integer;
-              const size = item.fields.size as contentful.EntryFieldTypes.Text;
-              const isNeutered = item.fields
-                .isNeutered as contentful.EntryFieldTypes.Boolean;
-              const description = item.fields
-                .description as contentful.EntryFieldTypes.Text;
-              const img = item.fields.img as Media[];
-              const isChildFriendly = item.fields
-                .isChildFriendly as contentful.EntryFieldTypes.Text;
-              const isPetFriendly = item.fields
-                .isPetFriendly as contentful.EntryFieldTypes.Text;
-              const medias = item.fields.medias as Media[];
-
-              const dog: DogEntrySkeleton = {
-                name,
-                age,
-                gender,
-                weight,
-                size,
-                isNeutered,
-                description,
-                img,
-                isChildFriendly,
-                isPetFriendly,
-                medias,
-              };
-              theDogs.push(dog);
-            } else if (item.sys.contentType.sys.id === "post") {
-              const id = item.fields.id as contentful.EntryFieldTypes.Integer;
-              const title = item.fields
-                .title as contentful.EntryFieldTypes.Text;
-              const pageId = item.fields
-                .pageId as contentful.EntryFieldTypes.Text;
-              const postText = item.fields
-                .postText as contentful.EntryFieldTypes.Text;
-              const img = item.fields.img as Media[];
-              const medias = item.fields.medias as Media[];
-
-              const post = {
-                id,
-                title,
-                pageId,
-                postText,
-                img,
-                medias,
-              };
-              thePosts.push(post);
-            }
-          });
-          setDogs(theDogs);
-          setPosts(thePosts);
-        }
-      );
-  };
-*/
-
-export const getPageDescriptions = async (): Promise<PostDescription[]> => {
+export const getPageDescriptions = async (): Promise<IPostDescription[]> => {
   try {
     const response: contentful.EntryCollection<
       contentful.EntrySkeletonType,
@@ -275,14 +145,14 @@ export const getPageDescriptions = async (): Promise<PostDescription[]> => {
       content_type: "postDescription",
     });
 
-    const descriptions: PostDescription[] = [];
+    const descriptions: IPostDescription[] = [];
 
     response.items.map((item) => {
       const title = item.fields.title?.toString() ?? "";
-      const img = item.fields.img as Media;
+      const img = item.fields.img as IMedia;
       const description = item.fields.description?.toString() ?? "";
 
-      const postDescription: PostDescription = {
+      const postDescription: IPostDescription = {
         title,
         img,
         description,
@@ -297,4 +167,27 @@ export const getPageDescriptions = async (): Promise<PostDescription[]> => {
   }
 };
 
-//postDescription
+export const getLogo = async (): Promise<ILogo | null> => {
+  try {
+    const response: contentful.EntryCollection<
+      contentful.EntrySkeletonType,
+      undefined,
+      string
+    > = await client.getEntries({
+      content_type: "logo",
+    });
+
+    const logoImg = response.items[0].fields.logoImg as IMedia;
+    const tabLogo = response.items[0].fields.tabLogo as IMedia;
+
+    const logo: ILogo = {
+      logoImg,
+      tabLogo,
+    };
+
+    return logo;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};

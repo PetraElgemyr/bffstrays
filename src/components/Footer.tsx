@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { FooterEntrySkeleton } from "./models/Footer";
+import { IFooterEntrySkeleton } from "./models/Footer";
 import { client } from "../client";
 import * as contentful from "contentful";
 import {
@@ -12,7 +12,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 
 export const Footer = () => {
-  const [footerInfo, setFooterInfo] = useState<FooterEntrySkeleton>();
+  const [footerInfo, setFooterInfo] = useState<IFooterEntrySkeleton>();
 
   const getFooterInfo = useCallback(() => {
     client
@@ -43,7 +43,7 @@ export const Footer = () => {
             const personMedAdressen = item.fields
               .personMedAdressen as contentful.EntryFieldTypes.Text;
 
-            const data: FooterEntrySkeleton = {
+            const data: IFooterEntrySkeleton = {
               facebook,
               instagram,
               email,

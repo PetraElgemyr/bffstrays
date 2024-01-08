@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   Nav,
   Logo,
@@ -7,17 +7,24 @@ import {
   HamMenu,
   HamStick,
   DropDownMenu,
+  NavLogoImage,
 } from "../styled/Navigation";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
 import { PageName } from "./enums/PageName";
 import "../scss/navbar.scss";
+import { useAppContext } from "./contexts/AppContext";
+import { getLogo } from "./helpers/RepositoryHelper";
+import { ILogo } from "./models/Logo";
 
 export const Navbar = () => {
+  const { logo, setLogo } = useAppContext();
   const [toggled, setToggled] = useState(false);
   const [dropDownToShow, setDropDownToShow] = useState<string>("");
   const [dropDownLinks, setDropDownLinks] = useState<JSX.Element>(<></>);
+  // const [logo, setLogo] = useState<ILogo>({} as ILogo);
   const navigate = useNavigate();
+
   const checkDropDownToShow = (dropDownText: string) => {
     if (dropDownText === PageName.Dogs.toLowerCase()) {
       setDropDownLinks(
@@ -124,6 +131,30 @@ export const Navbar = () => {
       setDropDownLinks(<></>);
     }
   };
+  // const imageUrl = logo.logoImg.fields.file.url
+  //   ? `https:${logo.logoImg.fields.file.url.toString()}`
+  //   : "";
+
+  const imageUrl =
+    `https:${logo?.logoImg?.fields?.file?.url?.toString()}` || "";
+
+  const fetchLogo = useCallback(async () => {
+    if (!logo) {
+      try {
+        const fetchedLogo: ILogo | null = await getLogo();
+        if (fetchedLogo) {
+          setLogo(fetchedLogo as ILogo);
+          console.log(fetchedLogo);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchLogo();
+  }, [fetchLogo]);
 
   return (
     <Nav style={{ zIndex: 999 }}>
@@ -132,7 +163,7 @@ export const Navbar = () => {
           navigate("/");
         }}
       >
-        <img src="" alt="Bff Strays logo" />
+        <NavLogoImage src={imageUrl} alt="Bff Strays logo" />
       </Logo>
       <Menu
         onClick={() => {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAppContext } from "../contexts/AppContext";
 import { filterAdoptedDogs } from "../helpers/FilterHelper";
-import { Dog } from "../models/Dog";
+import { IDog } from "../models/Dog";
 import {
   ColContainer,
   DogCard,
@@ -16,10 +16,10 @@ import { ColCentered, ColCenteredResponsive } from "../../styled/Common/Common";
 
 export const AdoptedDogsPage = () => {
   const { dogs } = useAppContext();
-  const [adoptedDogs, setAdoptedDogs] = useState<Dog[]>([]);
+  const [adoptedDogs, setAdoptedDogs] = useState<IDog[]>([]);
 
   useEffect(() => {
-    const unadoptedDogs: Dog[] = filterAdoptedDogs(dogs, true);
+    const unadoptedDogs: IDog[] = filterAdoptedDogs(dogs, true);
     setAdoptedDogs(unadoptedDogs);
   }, [dogs]);
 
@@ -35,7 +35,7 @@ export const AdoptedDogsPage = () => {
         <ColContainer>
           {adoptedDogs
             .sort((a, b) => b.yearAdopted - a.yearAdopted)
-            .map((dog: Dog, index: number) => (
+            .map((dog: IDog, index: number) => (
               <DogCard key={index} style={{ cursor: "unset" }}>
                 <ImageContainer>
                   <Image

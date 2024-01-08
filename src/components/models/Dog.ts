@@ -1,6 +1,6 @@
-import { Media } from "./Media";
+import { IMedia } from "./Media";
 
-export interface Dog {
+export interface IDog {
   name: string;
   age: string;
   ageGroup: string;
@@ -8,11 +8,11 @@ export interface Dog {
   weight: number;
   isNeutered: boolean;
   description: string;
-  img: Media[];
+  img: IMedia[];
   size: string;
   isChildFriendly: string;
   isPetFriendly: string;
-  medias: Media[];
+  medias: IMedia[];
   isAdopted: boolean;
   id: string;
   breed: string;

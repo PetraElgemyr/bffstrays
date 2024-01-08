@@ -4,8 +4,8 @@ import { useState, useEffect, useCallback } from "react";
 import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
-import { Post } from "../models/Post";
-import { Slide } from "../models/Slide";
+import { IPost } from "../models/Post";
+import { ISlide } from "../models/Slide";
 import { ColCentered } from "../../styled/Common/Common";
 import { SlideCarousel } from "../SlideCarousel";
 import { getAllPosts } from "../helpers/RepositoryHelper";
@@ -14,8 +14,8 @@ import { ColStart } from "../../styled/Spain/Spain";
 export const MythPage = () => {
   const navigate = useNavigate();
   const { posts, setPosts, slides } = useAppContext();
-  const [mythPosts, setMythPosts] = useState<Post[]>([]);
-  const [mythPageSlides, setMythPageSlides] = useState<Slide[]>([]);
+  const [mythPosts, setMythPosts] = useState<IPost[]>([]);
+  const [mythPageSlides, setMythPageSlides] = useState<ISlide[]>([]);
 
   const fetchPosts = useCallback(async () => {
     // Fetch posts, filter them and set them to state
@@ -39,7 +39,7 @@ export const MythPage = () => {
   }, []);
 
   useEffect(() => {
-    const mythSlides: Slide[] = [];
+    const mythSlides: ISlide[] = [];
     const slide = findSlide(slides, PageName.Myths);
     if (slide) {
       mythSlides.push(slide);
