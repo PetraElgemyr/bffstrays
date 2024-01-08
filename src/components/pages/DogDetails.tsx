@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import { IDog } from "../models/Dog";
+import { IDog } from "../models/IDog";
 import { useAppContext } from "../contexts/AppContext";
 import {
   Carousel,

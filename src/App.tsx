@@ -2,8 +2,8 @@ import { RouterProvider } from "react-router-dom";
 import "./App.css";
 import { router } from "./components/Router";
 import { useCallback, useEffect, useState } from "react";
-import { IPost } from "./components/models/Post";
-import { IDog } from "./components/models/Dog";
+import { IPost } from "./components/models/IPost";
+import { IDog } from "./components/models/IDog";
 import { AppContext } from "./components/contexts/AppContext";
 import {
   getAllDogs,
@@ -12,9 +12,9 @@ import {
   getPageDescriptions,
   getSlides,
 } from "./components/helpers/RepositoryHelper";
-import { ISlide } from "./components/models/Slide";
-import { IPostDescription } from "./components/models/PostDescription";
-import { ILogo } from "./components/models/Logo";
+import { ISlide } from "./components/models/ISlide";
+import { IPostDescription } from "./components/models/IPostDescription";
+import { ILogo } from "./components/models/ILogo";
 
 function App() {
   const [posts, setPosts] = useState<IPost[]>([]);

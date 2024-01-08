@@ -1,6 +1,6 @@
-import { IDog } from "../models/Dog";
-import { IPost } from "../models/Post";
-import { ISlide } from "../models/Slide";
+import { IDog } from "../models/IDog";
+import { IPost } from "../models/IPost";
+import { ISlide } from "../models/ISlide";
 
 export const filterPostsPerPage = (allPosts: IPost[], pageName: string) => {
   // Filter posts to display on each page

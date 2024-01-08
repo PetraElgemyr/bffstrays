@@ -1,5 +1,5 @@
 // import * as contentful from "contentful";
-import { IMedia } from "./Media";
+import { IMedia } from "./IMedia";
 
 // export interface PostEntrySkeleton {
 //   id: contentful.EntryFieldTypes.Integer;

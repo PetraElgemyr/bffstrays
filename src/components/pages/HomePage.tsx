@@ -13,7 +13,7 @@ import {
 } from "../../styled/Home/DescriptiveCard";
 import { useEffect, useState } from "react";
 import { findSlide } from "../helpers/FilterHelper";
-import { ISlide } from "../models/Slide";
+import { ISlide } from "../models/ISlide";
 import { SlideCarousel } from "../SlideCarousel";
 import { useNavigate } from "react-router";
 

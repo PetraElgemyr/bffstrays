@@ -1,5 +1,5 @@
 import { CCarousel, CCarouselItem } from "@coreui/react";
-import { ISlide } from "./models/Slide";
+import { ISlide } from "./models/ISlide";
 import {
   SlideTitleContainer,
   SlideTitleText,

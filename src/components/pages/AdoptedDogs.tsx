@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAppContext } from "../contexts/AppContext";
 import { filterAdoptedDogs } from "../helpers/FilterHelper";
-import { IDog } from "../models/Dog";
+import { IDog } from "../models/IDog";
 import {
   ColContainer,
   DogCard,

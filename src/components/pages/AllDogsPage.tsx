@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useAppContext } from "../contexts/AppContext";
-import { IDog } from "../models/Dog";
+import { IDog } from "../models/IDog";
 import {
   ButtonContainer,
   CardText,
@@ -26,7 +26,7 @@ import { PrimaryButton } from "../../styled/Buttons/PrimaryButton";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage, filterAdoptedDogs } from "../helpers/FilterHelper";
 import { getAllPosts } from "../helpers/RepositoryHelper";
-import { IPost } from "../models/Post";
+import { IPost } from "../models/IPost";
 import {
   TextContainer,
   DescriptiveCardText,

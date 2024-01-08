@@ -1,11 +1,11 @@
 import { client } from "../../client";
 import * as contentful from "contentful";
-import { IDog } from "../models/Dog";
-import { IMedia } from "../models/Media";
-import { IPost } from "../models/Post";
-import { ISlide } from "../models/Slide";
-import { IPostDescription } from "../models/PostDescription";
-import { ILogo } from "../models/Logo";
+import { IDog } from "../models/IDog";
+import { IMedia } from "../models/IMedia";
+import { IPost } from "../models/IPost";
+import { ISlide } from "../models/ISlide";
+import { IPostDescription } from "../models/IPostDescription";
+import { ILogo } from "../models/ILogo";
 
 export const getAllDogs = async (): Promise<IDog[]> => {
   try {

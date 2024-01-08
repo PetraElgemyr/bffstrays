@@ -1,9 +1,9 @@
 import { createContext, useContext } from "react";
-import { IDog } from "../models/Dog";
-import { IPost } from "../models/Post";
-import { ISlide } from "../models/Slide";
-import { IPostDescription } from "../models/PostDescription";
-import { ILogo } from "../models/Logo";
+import { IDog } from "../models/IDog";
+import { IPost } from "../models/IPost";
+import { ISlide } from "../models/ISlide";
+import { IPostDescription } from "../models/IPostDescription";
+import { ILogo } from "../models/ILogo";
 
 export type AppState = {
   dogs: IDog[];

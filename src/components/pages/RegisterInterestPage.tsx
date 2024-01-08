@@ -3,7 +3,7 @@ import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage } from "../helpers/FilterHelper";
 import { getAllPosts } from "../helpers/RepositoryHelper";
-import { IPost } from "../models/Post";
+import { IPost } from "../models/IPost";
 
 export const RegisterInterestPage = () => {
   const { posts, setPosts } = useAppContext();

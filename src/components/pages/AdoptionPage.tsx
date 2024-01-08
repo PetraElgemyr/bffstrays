@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
-import { IPost } from "../models/Post";
+import { IPost } from "../models/IPost";
 import { filterPostsPerPage } from "../helpers/FilterHelper";
 import { getAllPosts } from "../helpers/RepositoryHelper";
 import { AdoptionImage } from "../../styled/Adoption/AdoptionImage";

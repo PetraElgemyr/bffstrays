@@ -15,7 +15,7 @@ import { PageName } from "./enums/PageName";
 import "../scss/navbar.scss";
 import { useAppContext } from "./contexts/AppContext";
 import { getLogo } from "./helpers/RepositoryHelper";
-import { ILogo } from "./models/Logo";
+import { ILogo } from "./models/ILogo";
 
 export const Navbar = () => {
   const { logo, setLogo } = useAppContext();
