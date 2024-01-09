@@ -1,6 +1,7 @@
 import { Outlet } from "react-router";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
+import { BehindNavigationDiv } from "../styled/Common/Common";
 
 export const Layout = () => {
   return (
@@ -9,7 +10,7 @@ export const Layout = () => {
         <Navbar></Navbar>
       </header>
       <main>
-        <div style={{ height: "75px", width: "100vw" }}></div>
+        <BehindNavigationDiv></BehindNavigationDiv>
         <Outlet></Outlet>
       </main>
       <footer>

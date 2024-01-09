@@ -23,7 +23,6 @@ export const Navbar = () => {
   const [toggled, setToggled] = useState(false);
   const [dropDownToShow, setDropDownToShow] = useState<string>("");
   const [dropDownLinks, setDropDownLinks] = useState<JSX.Element>(<></>);
-  // const [logo, setLogo] = useState<ILogo>({} as ILogo);
   const navigate = useNavigate();
 
   const checkDropDownToShow = (dropDownText: string) => {
@@ -132,9 +131,6 @@ export const Navbar = () => {
       setDropDownLinks(<></>);
     }
   };
-  // const imageUrl = logo.logoImg.fields.file.url
-  //   ? `https:${logo.logoImg.fields.file.url.toString()}`
-  //   : "";
 
   const imageUrl =
     `https:${logo?.logoImg?.fields?.file?.url?.toString()}` || "";
