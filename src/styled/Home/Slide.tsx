@@ -42,9 +42,13 @@ export const StyledSlideImage = styled(CImage)`
   object-position: center;
 
   @media screen and (${devices.tablet}) {
-    max-height: 50vh;
+    max-height: 55vh;
     position: relative;
     left: 0;
+  }
+
+  @media screen and (${devices.tablet}) {
+    max-height: 60vh;
   }
 `;
 
