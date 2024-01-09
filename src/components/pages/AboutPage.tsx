@@ -68,7 +68,10 @@ export const AboutPage = () => {
         })}
         <ColCenteredButtonContainer>
           <p>Här kan du läsa mer om hur vi arbetar reko</p>
-          <SecondaryButton onClick={() => navigate("/vart-arbetssatt")}>
+          <SecondaryButton
+            selected={false}
+            onClick={() => navigate("/vart-arbetssatt")}
+          >
             Vårt arbetssätt
           </SecondaryButton>
         </ColCenteredButtonContainer>

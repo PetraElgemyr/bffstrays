@@ -1,7 +1,8 @@
 import { styled } from "styled-components";
 import { colors } from "../colors";
+import { IFilterButtonProps } from "../AllDogs/DogCard";
 
-export const PrimaryButton = styled.button`
+export const PrimaryButton = styled.button<IFilterButtonProps>`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -18,4 +19,11 @@ export const PrimaryButton = styled.button`
   line-height: normal;
   padding: 0 15px 0 15px;
   cursor: pointer;
+  box-shadow: ${({ selected }) =>
+    selected ? "0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset" : "none"};
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+  }
 `;

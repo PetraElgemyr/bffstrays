@@ -65,10 +65,16 @@ export const SpainPage = () => {
           );
         })}
         <ColCenteredButtonContainer>
-          <SecondaryButton onClick={() => navigate("/myter-om-gatuhundar")}>
+          <SecondaryButton
+            selected={false}
+            onClick={() => navigate("/myter-om-gatuhundar")}
+          >
             Myter om gatuhundar
           </SecondaryButton>
-          <SecondaryButton onClick={() => navigate("/sjukdomar")}>
+          <SecondaryButton
+            selected={false}
+            onClick={() => navigate("/sjukdomar")}
+          >
             Sjukdomar
           </SecondaryButton>
         </ColCenteredButtonContainer>

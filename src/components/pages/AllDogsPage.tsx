@@ -38,6 +38,8 @@ import {
   CardContainer,
 } from "../../styled/Home/DescriptiveCard";
 import { Filter } from "../enums/Filter";
+import ClearRoundedIcon from "@mui/icons-material/ClearRounded";
+import { ColStart } from "../../styled/Spain/Spain";
 
 export const AllDogsPage = () => {
   const navigate = useNavigate();
@@ -47,6 +49,27 @@ export const AllDogsPage = () => {
   const [filteredDogs, setFilteredDogs] = useState<IDog[]>([]);
   const [allDogsPosts, setAllDogsPosts] = useState<IPost[]>([]);
   const [unadoptedDogs, setUnadoptedDogs] = useState<IDog[]>([]);
+  // const allFilters = [
+  //   "TIK",
+  //   "HANE",
+  //   "LITEN < 8KG",
+  //   "MELLAN 9-25KG",
+  //   "STOR > 25KG",
+  //   "VALP < 1 ÅR",
+  //   "VUXEN 1-5 ÅR",
+  //   "SENIOR > 6 ÅR",
+  // ];
+
+  const allFilters = [
+    "TIK",
+    "HANE",
+    "LITEN",
+    "MELLAN",
+    "STOR",
+    "VALP",
+    "VUXEN",
+    "SENIOR",
+  ];
 
   const handleFilterChange = (option: string) => {
     if (option === Filter.Clear) {
@@ -176,71 +199,80 @@ export const AllDogsPage = () => {
           <ButtonContainer width="80%">
             <Col>
               <PrimaryButton
+                selected={showDropdown}
                 onClick={() => {
                   setShowDropdown(!showDropdown);
                 }}
               >
                 Filtrera <FilterAltRoundedIcon />{" "}
               </PrimaryButton>
-              {showDropdown && (
-                <FilterOptionsContainers>
-                  <p
-                    onClick={() => {
-                      setFilteredDogs(unadoptedDogs);
-                      setFilters([]);
-                    }}
-                  >
-                    Rensa filter
-                  </p>
-                  <span>Kön</span>
-                  <FilterButton
-                    onClick={() => handleFilterChange(Filter.Female)}
-                  >
-                    Tik
-                  </FilterButton>
-                  <FilterButton onClick={() => handleFilterChange(Filter.Male)}>
-                    Hane
-                  </FilterButton>
-                  <span>Storlek</span>
-                  <FilterButton
-                    onClick={() => handleFilterChange(Filter.Small)}
-                  >
-                    {"Liten < 8kg"}
-                  </FilterButton>
-                  <FilterButton
-                    onClick={() => handleFilterChange(Filter.Medium)}
-                  >
-                    {"Mellan 9-25kg"}
-                  </FilterButton>
-
-                  <FilterButton onClick={() => handleFilterChange(Filter.Big)}>
-                    {"Stor > 25kg"}
-                  </FilterButton>
-                  <span>Ålder</span>
-                  <FilterButton
-                    onClick={() => handleFilterChange(Filter.Puppy)}
-                  >
-                    {"Valp < 1 år"}
-                  </FilterButton>
-                  <FilterButton
-                    onClick={() => handleFilterChange(Filter.Adult)}
-                  >
-                    {"Vuxen 1-5 år"}
-                  </FilterButton>
-                  <FilterButton
-                    onClick={() => handleFilterChange(Filter.Senior)}
-                  >
-                    {"Senior > 6 år"}
-                  </FilterButton>
-                </FilterOptionsContainers>
-              )}
             </Col>
             <Col>
-              <PrimaryButton>
+              <PrimaryButton selected={false}>
                 Sortera <SortRoundedIcon />{" "}
               </PrimaryButton>
             </Col>
-          </ButtonContainer>
+          </ButtonContainer>{" "}
+          <ColStart>
+            {showDropdown && (
+              <FilterOptionsContainers>
+                {filters.map((filter) => (
+                  <span>
+                    {filter}
+                    <ClearRoundedIcon
+                      onClick={() => handleFilterChange(filter.toUpperCase())}
+                    ></ClearRoundedIcon>
+                  </span> // onclick ta bort filter
+                ))}
+                <p
+                  onClick={() => {
+                    setFilteredDogs(unadoptedDogs);
+                    setFilters([]);
+                  }}
+                >
+                  Rensa filter
+                </p>
+                <span>Alla filter</span>
+                {allFilters.map((filter) => (
+                  <FilterButton
+                    selected={filters.includes(filter)}
+                    onClick={() => handleFilterChange(filter.toUpperCase())}
+                  >
+                    {filter}
+                  </FilterButton>
+                ))}
+
+                {/* <span>Kön</span>
+                <FilterButton onClick={() => handleFilterChange(Filter.Female)}>
+                  Tik
+                </FilterButton>
+                <FilterButton onClick={() => handleFilterChange(Filter.Male)}>
+                  Hane
+                </FilterButton>
+                <span>Storlek</span>
+                <FilterButton onClick={() => handleFilterChange(Filter.Small)}>
+                  {"Liten < 8kg"}
+                </FilterButton>
+                <FilterButton onClick={() => handleFilterChange(Filter.Medium)}>
+                  {"Mellan 9-25kg"}
+                </FilterButton>
+
+                <FilterButton onClick={() => handleFilterChange(Filter.Big)}>
+                  {"Stor > 25kg"}
+                </FilterButton>
+                <span>Ålder</span>
+                <FilterButton onClick={() => handleFilterChange(Filter.Puppy)}>
+                  {"Valp < 1 år"}
+                </FilterButton>
+                <FilterButton onClick={() => handleFilterChange(Filter.Adult)}>
+                  {"Vuxen 1-5 år"}
+                </FilterButton>
+                <FilterButton onClick={() => handleFilterChange(Filter.Senior)}>
+                  {"Senior > 6 år"}
+                </FilterButton> */}
+              </FilterOptionsContainers>
+            )}
+          </ColStart>
           <ColContainer>
             {filteredDogs.map((dog: IDog, index) => (
               <DogCard
@@ -267,6 +299,7 @@ export const AllDogsPage = () => {
                     {" "}
                     <CardText>Storlek: {dog.size}</CardText>
                     <PrimaryButton
+                      selected={false}
                       onClick={() => {
                         navigate(`/hundar-som-soker-hem/${dog.id}`);
                       }}

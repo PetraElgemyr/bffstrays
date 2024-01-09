@@ -69,10 +69,16 @@ export const MythPage = () => {
         ))}
         <ColCenteredButtonContainer>
           <p>Vill du läsa mer om hundarna vi räddar?</p>
-          <SecondaryButton onClick={() => navigate("/situationen-i-spanien")}>
+          <SecondaryButton
+            selected={false}
+            onClick={() => navigate("/situationen-i-spanien")}
+          >
             Siutationen i Spanien
           </SecondaryButton>
-          <SecondaryButton onClick={() => navigate("/sjukdomar")}>
+          <SecondaryButton
+            selected={false}
+            onClick={() => navigate("/sjukdomar")}
+          >
             Sjukdomar
           </SecondaryButton>
         </ColCenteredButtonContainer>
