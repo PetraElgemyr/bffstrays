@@ -95,8 +95,10 @@ export const DropDownMenu = styled.div<IToggled>`
   width: 100vw;
   justify-content: center;
   align-items: center;
-  padding-top: 12%;
-  padding-bottom: 10%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  max-height: 100vh; /* or any other value that suits your needs */
+  overflow-y: auto;
 
   & > ul {
     display: flex;
@@ -123,18 +125,25 @@ export const DropDownMenu = styled.div<IToggled>`
     }
   }
 
+  @media screen and (${devices.mobileL}) {
+    padding-top: 60px;
+  }
+
   @media screen and (${devices.tablet}) {
     top: ${({ toggled }) => (toggled ? "0" : "-1000px")};
-    padding-top: 5%;
-    padding-bottom: 5%;
+    padding-top: 70px;
+    padding-bottom: 60px;
   }
+
   @media screen and (${devices.laptop}) {
     top: ${({ toggled }) => (toggled ? "0" : "-1500px")};
   }
+
+  @media screen and (${devices.laptopL}) {
+    padding-top: 80px;
+    padding-bottom: 70px;
+  }
 `;
-// const DropDownMenuWithProps = styled(DropDownMenu, {
-//   shouldForwardProp: (prop) => isPropValid(prop),
-// });
 
 export const HamMenu = styled.div`
   display: flex;
