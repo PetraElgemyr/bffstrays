@@ -10,7 +10,7 @@ export const PrimaryButton = styled.button`
   border-radius: 25px;
   background-color: ${colors.secondary_green};
   min-height: 48px;
-  color: ${colors.primary};
+  color: ${colors.primary_green};
   font-family: "Korolev Medium", sans-serif;
   font-size: 1rem;
   font-style: normal;

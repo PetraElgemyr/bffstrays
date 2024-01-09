@@ -8,6 +8,7 @@ import {
   HamStick,
   DropDownMenu,
   NavLogoImage,
+  MenuContainer,
 } from "../styled/Navigation";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
@@ -165,17 +166,19 @@ export const Navbar = () => {
       >
         <NavLogoImage src={imageUrl} alt="Bff Strays logo" />
       </Logo>
-      <Menu
+      <MenuContainer
         onClick={() => {
           setToggled(!toggled);
           setDropDownToShow("");
           setDropDownLinks(<></>);
         }}
       >
-        <HamMenu>
-          <HamStick toggled={+toggled} />
-        </HamMenu>
-      </Menu>
+        <Menu>
+          <HamMenu>
+            <HamStick toggled={+toggled} />
+          </HamMenu>
+        </Menu>
+      </MenuContainer>
       <DropDownMenu toggled={+toggled}>
         <ul>
           <li>
