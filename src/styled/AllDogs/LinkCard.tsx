@@ -10,7 +10,7 @@ export const LinkCard = styled(Col)`
   margin-bottom: 5%;
   background-color: ${colors.primary_blue};
   border-radius: 15px;
-  outline: 1px ${colors.primary};
+  outline: 1px ${colors.primary_green};
   overflow: hidden;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   color: white;

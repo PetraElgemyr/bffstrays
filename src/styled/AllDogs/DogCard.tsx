@@ -46,9 +46,9 @@ export const DogCard = styled(Col)`
   padding: 0;
   margin-top: 10%;
   margin-bottom: 5%;
-  background-color: ${colors.primary};
+  background-color: ${colors.primary_green};
   border-radius: 15px;
-  outline: 1px ${colors.primary};
+  outline: 1px ${colors.primary_green};
   overflow: hidden;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   color: white;
@@ -156,7 +156,7 @@ export const ButtonContainer = styled(Row)<{ width?: string }>`
 
 export const FilterButton = styled.button`
   border: none;
-  background-color: ${colors.primary};
+  background-color: ${colors.primary_green};
   color: ${colors.secondary_green};
   margin: 2%;
   padding: 5%;

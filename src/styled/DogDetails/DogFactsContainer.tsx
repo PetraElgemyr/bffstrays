@@ -4,7 +4,7 @@ import { colors } from "../colors";
 import { devices } from "../devices";
 
 export const DogFactsContainer = styled(Col)`
-  outline: 3px solid ${colors.primary};
+  outline: 3px solid ${colors.primary_green};
   width: 100%;
   border-radius: 15px;
   /* height: 100%; */

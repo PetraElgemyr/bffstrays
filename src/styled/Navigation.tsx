@@ -25,6 +25,31 @@ export const Logo = styled.div`
   margin: 0;
 `;
 
+export const MenuContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: column;
+  margin: 10px;
+  margin-right: 40px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media screen and (${devices.tablet}) {
+    margin-right: 55px;
+  }
+
+  @media screen and (${devices.laptop}) {
+    margin-right: 60px;
+  }
+
+  @media screen and (${devices.laptopL}) {
+    margin-right: 70px;
+  }
+`;
+
 export const Menu = styled.div`
   width: 30px;
   height: 30px;
@@ -32,9 +57,6 @@ export const Menu = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 1;
-  cursor: pointer;
-  margin: 10px 15px;
-  margin-right: 30px;
 `;
 
 export const DropDownMenu = styled.div<IToggled>`
@@ -96,14 +118,6 @@ export const HamMenu = styled.div`
   align-items: center;
   font-size: 0.7rem;
   padding: 0px;
-
-  @media screen and (${devices.tablet}) {
-    margin-right: 20px;
-  }
-
-  @media screen and (${devices.laptop}) {
-    margin-right: 50px;
-  }
 `;
 
 export const HamStick = styled.div<IToggled>`
@@ -219,7 +233,11 @@ export const HamStick = styled.div<IToggled>`
 `;
 
 export const NavLogoImage = styled.img`
-  width: 90%;
+  width: 85%;
+
+  @media screen and (${devices.mobileL}) {
+    width: 70%;
+  }
 
   @media screen and (${devices.tablet}) {
     width: 35%;

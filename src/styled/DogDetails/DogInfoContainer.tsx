@@ -15,7 +15,7 @@ export const DogInfoContainer = styled(Col)`
     justify-content: space-between;
     align-items: center;
     gap: 0;
-    background-color: ${colors.primary};
+    background-color: ${colors.primary_green};
     padding: 0;
     margin: 0;
   }
