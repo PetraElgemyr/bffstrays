@@ -52,15 +52,15 @@ export const DividerLine = styled.div`
   }
 `;
 
-export const UnderNavigationDiv = styled.div`
-  height: 70px;
+export const BehindNavigationDiv = styled.div`
+  height: 50px;
   width: 100%;
 
   @media screen and (${devices.tablet}) {
-    height: 80px;
+    height: 65px;
   }
 
-  @media screen and (${devices.tablet}) {
+  @media screen and (${devices.laptop}) {
     height: 70px;
   }
 `;

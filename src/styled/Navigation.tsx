@@ -7,6 +7,7 @@ interface IToggled {
 
 export const Nav = styled.div`
   width: 100vw;
+  max-height: 70px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -17,12 +18,35 @@ export const Nav = styled.div`
   left: 0;
   color: white;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  @media screen and (${devices.mobileL}) {
+    margin-right: 70px;
+    max-height: unset;
+  }
+
+  @media screen and (${devices.tablet}) {
+    margin-right: 80px;
+  }
+
+  @media screen and (${devices.laptop}) {
+    margin-right: 85px;
+  }
+  @media screen and (${devices.laptopL}) {
+  }
 `;
 
 export const Logo = styled.div`
-  font-size: 2em;
-  padding: 0.4em;
+  padding: 5px;
   margin: 0;
+  object-fit: contain;
+
+  @media screen and (${devices.tablet}) {
+    padding: 10px;
+  }
+
+  @media screen and (${devices.fourK}) {
+    padding: 20px;
+  }
 `;
 
 export const MenuContainer = styled.div`
@@ -31,14 +55,14 @@ export const MenuContainer = styled.div`
   align-items: center;
   flex-grow: column;
   margin: 10px;
-  margin-right: 40px;
+  margin-right: 30px;
 
   &:hover {
     cursor: pointer;
   }
 
   @media screen and (${devices.tablet}) {
-    margin-right: 55px;
+    margin-right: 50px;
   }
 
   @media screen and (${devices.laptop}) {
@@ -233,17 +257,27 @@ export const HamStick = styled.div<IToggled>`
 `;
 
 export const NavLogoImage = styled.img`
-  width: 85%;
+  max-width: 85%;
+  max-height: 50px;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   @media screen and (${devices.mobileL}) {
-    width: 70%;
+    width: 60%;
+    max-height: unset;
   }
 
   @media screen and (${devices.tablet}) {
-    width: 35%;
+    width: 30%;
   }
 
   @media screen and (${devices.laptop}) {
-    width: 22%;
+    width: 25%;
+  }
+
+  @media screen and (${devices.laptopL}) {
+    width: 28%;
   }
 `;

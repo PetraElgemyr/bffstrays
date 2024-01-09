@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
-import { UnderNavigationDiv } from "../styled/Common/Common";
+import { BehindNavigationDiv } from "../styled/Common/Common";
 
 export const Layout = () => {
   return (
@@ -10,7 +10,7 @@ export const Layout = () => {
         <Navbar></Navbar>
       </header>
       <main>
-        <UnderNavigationDiv></UnderNavigationDiv>
+        <BehindNavigationDiv></BehindNavigationDiv>
         <Outlet></Outlet>
       </main>
       <footer>
