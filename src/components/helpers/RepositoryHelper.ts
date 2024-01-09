@@ -79,7 +79,7 @@ export const getAllPosts = async (): Promise<IPost[]> => {
     const thePosts: IPost[] = [];
 
     response.items.map((item) => {
-      const id = item.sys.id?.toString() ?? "";
+      const id = parseInt(item.fields.id?.toString() ?? "");
       const title = item.fields.title?.toString() ?? "";
       const pageId = item.fields.pageId?.toString() ?? "";
       const postText = item.fields.postText?.toString() ?? "";
@@ -106,8 +106,6 @@ export const getAllPosts = async (): Promise<IPost[]> => {
     return [];
   }
 };
-
-
 
 export const getSlides = async (): Promise<ISlide[]> => {
   try {
@@ -155,11 +153,15 @@ export const getPageDescriptions = async (): Promise<IPostDescription[]> => {
       const title = item.fields.title?.toString() ?? "";
       const img = item.fields.img as IMedia;
       const description = item.fields.description?.toString() ?? "";
+      const descriptionId = parseInt(
+        item.fields.descriptionId?.toString() ?? ""
+      );
 
       const postDescription: IPostDescription = {
         title,
         img,
         description,
+        descriptionId,
       };
 
       descriptions.push(postDescription);

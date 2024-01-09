@@ -23,11 +23,15 @@ export const StyledDivCardContainer = styled(Col)`
 
 export const CardContainer = styled(Col)`
   width: 80%;
+  margin-top: 5%;
+  margin-bottom: 5%;
 
   @media screen and (${devices.tablet}) {
     width: 100%;
     padding: 0;
     margin: 0;
+    justify-content: space-evenly;
+    align-items: center;
   }
 `;
 
@@ -60,8 +64,12 @@ export const DescriptiveCard = styled(Col)<IDogCardProps>`
 `;
 
 export const DescriptiveImageContainer = styled(ImageContainer)`
+  @media screen and (${devices.tablet}) {
+    max-width: 45%;
+  }
+
   @media screen and (${devices.laptop}) {
-    width: 45%;
+    max-width: 45%;
   }
 `;
 
