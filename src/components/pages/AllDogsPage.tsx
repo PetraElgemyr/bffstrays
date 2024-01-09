@@ -9,8 +9,6 @@ import {
   CardTitle,
   ColContainer,
   DogCard,
-  FilterButton,
-  FilterOptionsContainers,
   Image,
   ImageContainer,
   StyledDiv,
@@ -40,6 +38,10 @@ import {
 import { Filter } from "../enums/Filter";
 import ClearRoundedIcon from "@mui/icons-material/ClearRounded";
 import { ColStart } from "../../styled/Spain/Spain";
+import {
+  FilterOptionsContainers,
+  FilterButton,
+} from "../../styled/AllDogs/Filter";
 
 export const AllDogsPage = () => {
   const navigate = useNavigate();
@@ -49,16 +51,6 @@ export const AllDogsPage = () => {
   const [filteredDogs, setFilteredDogs] = useState<IDog[]>([]);
   const [allDogsPosts, setAllDogsPosts] = useState<IPost[]>([]);
   const [unadoptedDogs, setUnadoptedDogs] = useState<IDog[]>([]);
-  // const allFilters = [
-  //   "TIK",
-  //   "HANE",
-  //   "LITEN < 8KG",
-  //   "MELLAN 9-25KG",
-  //   "STOR > 25KG",
-  //   "VALP < 1 ÅR",
-  //   "VUXEN 1-5 ÅR",
-  //   "SENIOR > 6 ÅR",
-  // ];
 
   const allFilters = [
     "TIK",
