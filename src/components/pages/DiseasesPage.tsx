@@ -66,8 +66,9 @@ export const DiseasesPage = () => {
             </ColStart>
           );
         })}
-        <p>Vill du läsa mer om hundarna vi räddar?</p>
         <ColCenteredButtonContainer>
+          {" "}
+          <p>Vill du läsa mer om hundarna vi räddar?</p>
           <SecondaryButton onClick={() => navigate("/situationen-i-spanien")}>
             {PageName.Spain}
           </SecondaryButton>
