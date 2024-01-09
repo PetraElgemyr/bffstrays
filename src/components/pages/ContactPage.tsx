@@ -6,7 +6,7 @@ import { getAllPosts } from "../helpers/RepositoryHelper";
 import { IPost } from "../models/IPost";
 import { ISlide } from "../models/ISlide";
 import { ColStart } from "../../styled/Spain/Spain";
-import { ColCentered } from "../../styled/Common/Common";
+import { ColCentered, DividerLine } from "../../styled/Common/Common";
 import { SecondaryButton } from "../../styled/Buttons/SecondaryButton";
 import { useNavigate } from "react-router";
 import { DogFactTextBold } from "../../styled/DogDetails/DogFactText";
@@ -67,8 +67,10 @@ export const ContactPage = () => {
             <p>{post.postText}</p>
           </ColStart>
         ))}
+        <DividerLine style={{ width: "85%" }}></DividerLine>
 
         <ColCenteredButtonContainer>
+          <p>Mer info om oss och hundarna här</p>
           <SecondaryButton onClick={() => navigate("/hundar-som-soker-hem")}>
             Hundar som söker hem
           </SecondaryButton>

@@ -10,6 +10,7 @@ import { ColCentered } from "../../styled/Common/Common";
 import { SlideCarousel } from "../SlideCarousel";
 import { getAllPosts } from "../helpers/RepositoryHelper";
 import { ColStart } from "../../styled/Spain/Spain";
+import { ColCenteredButtonContainer } from "../../styled/Buttons/ColCenteredButtonContainer";
 
 export const MythPage = () => {
   const navigate = useNavigate();
@@ -66,14 +67,15 @@ export const MythPage = () => {
             <p>{post.postText}</p>
           </ColStart>
         ))}
-
-        <p>Vill du läsa mer om hundarna vi räddar?</p>
-        <SecondaryButton onClick={() => navigate("/situationen-i-spanien")}>
-          Siutationen i Spanien
-        </SecondaryButton>
-        <SecondaryButton onClick={() => navigate("/sjukdomar")}>
-          Sjukdomar
-        </SecondaryButton>
+        <ColCenteredButtonContainer>
+          <p>Vill du läsa mer om hundarna vi räddar?</p>
+          <SecondaryButton onClick={() => navigate("/situationen-i-spanien")}>
+            Siutationen i Spanien
+          </SecondaryButton>
+          <SecondaryButton onClick={() => navigate("/sjukdomar")}>
+            Sjukdomar
+          </SecondaryButton>
+        </ColCenteredButtonContainer>
       </ColCentered>
     </>
   );
