@@ -37,6 +37,7 @@ import {
   DescriptiveImageContainer,
   CardContainer,
 } from "../../styled/Home/DescriptiveCard";
+import { Filter } from "../enums/Filter";
 
 export const AllDogsPage = () => {
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ export const AllDogsPage = () => {
   const [unadoptedDogs, setUnadoptedDogs] = useState<IDog[]>([]);
 
   const handleFilterChange = (option: string) => {
-    if (option === "clear") {
+    if (option === Filter.Clear) {
       setFilters([]);
       setFilteredDogs(unadoptedDogs);
       return;
@@ -73,50 +74,50 @@ export const AllDogsPage = () => {
     filters.forEach((filter) => {
       newFilteredDogs = newFilteredDogs.filter((dog) => {
         if (
-          filter.toUpperCase() === "HANE" &&
-          dog.gender.toString().toUpperCase() === "HANE"
+          filter === Filter.Male &&
+          dog.gender.toString().toUpperCase() === Filter.Male
         ) {
           return true;
         }
         if (
-          filter.toUpperCase() === "TIK" &&
-          dog.gender.toString().toUpperCase() === "TIK"
+          filter === Filter.Female &&
+          dog.gender.toString().toUpperCase() === Filter.Female
         ) {
           return true;
         }
         if (
-          filter.toUpperCase() === "LITEN" &&
-          dog.size.toString().toUpperCase() === "LITEN"
+          filter === Filter.Small &&
+          dog.size.toString().toUpperCase() === Filter.Small
         ) {
           return true;
         }
         if (
-          filter.toUpperCase() === "MELLAN" &&
-          dog.size.toString().toUpperCase() === "MELLAN"
+          filter === Filter.Medium &&
+          dog.size.toString().toUpperCase() === Filter.Medium
         ) {
           return true;
         }
         if (
-          filter.toUpperCase() === "STOR" &&
-          dog.size.toString().toUpperCase() === "STOR"
+          filter === Filter.Big &&
+          dog.size.toString().toUpperCase() === Filter.Big
         ) {
           return true;
         }
         if (
-          filter.toUpperCase() === "VALP" &&
-          dog.ageGroup.toString().toUpperCase() === "VALP"
+          filter === Filter.Puppy &&
+          dog.ageGroup.toString().toUpperCase() === Filter.Puppy
         ) {
           return true;
         }
         if (
-          filter.toUpperCase() === "VUXEN" &&
-          dog.ageGroup.toString().toUpperCase() === "VUXEN"
+          filter === Filter.Adult &&
+          dog.ageGroup.toString().toUpperCase() === Filter.Adult
         ) {
           return true;
         }
         if (
-          filter.toUpperCase() === "SENIOR" &&
-          dog.ageGroup.toString().toUpperCase() === "SENIOR"
+          filter === Filter.Senior &&
+          dog.ageGroup.toString().toUpperCase() === Filter.Senior
         ) {
           return true;
         }
@@ -192,31 +193,43 @@ export const AllDogsPage = () => {
                     Rensa filter
                   </p>
                   <span>Kön</span>
-                  <FilterButton onClick={() => handleFilterChange("tik")}>
+                  <FilterButton
+                    onClick={() => handleFilterChange(Filter.Female)}
+                  >
                     Tik
                   </FilterButton>
-                  <FilterButton onClick={() => handleFilterChange("hane")}>
+                  <FilterButton onClick={() => handleFilterChange(Filter.Male)}>
                     Hane
                   </FilterButton>
                   <span>Storlek</span>
-                  <FilterButton onClick={() => handleFilterChange("Liten")}>
+                  <FilterButton
+                    onClick={() => handleFilterChange(Filter.Small)}
+                  >
                     {"Liten < 8kg"}
                   </FilterButton>
-                  <FilterButton onClick={() => handleFilterChange("Mellan")}>
+                  <FilterButton
+                    onClick={() => handleFilterChange(Filter.Medium)}
+                  >
                     {"Mellan 9-25kg"}
                   </FilterButton>
 
-                  <FilterButton onClick={() => handleFilterChange("Stor")}>
+                  <FilterButton onClick={() => handleFilterChange(Filter.Big)}>
                     {"Stor > 25kg"}
                   </FilterButton>
                   <span>Ålder</span>
-                  <FilterButton onClick={() => handleFilterChange("valp")}>
+                  <FilterButton
+                    onClick={() => handleFilterChange(Filter.Puppy)}
+                  >
                     {"Valp < 1 år"}
                   </FilterButton>
-                  <FilterButton onClick={() => handleFilterChange("vuxen")}>
+                  <FilterButton
+                    onClick={() => handleFilterChange(Filter.Adult)}
+                  >
                     {"Vuxen 1-5 år"}
                   </FilterButton>
-                  <FilterButton onClick={() => handleFilterChange("senior")}>
+                  <FilterButton
+                    onClick={() => handleFilterChange(Filter.Senior)}
+                  >
                     {"Senior > 6 år"}
                   </FilterButton>
                 </FilterOptionsContainers>
