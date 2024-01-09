@@ -12,7 +12,7 @@ import { IMedia } from "./IMedia";
 // }
 
 export interface IPost {
-  id: string;
+  id: number;
   title: string;
   pageId: string;
   postText: string;

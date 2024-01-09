@@ -21,6 +21,7 @@ import {
   Col,
   ColCentered,
   ColCenteredResponsive,
+  DividerLine,
 } from "../../styled/Common/Common";
 import { PrimaryButton } from "../../styled/Buttons/PrimaryButton";
 import { PageName } from "../enums/PageName";
@@ -265,6 +266,7 @@ export const AllDogsPage = () => {
             ))}
           </ColContainer>
           <CardContainer>
+            <DividerLine></DividerLine>
             {allDogsPosts.map((post, index) => {
               if (post.title.toLowerCase() !== PageName.Dogs.toLowerCase()) {
                 return (

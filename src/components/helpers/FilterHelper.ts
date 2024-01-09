@@ -8,7 +8,7 @@ export const filterPostsPerPage = (allPosts: IPost[], pageName: string) => {
     (post: IPost) => post.pageId.toLowerCase() === pageName.toLowerCase()
   );
   // const reversedArray = postsToDisplay.slice().reverse();
-
+  postsToDisplay.sort((a, b) => a.id - b.id);
   return postsToDisplay;
 };
 

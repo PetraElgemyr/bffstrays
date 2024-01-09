@@ -31,3 +31,19 @@ export const ColCenteredResponsive = styled(ColCentered)`
     text-align: center;
   }
 `;
+
+export const DividerLine = styled.div`
+  height: 2px;
+  width: 100%;
+  border-bottom: 2px solid rgba(37, 37, 37, 0.146);
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  @media screen and (${devices.tablet}) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    height: 5px;
+    border-bottom: 3px solid rgba(37, 37, 37, 0.146);
+    width: 90%;
+  }
+`;
