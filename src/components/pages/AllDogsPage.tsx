@@ -41,6 +41,7 @@ import { ColStart } from "../../styled/Spain/Spain";
 import {
   FilterOptionsContainers,
   FilterButton,
+  FilterButtonContainer,
 } from "../../styled/AllDogs/Filter";
 
 export const AllDogsPage = () => {
@@ -55,12 +56,12 @@ export const AllDogsPage = () => {
   const allFilters = [
     "TIK",
     "HANE",
-    "LITEN",
-    "MELLAN",
-    "STOR",
     "VALP",
     "VUXEN",
     "SENIOR",
+    "LITEN",
+    "MELLAN",
+    "STOR",
   ];
 
   const handleFilterChange = (option: string) => {
@@ -208,60 +209,38 @@ export const AllDogsPage = () => {
           <ColStart>
             {showDropdown && (
               <FilterOptionsContainers>
-                {filters.map((filter) => (
-                  <span>
-                    {filter}
-                    <ClearRoundedIcon
-                      onClick={() => handleFilterChange(filter.toUpperCase())}
-                    ></ClearRoundedIcon>
-                  </span> // onclick ta bort filter
-                ))}
-                <p
-                  onClick={() => {
-                    setFilteredDogs(unadoptedDogs);
-                    setFilters([]);
-                  }}
-                >
-                  Rensa filter
-                </p>
-                <span>Alla filter</span>
-                {allFilters.map((filter) => (
+                <div>
+                  {filters.map((filter) => (
+                    <span>
+                      {filter}
+                      <ClearRoundedIcon
+                        onClick={() => handleFilterChange(filter.toUpperCase())}
+                      ></ClearRoundedIcon>
+                    </span>
+                  ))}
+                </div>
+                <div>
                   <FilterButton
-                    selected={filters.includes(filter)}
-                    onClick={() => handleFilterChange(filter.toUpperCase())}
+                    selected={false}
+                    onClick={() => {
+                      setFilteredDogs(unadoptedDogs);
+                      setFilters([]);
+                    }}
                   >
-                    {filter}
+                    Rensa filter
                   </FilterButton>
-                ))}
-
-                {/* <span>Kön</span>
-                <FilterButton onClick={() => handleFilterChange(Filter.Female)}>
-                  Tik
-                </FilterButton>
-                <FilterButton onClick={() => handleFilterChange(Filter.Male)}>
-                  Hane
-                </FilterButton>
-                <span>Storlek</span>
-                <FilterButton onClick={() => handleFilterChange(Filter.Small)}>
-                  {"Liten < 8kg"}
-                </FilterButton>
-                <FilterButton onClick={() => handleFilterChange(Filter.Medium)}>
-                  {"Mellan 9-25kg"}
-                </FilterButton>
-
-                <FilterButton onClick={() => handleFilterChange(Filter.Big)}>
-                  {"Stor > 25kg"}
-                </FilterButton>
-                <span>Ålder</span>
-                <FilterButton onClick={() => handleFilterChange(Filter.Puppy)}>
-                  {"Valp < 1 år"}
-                </FilterButton>
-                <FilterButton onClick={() => handleFilterChange(Filter.Adult)}>
-                  {"Vuxen 1-5 år"}
-                </FilterButton>
-                <FilterButton onClick={() => handleFilterChange(Filter.Senior)}>
-                  {"Senior > 6 år"}
-                </FilterButton> */}
+                </div>
+                <span>Alla filter</span>
+                <FilterButtonContainer>
+                  {allFilters.map((filter) => (
+                    <FilterButton
+                      selected={filters.includes(filter)}
+                      onClick={() => handleFilterChange(filter.toUpperCase())}
+                    >
+                      {filter}
+                    </FilterButton>
+                  ))}
+                </FilterButtonContainer>
               </FilterOptionsContainers>
             )}
           </ColStart>
