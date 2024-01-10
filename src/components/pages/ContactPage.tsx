@@ -71,16 +71,25 @@ export const ContactPage = () => {
 
         <ColCenteredButtonContainer>
           <p>Mer info om oss och hundarna här</p>
-          <SecondaryButton onClick={() => navigate("/hundar-som-soker-hem")}>
+          <SecondaryButton
+            selected={false}
+            onClick={() => navigate("/hundar-som-soker-hem")}
+          >
             Hundar som söker hem
           </SecondaryButton>
-          <SecondaryButton onClick={() => navigate("/om-oss")}>
+          <SecondaryButton selected={false} onClick={() => navigate("/om-oss")}>
             Om föreningen
           </SecondaryButton>
-          <SecondaryButton onClick={() => navigate("/intresseanmalan")}>
+          <SecondaryButton
+            selected={false}
+            onClick={() => navigate("/intresseanmalan")}
+          >
             Intresseanmälan{" "}
           </SecondaryButton>
-          <SecondaryButton onClick={() => navigate("/situationen-i-spanien")}>
+          <SecondaryButton
+            selected={false}
+            onClick={() => navigate("/situationen-i-spanien")}
+          >
             Situationen i Spanien
           </SecondaryButton>
         </ColCenteredButtonContainer>

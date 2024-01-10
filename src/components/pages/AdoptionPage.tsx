@@ -68,7 +68,10 @@ export const AdoptionPage = () => {
         })}
         <ColCenteredButtonContainer>
           <p>Klicka här för att läsa mer om de krav vi har på adoptörer</p>
-          <SecondaryButton onClick={() => navigate("/krav-pa-adoptorer")}>
+          <SecondaryButton
+            selected={false}
+            onClick={() => navigate("/krav-pa-adoptorer")}
+          >
             {PageName.Requirements}
           </SecondaryButton>
         </ColCenteredButtonContainer>

@@ -69,10 +69,16 @@ export const DiseasesPage = () => {
         <ColCenteredButtonContainer>
           {" "}
           <p>Vill du läsa mer om hundarna vi räddar?</p>
-          <SecondaryButton onClick={() => navigate("/situationen-i-spanien")}>
+          <SecondaryButton
+            selected={false}
+            onClick={() => navigate("/situationen-i-spanien")}
+          >
             {PageName.Spain}
           </SecondaryButton>
-          <SecondaryButton onClick={() => navigate("/myter-om-gatuhundar")}>
+          <SecondaryButton
+            selected={false}
+            onClick={() => navigate("/myter-om-gatuhundar")}
+          >
             {PageName.Myths}
           </SecondaryButton>
         </ColCenteredButtonContainer>

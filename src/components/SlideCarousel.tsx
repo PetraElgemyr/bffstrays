@@ -11,11 +11,11 @@ import {
 import { useNavigate } from "react-router";
 import { PageName } from "./enums/PageName";
 
-interface CarouselProps {
+interface ICarouselProps {
   slides: ISlide[];
 }
 
-export const SlideCarousel = ({ slides }: CarouselProps) => {
+export const SlideCarousel = ({ slides }: ICarouselProps) => {
   const navigate = useNavigate();
 
   if (slides.length === 1) {

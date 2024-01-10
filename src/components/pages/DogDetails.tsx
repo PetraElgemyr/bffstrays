@@ -18,8 +18,8 @@ import {
 import { CardTitle } from "../../styled/AllDogs/DogCard";
 import { CCarouselItem, CImage } from "@coreui/react";
 import "@coreui/coreui/dist/css/coreui.min.css";
-import { PrimaryButton } from "../../styled/Buttons/PrimaryButton";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
+import { SecondaryButton } from "../../styled/Buttons/SecondaryButton";
 
 export const DogDetails = () => {
   const { dogs, setDogs } = useAppContext();
@@ -105,13 +105,14 @@ export const DogDetails = () => {
             <Col style={{ alignItems: "center" }}>
               <DogDescription>{dog.description}</DogDescription>
             </Col>
-            <PrimaryButton
+            <SecondaryButton
+              selected={false}
               onClick={() => {
                 navigate("/intresseanmalan");
               }}
             >
               Gör en intresseanmälan
-            </PrimaryButton>
+            </SecondaryButton>
             {images.length > 0 ? (
               <Carousel controls indicators>
                 {images.map((imgUrl, index) => (

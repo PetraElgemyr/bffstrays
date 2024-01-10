@@ -52,12 +52,19 @@ export const DogCard = styled(Col)`
   overflow: hidden;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   color: white;
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
 
   @media screen and (${devices.tablet}) {
     width: 28%;
     margin: 0;
     margin-top: 5%;
+
+    &:hover {
+      transform: scale(1.05);
+      transition: scale 0.7s smooth;
+    }
   }
 
   @media screen and (${devices.laptop}) {
@@ -152,25 +159,4 @@ export const ButtonContainer = styled(Row)<{ width?: string }>`
   @media screen and (${devices.fourK}) {
     width: ${({ width }) => (width ? "86%" : "100%")};
   }
-`;
-
-export const FilterButton = styled.button`
-  border: none;
-  background-color: ${colors.primary_green};
-  color: ${colors.secondary_green};
-  margin: 2%;
-  padding: 5%;
-  display: flex;
-  flex-direction: row;
-  border-radius: 15px;
-  justify-content: center;
-`;
-
-export const FilterOptionsContainers = styled(Col)`
-  background-color: ${colors.secondary_green};
-  padding: 15%;
-  border-radius: 15px;
-  width: 100%;
-  max-height: 35vh;
-  overflow: scroll;
 `;

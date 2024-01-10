@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "./Layout";
 import { HomePage } from "./pages/HomePage";
-import { AllDogsPage } from "./pages/AllDogsPage";
 import { DogDetails } from "./pages/DogDetails";
 import { ContactPage } from "./pages/ContactPage";
 import { AboutPage } from "./pages/AboutPage";
@@ -14,6 +13,7 @@ import { RequirementsForAdoptionPage } from "./pages/RequirementsForAdoptionPage
 import { DiseasesPage } from "./pages/DiseasesPage";
 import { MythPage } from "./pages/MythPage";
 import { WorkEthicsPage } from "./pages/WorkEthicsPage";
+import { AllDogsPage } from "./pages/AllDogsPage";
 
 export const router = createBrowserRouter([
   {
