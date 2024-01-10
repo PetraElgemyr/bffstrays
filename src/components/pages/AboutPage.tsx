@@ -18,26 +18,26 @@ export const AboutPage = () => {
   const [aboutPageSlides, setAboutPageSlides] = useState<ISlide[]>([]);
   const navigate = useNavigate();
 
-  const fetchPosts = useCallback(async () => {
-    // Fetch posts, filter them and set them to state
-    if (posts.length > 0) {
-      const filteredPosts = filterPostsPerPage(posts, PageName.About);
-      setAboutPosts(filteredPosts);
-    } else {
-      try {
-        const response = await getAllPosts();
-        if (response) {
-          setPosts(response);
-          const filteredPosts = filterPostsPerPage(response, PageName.About);
-          setAboutPosts(filteredPosts);
-        } else {
-          console.log("Inga inlägg");
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }, []);
+  // const fetchPosts = useCallback(async () => {
+  //   // Fetch posts, filter them and set them to state
+  //   if (posts.length > 0) {
+  //     const filteredPosts = filterPostsPerPage(posts, PageName.About);
+  //     setAboutPosts(filteredPosts);
+  //   } else {
+  //     try {
+  //       const response = await getAllPosts();
+  //       if (response) {
+  //         setPosts(response);
+  //         const filteredPosts = filterPostsPerPage(response, PageName.About);
+  //         setAboutPosts(filteredPosts);
+  //       } else {
+  //         console.log("Inga inlägg");
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  // }, []);
 
   useEffect(() => {
     const aboutSlides: ISlide[] = [];
@@ -46,8 +46,8 @@ export const AboutPage = () => {
       aboutSlides.push(slide);
       setAboutPageSlides(aboutSlides);
     }
-    fetchPosts();
-  }, [fetchPosts, slides]);
+    // fetchPosts();
+  }, [slides]);
 
   return (
     <>

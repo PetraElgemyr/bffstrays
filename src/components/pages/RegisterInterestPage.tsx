@@ -16,32 +16,32 @@ export const RegisterInterestPage = () => {
   const [intrerestPosts, setInterestPosts] = useState<IPost[]>([]);
   const [interestPageSlides, setInterestPageSlides] = useState<ISlide[]>([]);
 
-  const fetchPosts = useCallback(async () => {
-    // Fetch posts, filter them and set them to state
-    if (posts.length > 0) {
-      const filteredPosts = filterPostsPerPage(
-        posts,
-        PageName.RegisterInterest
-      );
-      setInterestPosts(filteredPosts);
-    } else {
-      try {
-        const response = await getAllPosts();
-        if (response) {
-          setPosts(response);
-          const filteredPosts = filterPostsPerPage(
-            response,
-            PageName.RegisterInterest
-          );
-          setInterestPosts(filteredPosts);
-        } else {
-          console.log("Inga inlägg");
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }, []);
+  // const fetchPosts = useCallback(async () => {
+  //   // Fetch posts, filter them and set them to state
+  //   if (posts.length > 0) {
+  //     const filteredPosts = filterPostsPerPage(
+  //       posts,
+  //       PageName.RegisterInterest
+  //     );
+  //     setInterestPosts(filteredPosts);
+  //   } else {
+  //     try {
+  //       const response = await getAllPosts();
+  //       if (response) {
+  //         setPosts(response);
+  //         const filteredPosts = filterPostsPerPage(
+  //           response,
+  //           PageName.RegisterInterest
+  //         );
+  //         setInterestPosts(filteredPosts);
+  //       } else {
+  //         console.log("Inga inlägg");
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  // }, []);
 
   useEffect(() => {
     const interestSlides: ISlide[] = [];
@@ -50,9 +50,8 @@ export const RegisterInterestPage = () => {
       interestSlides.push(slide);
       setInterestPageSlides(interestSlides);
     }
-    fetchPosts();
-    console.log(intrerestPosts);
-  }, [fetchPosts, slides]);
+    // fetchPosts();
+  }, [slides]);
 
   return (
     <>

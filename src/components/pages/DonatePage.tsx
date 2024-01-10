@@ -22,30 +22,30 @@ export const DonatePage = () => {
   const { posts, setPosts } = useAppContext();
   const [donatePosts, setDonatePosts] = useState<IPost[]>([]);
 
-  const fetchPosts = useCallback(async () => {
-    // Fetch posts, filter them and set them to state
-    if (posts.length > 0) {
-      const filteredPosts = filterPostsPerPage(posts, PageName.Donate);
-      setDonatePosts(filteredPosts);
-    } else {
-      try {
-        const response = await getAllPosts();
-        if (response) {
-          setPosts(response);
-          const filteredPosts = filterPostsPerPage(response, PageName.Donate);
-          setDonatePosts(filteredPosts);
-        } else {
-          console.log("Inga inlägg");
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }, []);
+  // const fetchPosts = useCallback(async () => {
+  //   // Fetch posts, filter them and set them to state
+  //   if (posts.length > 0) {
+  //     const filteredPosts = filterPostsPerPage(posts, PageName.Donate);
+  //     setDonatePosts(filteredPosts);
+  //   } else {
+  //     try {
+  //       const response = await getAllPosts();
+  //       if (response) {
+  //         setPosts(response);
+  //         const filteredPosts = filterPostsPerPage(response, PageName.Donate);
+  //         setDonatePosts(filteredPosts);
+  //       } else {
+  //         console.log("Inga inlägg");
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    fetchPosts();
-  }, [fetchPosts]);
+  // useEffect(() => {
+  //   fetchPosts();
+  // }, [fetchPosts]);
 
   return (
     <>

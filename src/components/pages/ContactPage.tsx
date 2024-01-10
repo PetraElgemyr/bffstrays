@@ -19,26 +19,26 @@ export const ContactPage = () => {
   const [contactPosts, setContactPosts] = useState<IPost[]>([]);
   const navigate = useNavigate();
 
-  const fetchPosts = useCallback(async () => {
-    // Fetch posts, filter them and set them to state
-    if (posts.length > 0) {
-      const filteredPosts = filterPostsPerPage(posts, PageName.Contact);
-      setContactPosts(filteredPosts);
-    } else {
-      try {
-        const response = await getAllPosts();
-        if (response) {
-          setPosts(response);
-          const filteredPosts = filterPostsPerPage(response, PageName.Contact);
-          setContactPosts(filteredPosts);
-        } else {
-          console.log("Inga inlägg");
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }, []);
+  // const fetchPosts = useCallback(async () => {
+  //   // Fetch posts, filter them and set them to state
+  //   if (posts.length > 0) {
+  //     const filteredPosts = filterPostsPerPage(posts, PageName.Contact);
+  //     setContactPosts(filteredPosts);
+  //   } else {
+  //     try {
+  //       const response = await getAllPosts();
+  //       if (response) {
+  //         setPosts(response);
+  //         const filteredPosts = filterPostsPerPage(response, PageName.Contact);
+  //         setContactPosts(filteredPosts);
+  //       } else {
+  //         console.log("Inga inlägg");
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  // }, []);
 
   useEffect(() => {
     const contactSlides: ISlide[] = [];
@@ -48,8 +48,8 @@ export const ContactPage = () => {
       setContactPageSlides(contactSlides);
       console.log(slide);
     }
-    fetchPosts();
-  }, [fetchPosts, slides]);
+    // fetchPosts();
+  }, [slides]);
 
   return (
     <>

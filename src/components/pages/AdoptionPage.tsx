@@ -18,26 +18,26 @@ export const AdoptionPage = () => {
   const [adoptionPageSlides, setAdoptionPageSlides] = useState<ISlide[]>([]);
   const navigate = useNavigate();
 
-  const fetchPosts = useCallback(async () => {
-    // Fetch posts, filter them and set them to state
-    if (posts.length > 0) {
-      const filteredPosts = filterPostsPerPage(posts, PageName.Adoption);
-      setAdoptionPosts(filteredPosts);
-    } else {
-      try {
-        const response = await getAllPosts();
-        if (response) {
-          setPosts(response);
-          const filteredPosts = filterPostsPerPage(response, PageName.Adoption);
-          setAdoptionPosts(filteredPosts);
-        } else {
-          console.log("Inga inlägg");
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }, []);
+  // const fetchPosts = useCallback(async () => {
+  //   // Fetch posts, filter them and set them to state
+  //   if (posts.length > 0) {
+  //     const filteredPosts = filterPostsPerPage(posts, PageName.Adoption);
+  //     setAdoptionPosts(filteredPosts);
+  //   } else {
+  //     try {
+  //       const response = await getAllPosts();
+  //       if (response) {
+  //         setPosts(response);
+  //         const filteredPosts = filterPostsPerPage(response, PageName.Adoption);
+  //         setAdoptionPosts(filteredPosts);
+  //       } else {
+  //         console.log("Inga inlägg");
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  // }, []);
 
   useEffect(() => {
     const adoptionSlides: ISlide[] = [];
@@ -46,8 +46,8 @@ export const AdoptionPage = () => {
       adoptionSlides.push(slide);
       setAdoptionPageSlides(adoptionSlides);
     }
-    fetchPosts();
-  }, [fetchPosts, slides]);
+    // fetchPosts();
+  }, [slides]);
 
   return (
     <>

@@ -16,29 +16,29 @@ export const RequirementsForAdoptionPage = () => {
     ISlide[]
   >([]);
 
-  const fetchPosts = useCallback(async () => {
-    // Fetch posts, filter them and set them to state
-    if (posts.length > 0) {
-      const filteredPosts = filterPostsPerPage(posts, PageName.Requirements);
-      setRequirementsPosts(filteredPosts);
-    } else {
-      try {
-        const response = await getAllPosts();
-        if (response) {
-          setPosts(response);
-          const filteredPosts = filterPostsPerPage(
-            response,
-            PageName.Requirements
-          );
-          setRequirementsPosts(filteredPosts);
-        } else {
-          console.log("Inga inlägg");
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }, []);
+  // const fetchPosts = useCallback(async () => {
+  //   // Fetch posts, filter them and set them to state
+  //   if (posts.length > 0) {
+  //     const filteredPosts = filterPostsPerPage(posts, PageName.Requirements);
+  //     setRequirementsPosts(filteredPosts);
+  //   } else {
+  //     try {
+  //       const response = await getAllPosts();
+  //       if (response) {
+  //         setPosts(response);
+  //         const filteredPosts = filterPostsPerPage(
+  //           response,
+  //           PageName.Requirements
+  //         );
+  //         setRequirementsPosts(filteredPosts);
+  //       } else {
+  //         console.log("Inga inlägg");
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  // }, []);
 
   useEffect(() => {
     const requirementsSlides: ISlide[] = [];
@@ -47,8 +47,8 @@ export const RequirementsForAdoptionPage = () => {
       requirementsSlides.push(slide);
       setRequirementsPageSlides(requirementsSlides);
     }
-    fetchPosts();
-  }, [fetchPosts, slides]);
+    // fetchPosts();
+  }, [slides]);
 
   return (
     <>

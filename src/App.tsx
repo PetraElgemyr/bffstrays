@@ -1,16 +1,16 @@
 import { RouterProvider } from "react-router-dom";
 import "./App.css";
 import { router } from "./components/Router";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { IPost } from "./components/models/IPost";
 import { IDog } from "./components/models/IDog";
 import { AppContext } from "./components/contexts/AppContext";
 import {
+  getAllDescriptions,
   getAllDogs,
   getAllPosts,
+  getAllSlides,
   getLogo,
-  getPageDescriptions,
-  getSlides,
 } from "./components/helpers/RepositoryHelper";
 import { ISlide } from "./components/models/ISlide";
 import { IPostDescription } from "./components/models/IPostDescription";
@@ -39,82 +39,138 @@ function App() {
     setLogo,
   };
 
-  const fetchPosts = useCallback(async () => {
-    // Fetch posts, filter them and set them to state
-    if (posts.length === 0) {
-      try {
-        const response = await getAllPosts();
-        if (response) {
-          setPosts(response);
-        } else {
-          console.log("Inga inlägg");
-          setPosts([]);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }, []);
+  // const fetchPosts = useCallback(async () => {
+  //   // Fetch posts, filter them and set them to state
+  //   if (posts.length === 0) {
+  //     try {
+  //       const response = await getAllPosts();
+  //       if (response) {
+  //         setPosts(response);
+  //       } else {
+  //         console.log("Inga inlägg");
+  //         setPosts([]);
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  // }, []);
 
-  const fetchDogData = useCallback(async () => {
+  // const fetchDogData = useCallback(async () => {
+  //   if (dogs.length === 0) {
+  //     try {
+  //       const response = await getAllDogs();
+
+  //       if (response) {
+  //         setDogs(response);
+  //       } else {
+  //         console.log("Inga hundar");
+  //         setDogs([]);
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  // }, []);
+
+  // const fetchSlides = useCallback(async () => {
+  //   //Fetch slides and set them to state
+  //   if (slides.length === 0) {
+  //     try {
+  //       const response = await getSlides();
+  //       response ? setSlides(response) : setSlides([]);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  // }, []);
+
+  // const fetchDescriptions = useCallback(async () => {
+  //   if (descriptions.length === 0) {
+  //     try {
+  //       const response = await getPageDescriptions();
+
+  //       response ? setDescriptions(response) : setDescriptions([]);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  // }, []);
+
+  // const fetchLogo = useCallback(async () => {
+  //   const fetchedLogo: ILogo | null = await getLogo();
+  //   if (fetchedLogo) {
+  //     setLogo(fetchedLogo as ILogo);
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   fetchPosts();
+  //   fetchDogData();
+  //   fetchSlides();
+  //   fetchDescriptions();
+  //   fetchLogo();
+  // }, [fetchPosts, fetchDogData, fetchSlides, fetchDescriptions, fetchLogo]);
+
+  useEffect(() => {
+    if (dogs.length > 0) return;
+    const getDogs = async () => {
+      const response = await getAllDogs();
+      setDogs(response);
+    };
+
     if (dogs.length === 0) {
-      try {
-        const response = await getAllDogs();
-
-        if (response) {
-          setDogs(response);
-        } else {
-          console.log("Inga hundar");
-          setDogs([]);
-        }
-      } catch (error) {
-        console.log(error);
-      }
+      getDogs();
     }
-  }, []);
+  });
 
-  const fetchSlides = useCallback(async () => {
-    //Fetch slides and set them to state
-    if (slides.length === 0) {
-      try {
-        const response = await getSlides();
-        response ? setSlides(response) : setSlides([]);
-      } catch (error) {
-        console.error(error);
-      }
+  useEffect(() => {
+    if (posts.length > 0) return;
+    const getPosts = async () => {
+      const response = await getAllPosts();
+      setPosts(response);
+    };
+
+    if (posts.length === 0) {
+      getPosts();
     }
-  }, []);
+  });
 
-  const fetchDescriptions = useCallback(async () => {
-    if (descriptions.length === 0) {
-      try {
-        const response = await getPageDescriptions();
+  useEffect(() => {
+    if (slides.length > 0) return;
+    const getSlides = async () => {
+      const response = await getAllSlides();
+      setSlides(response);
+    };
 
-        response ? setDescriptions(response) : setDescriptions([]);
-      } catch (error) {
-        console.error(error);
-      }
+    if (posts.length === 0) {
+      getSlides();
     }
-  }, []);
+  });
 
-  const fetchLogo = useCallback(async () => {
-    const fetchedLogo: ILogo | null = await getLogo();
-    if (fetchedLogo) {
+  useEffect(() => {
+    if (descriptions.length > 0) return;
+    const getDescriptions = async () => {
+      const response = await getAllDescriptions();
+      setDescriptions(response);
+    };
+
+    if (posts.length === 0) {
+      getDescriptions();
+    }
+  });
+
+  useEffect(() => {
+    if (descriptions.length > 0) return;
+    const getNavLogo = async () => {
+      const fetchedLogo = await getLogo();
       setLogo(fetchedLogo as ILogo);
+    };
+
+    if (posts.length === 0) {
+      getNavLogo();
     }
-  }, []);
-
-  useEffect(() => {
-    fetchLogo();
-  }, [fetchLogo]);
-
-  useEffect(() => {
-    fetchPosts();
-    fetchDogData();
-    fetchSlides();
-    fetchDescriptions();
-    fetchLogo();
-  }, [fetchPosts, fetchDogData, fetchSlides, fetchDescriptions, fetchLogo]);
+  });
 
   return (
     <>

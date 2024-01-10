@@ -135,23 +135,23 @@ export const Navbar = () => {
   const imageUrl =
     `https:${logo?.logoImg?.fields?.file?.url?.toString()}` || "";
 
-  const fetchLogo = useCallback(async () => {
-    if (!logo) {
-      try {
-        const fetchedLogo: ILogo | null = await getLogo();
-        if (fetchedLogo) {
-          setLogo(fetchedLogo as ILogo);
-          console.log(fetchedLogo);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }, []);
+  // const fetchLogo = useCallback(async () => {
+  //   if (!logo) {
+  //     try {
+  //       const fetchedLogo: ILogo | null = await getLogo();
+  //       if (fetchedLogo) {
+  //         setLogo(fetchedLogo as ILogo);
+  //         console.log(fetchedLogo);
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    fetchLogo();
-  }, [fetchLogo]);
+  // useEffect(() => {
+  //   fetchLogo();
+  // }, [fetchLogo]);
 
   return (
     <Nav style={{ zIndex: 999 }}>
