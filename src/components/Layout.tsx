@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
-import { BehindNavigationDiv } from "../styled/Common/Common";
+import { BehindNavigationDiv } from "../styled/Navigation";
 
 export const Layout = () => {
   return (
