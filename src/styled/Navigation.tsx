@@ -5,6 +5,19 @@ interface IToggled {
   toggled: number;
 }
 
+export const BehindNavigationDiv = styled.div`
+  height: 50px;
+  width: 100%;
+
+  @media screen and (${devices.tablet}) {
+    height: 65px;
+  }
+
+  @media screen and (${devices.laptop}) {
+    height: 70px;
+  }
+`;
+
 export const Nav = styled.div`
   width: 100vw;
   max-height: 70px;
