@@ -1,54 +1,65 @@
-import { useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router";
-import { useAppContext } from "../contexts/AppContext";
-import { IDog } from "../models/IDog";
+import { useState, useEffect, useCallback } from "react";
+import Drawer from "@mui/material/Drawer";
+import { PrimaryButton } from "../../styled/Buttons/PrimaryButton";
 import {
+  StyledDiv,
   ButtonContainer,
-  CardText,
-  CardTextContainer,
-  CardTitle,
   ColContainer,
   DogCard,
-  Image,
   ImageContainer,
-  StyledDiv,
+  CardTitle,
+  CardTextContainer,
+  CardText,
+  Image,
 } from "../../styled/AllDogs/DogCard";
-import SortRoundedIcon from "@mui/icons-material/SortRounded";
-import FilterAltRoundedIcon from "@mui/icons-material/FilterAltRounded";
-import {
-  Col,
-  ColCentered,
-  ColCenteredResponsive,
-  DividerLine,
-} from "../../styled/Common/Common";
-import { PrimaryButton } from "../../styled/Buttons/PrimaryButton";
-import { PageName } from "../enums/PageName";
-import { filterPostsPerPage, filterAdoptedDogs } from "../helpers/FilterHelper";
-import { getAllPosts } from "../helpers/RepositoryHelper";
-import { IPost } from "../models/IPost";
-import {
-  TextContainer,
-  DescriptiveCardText,
-  DescriptiveCardTitle,
-  DescriptiveImage,
-  DescriptiveCard,
-  DescriptiveImageContainer,
-  CardContainer,
-} from "../../styled/Home/DescriptiveCard";
-import { Filter } from "../enums/Filter";
-import ClearRoundedIcon from "@mui/icons-material/ClearRounded";
-import { ColStart } from "../../styled/Spain/Spain";
 import {
   FilterOptionsContainers,
   FilterButton,
   FilterButtonContainer,
 } from "../../styled/AllDogs/Filter";
+import FilterAltRoundedIcon from "@mui/icons-material/FilterAltRounded";
+import SortRoundedIcon from "@mui/icons-material/SortRounded";
+import {
+  ColCentered,
+  ColCenteredResponsive,
+  Col,
+  DividerLine,
+  Row,
+} from "../../styled/Common/Common";
+import {
+  CardContainer,
+  DescriptiveCard,
+  DescriptiveImageContainer,
+  DescriptiveImage,
+  TextContainer,
+  DescriptiveCardTitle,
+  DescriptiveCardText,
+} from "../../styled/Home/DescriptiveCard";
+import { ColStart } from "../../styled/Spain/Spain";
+import { PageName } from "../enums/PageName";
+import { IDog } from "../models/IDog";
+import { Filter } from "../enums/Filter";
+import { useNavigate } from "react-router";
+import { useAppContext } from "../contexts/AppContext";
+import { filterPostsPerPage, filterAdoptedDogs } from "../helpers/FilterHelper";
+import { getAllPosts } from "../helpers/RepositoryHelper";
+import { IPost } from "../models/IPost";
+import ClearRoundedIcon from "@mui/icons-material/ClearRounded";
+import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import { colors } from "../../styled/colors";
+
+type Anchor = "left" | "right";
 
 export const AllDogsPage = () => {
+  const [state, setState] = useState({
+    left: false,
+    right: false,
+  });
   const navigate = useNavigate();
   const { dogs, posts, setPosts } = useAppContext();
   const [filters, setFilters] = useState<string[]>([]);
-  const [showDropdown, setShowDropdown] = useState(false);
+  //   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [filteredDogs, setFilteredDogs] = useState<IDog[]>([]);
   const [allDogsPosts, setAllDogsPosts] = useState<IPost[]>([]);
   const [unadoptedDogs, setUnadoptedDogs] = useState<IDog[]>([]);
@@ -175,8 +186,82 @@ export const AllDogsPage = () => {
     setFilteredDogs(unadoptedDogs);
   }, [dogs]);
 
+  const toggleDrawer =
+    (anchor: Anchor, open: boolean) =>
+    (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === "keydown" &&
+        ((event as React.KeyboardEvent).key === "Tab" ||
+          (event as React.KeyboardEvent).key === "Shift")
+      ) {
+        return;
+      }
+
+      setState({ ...state, [anchor]: open });
+    };
+
+  const list = () => (
+    <FilterOptionsContainers onKeyDown={toggleDrawer("left", false)}>
+      <Row
+        onClick={toggleDrawer("left", false)}
+        style={{
+          justifyContent: "flex-start",
+        }}
+      >
+        <FilterButton
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingTop: "5px",
+            paddingBottom: "5px",
+          }}
+          selected={false}
+        >
+          <span>Stäng filtrering</span>
+          <CloseRoundedIcon
+            sx={{ color: colors.secondary_green }}
+            fontSize="large"
+          ></CloseRoundedIcon>
+        </FilterButton>
+      </Row>
+      <DividerLine></DividerLine>
+      <SmallHeadline>Valda filter</SmallHeadline>
+      <FilterButton
+        selected={false}
+        onClick={() => {
+          setFilteredDogs(unadoptedDogs);
+          setFilters([]);
+        }}
+      >
+        Rensa filter
+      </FilterButton>
+      {filters.map((filter) => (
+        <FilterButton selected={false}>
+          {filter}
+          <ClearRoundedIcon
+            onClick={() => handleFilterChange(filter.toUpperCase())}
+          ></ClearRoundedIcon>
+        </FilterButton>
+      ))}
+      <DividerLine></DividerLine>
+      <SmallHeadline>Alla filter</SmallHeadline>
+      <FilterButtonContainer>
+        {allFilters.map((filter) => (
+          <FilterButton
+            selected={filters.includes(filter)}
+            onClick={() => handleFilterChange(filter.toUpperCase())}
+          >
+            {filter}
+          </FilterButton>
+        ))}
+      </FilterButtonContainer>
+    </FilterOptionsContainers>
+  );
+
   return (
-    <>
+    <div>
       <StyledDiv>
         <ColCentered>
           {allDogsPosts.map((post, index) => {
@@ -192,58 +277,23 @@ export const AllDogsPage = () => {
           <ButtonContainer width="80%">
             <Col>
               <PrimaryButton
-                selected={showDropdown}
-                onClick={() => {
-                  setShowDropdown(!showDropdown);
-                }}
+                style={{ boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.25)" }}
+                selected={state.left}
+                onClick={toggleDrawer("left", true)}
               >
                 Filtrera <FilterAltRoundedIcon />{" "}
               </PrimaryButton>
             </Col>
             <Col>
-              <PrimaryButton selected={false}>
+              <PrimaryButton
+                style={{ boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.25)" }}
+                selected={false}
+              >
                 Sortera <SortRoundedIcon />{" "}
               </PrimaryButton>
             </Col>
           </ButtonContainer>{" "}
-          <ColStart>
-            {showDropdown && (
-              <FilterOptionsContainers>
-                <div>
-                  {filters.map((filter) => (
-                    <span>
-                      {filter}
-                      <ClearRoundedIcon
-                        onClick={() => handleFilterChange(filter.toUpperCase())}
-                      ></ClearRoundedIcon>
-                    </span>
-                  ))}
-                </div>
-                <div>
-                  <FilterButton
-                    selected={false}
-                    onClick={() => {
-                      setFilteredDogs(unadoptedDogs);
-                      setFilters([]);
-                    }}
-                  >
-                    Rensa filter
-                  </FilterButton>
-                </div>
-                <span>Alla filter</span>
-                <FilterButtonContainer>
-                  {allFilters.map((filter) => (
-                    <FilterButton
-                      selected={filters.includes(filter)}
-                      onClick={() => handleFilterChange(filter.toUpperCase())}
-                    >
-                      {filter}
-                    </FilterButton>
-                  ))}
-                </FilterButtonContainer>
-              </FilterOptionsContainers>
-            )}
-          </ColStart>
+          <ColStart></ColStart>
           <ColContainer>
             {filteredDogs.map((dog: IDog, index) => (
               <DogCard
@@ -266,16 +316,21 @@ export const AllDogsPage = () => {
                     Kastrerad: {dog.isNeutered ? "Ja" : "Nej"}
                   </CardText>
                   <CardText>Pris: {dog.price}kr</CardText>
-                  <ButtonContainer>
-                    {" "}
-                    <CardText>Storlek: {dog.size}</CardText>
+                  <CardText>Storlek: {dog.size}</CardText>
+                  <ButtonContainer
+                    style={{
+                      justifyContent: "flex-end",
+                      alignContent: "flex-end",
+                    }}
+                  >
                     <PrimaryButton
+                      style={{ position: "relative", bottom: 0, right: 0 }}
                       selected={false}
                       onClick={() => {
                         navigate(`/hundar-som-soker-hem/${dog.id}`);
                       }}
                     >
-                      Läs mer
+                      Mer om {dog.name}
                     </PrimaryButton>
                   </ButtonContainer>
                 </CardTextContainer>
@@ -345,7 +400,14 @@ export const AllDogsPage = () => {
             })}
           </CardContainer>
         </ColCentered>
-      </StyledDiv>
-    </>
+      </StyledDiv>{" "}
+      <Drawer
+        anchor="left"
+        open={state["left"]}
+        onClose={toggleDrawer("left", false)}
+      >
+        {list()}
+      </Drawer>
+    </div>
   );
 };

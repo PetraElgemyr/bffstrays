@@ -52,12 +52,19 @@ export const DogCard = styled(Col)`
   overflow: hidden;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   color: white;
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
 
   @media screen and (${devices.tablet}) {
     width: 28%;
     margin: 0;
     margin-top: 5%;
+
+    &:hover {
+      transform: scale(1.05);
+      transition: scale 0.7s smooth;
+    }
   }
 
   @media screen and (${devices.laptop}) {
