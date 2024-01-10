@@ -1,53 +1,32 @@
 import { useNavigate } from "react-router";
 import { SecondaryButton } from "../../styled/Buttons/SecondaryButton";
 import { PageName } from "../enums/PageName";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { ColCenteredButtonContainer } from "../../styled/Buttons/ColCenteredButtonContainer";
 import { ColCentered } from "../../styled/Common/Common";
 import { ColStart } from "../../styled/Spain/Spain";
 import { SlideCarousel } from "../SlideCarousel";
 import { useAppContext } from "../contexts/AppContext";
 import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
-import { getAllPosts } from "../helpers/RepositoryHelper";
 import { IPost } from "../models/IPost";
 import { ISlide } from "../models/ISlide";
 
 export const DiseasesPage = () => {
-  const { posts, setPosts, slides } = useAppContext();
+  const { slides, posts } = useAppContext();
   const [diseasesPosts, setDiseasesPosts] = useState<IPost[]>([]);
   const [diseasesPageSlides, setDiseasesPageSlides] = useState<ISlide[]>([]);
   const navigate = useNavigate();
 
-  // const fetchPosts = useCallback(async () => {
-  //   // Fetch posts, filter them and set them to state
-  //   if (posts.length > 0) {
-  //     const filteredPosts = filterPostsPerPage(posts, PageName.Diseases);
-  //     setDiseasesPosts(filteredPosts);
-  //   } else {
-  //     try {
-  //       const response = await getAllPosts();
-  //       if (response) {
-  //         setPosts(response);
-  //         const filteredPosts = filterPostsPerPage(response, PageName.Diseases);
-  //         setDiseasesPosts(filteredPosts);
-  //       } else {
-  //         console.log("Inga inlägg");
-  //       }
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   }
-  // }, []);
-
   useEffect(() => {
-    const workEthicsSlides: ISlide[] = [];
+    const filteredPosts = filterPostsPerPage(posts, PageName.Diseases);
+    setDiseasesPosts(filteredPosts);
+    const diseasesSlides: ISlide[] = [];
     const slide = findSlide(slides, PageName.Diseases);
     if (slide) {
-      workEthicsSlides.push(slide);
-      setDiseasesPageSlides(workEthicsSlides);
+      diseasesSlides.push(slide);
+      setDiseasesPageSlides(diseasesSlides);
     }
-    // fetchPosts();
-  }, [slides]);
+  }, [slides, posts]);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { Layout } from "./Layout";
 import { HomePage } from "./pages/HomePage";
 import { DogDetails } from "./pages/DogDetails";
@@ -15,44 +15,21 @@ import { MythPage } from "./pages/MythPage";
 import { WorkEthicsPage } from "./pages/WorkEthicsPage";
 import { AllDogsPage } from "./pages/AllDogsPage";
 
-export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout></Layout>,
-    children: [
-      { path: "/", element: <HomePage></HomePage> },
-      {
-        path: "/hundar-som-soker-hem/",
-        element: <AllDogsPage></AllDogsPage>,
-      },
-      {
-        path: "/adopterade-hundar",
-        element: <AdoptedDogsPage></AdoptedDogsPage>,
-      },
-      {
-        path: "/hundar-som-soker-hem/:id",
-        element: <DogDetails></DogDetails>,
-      },
-      { path: "/om-oss", element: <AboutPage></AboutPage> },
-      { path: "/situationen-i-spanien", element: <SpainPage></SpainPage> },
-      { path: "/myter-om-gatuhundar", element: <MythPage></MythPage> },
-      { path: "/sjukdomar", element: <DiseasesPage></DiseasesPage> },
-
-      { path: "/adoption", element: <AdoptionPage></AdoptionPage> },
-      {
-        path: "/krav-pa-adoptorer",
-        element: <RequirementsForAdoptionPage></RequirementsForAdoptionPage>,
-      },
-      { path: "/vart-arbetssatt", element: <WorkEthicsPage></WorkEthicsPage> },
-      { path: "/donera", element: <DonatePage></DonatePage> },
-      {
-        path: "/intresseanmalan",
-        element: <RegisterInterestPage></RegisterInterestPage>,
-      },
-      {
-        path: "/kontakt",
-        element: <ContactPage></ContactPage>,
-      },
-    ],
-  },
-]);
+export const router = [
+  <Route path="/" element={<Layout />}>
+    <Route index element={<HomePage />} />
+    <Route path="hundar-som-soker-hem/" element={<AllDogsPage />} />
+    <Route path="adopterade-hundar" element={<AdoptedDogsPage />} />
+    <Route path="hundar-som-soker-hem/:id" element={<DogDetails />} />
+    <Route path="om-oss" element={<AboutPage />} />
+    <Route path="situationen-i-spanien" element={<SpainPage />} />
+    <Route path="myter-om-gatuhundar" element={<MythPage />} />
+    <Route path="sjukdomar" element={<DiseasesPage />} />
+    <Route path="adoption" element={<AdoptionPage />} />
+    <Route path="krav-pa-adoptorer" element={<RequirementsForAdoptionPage />} />
+    <Route path="vart-arbetssatt" element={<WorkEthicsPage />} />
+    <Route path="donera" element={<DonatePage />} />
+    <Route path="intresseanmalan" element={<RegisterInterestPage />} />
+    <Route path="kontakt" element={<ContactPage />} />
+  </Route>,
+];

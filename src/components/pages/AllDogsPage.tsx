@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Drawer from "@mui/material/Drawer";
 import { PrimaryButton } from "../../styled/Buttons/PrimaryButton";
 import {
@@ -42,7 +42,6 @@ import { Filter } from "../enums/Filter";
 import { useNavigate } from "react-router";
 import { useAppContext } from "../contexts/AppContext";
 import { filterPostsPerPage, filterAdoptedDogs } from "../helpers/FilterHelper";
-import { getAllPosts } from "../helpers/RepositoryHelper";
 import { IPost } from "../models/IPost";
 import ClearRoundedIcon from "@mui/icons-material/ClearRounded";
 import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
@@ -57,7 +56,7 @@ export const AllDogsPage = () => {
     right: false,
   });
   const navigate = useNavigate();
-  const { dogs, posts, setPosts } = useAppContext();
+  const { dogs, posts } = useAppContext();
   const [filters, setFilters] = useState<string[]>([]);
   //   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [filteredDogs, setFilteredDogs] = useState<IDog[]>([]);
@@ -92,99 +91,76 @@ export const AllDogsPage = () => {
   };
 
   useEffect(() => {
-    filterDogs();
-  }, [filters]);
+    const filterDogs = () => {
+      let newFilteredDogs = unadoptedDogs;
 
-  const filterDogs = () => {
-    let newFilteredDogs = unadoptedDogs;
-
-    filters.forEach((filter) => {
-      newFilteredDogs = newFilteredDogs.filter((dog) => {
-        if (
-          filter === Filter.Male &&
-          dog.gender.toString().toUpperCase() === Filter.Male
-        ) {
-          return true;
-        }
-        if (
-          filter === Filter.Female &&
-          dog.gender.toString().toUpperCase() === Filter.Female
-        ) {
-          return true;
-        }
-        if (
-          filter === Filter.Small &&
-          dog.size.toString().toUpperCase() === Filter.Small
-        ) {
-          return true;
-        }
-        if (
-          filter === Filter.Medium &&
-          dog.size.toString().toUpperCase() === Filter.Medium
-        ) {
-          return true;
-        }
-        if (
-          filter === Filter.Big &&
-          dog.size.toString().toUpperCase() === Filter.Big
-        ) {
-          return true;
-        }
-        if (
-          filter === Filter.Puppy &&
-          dog.ageGroup.toString().toUpperCase() === Filter.Puppy
-        ) {
-          return true;
-        }
-        if (
-          filter === Filter.Adult &&
-          dog.ageGroup.toString().toUpperCase() === Filter.Adult
-        ) {
-          return true;
-        }
-        if (
-          filter === Filter.Senior &&
-          dog.ageGroup.toString().toUpperCase() === Filter.Senior
-        ) {
-          return true;
-        }
-        return false;
+      filters.forEach((filter) => {
+        newFilteredDogs = newFilteredDogs.filter((dog) => {
+          if (
+            filter === Filter.Male &&
+            dog.gender.toString().toUpperCase() === Filter.Male
+          ) {
+            return true;
+          }
+          if (
+            filter === Filter.Female &&
+            dog.gender.toString().toUpperCase() === Filter.Female
+          ) {
+            return true;
+          }
+          if (
+            filter === Filter.Small &&
+            dog.size.toString().toUpperCase() === Filter.Small
+          ) {
+            return true;
+          }
+          if (
+            filter === Filter.Medium &&
+            dog.size.toString().toUpperCase() === Filter.Medium
+          ) {
+            return true;
+          }
+          if (
+            filter === Filter.Big &&
+            dog.size.toString().toUpperCase() === Filter.Big
+          ) {
+            return true;
+          }
+          if (
+            filter === Filter.Puppy &&
+            dog.ageGroup.toString().toUpperCase() === Filter.Puppy
+          ) {
+            return true;
+          }
+          if (
+            filter === Filter.Adult &&
+            dog.ageGroup.toString().toUpperCase() === Filter.Adult
+          ) {
+            return true;
+          }
+          if (
+            filter === Filter.Senior &&
+            dog.ageGroup.toString().toUpperCase() === Filter.Senior
+          ) {
+            return true;
+          }
+          return false;
+        });
       });
-    });
 
-    setFilteredDogs(newFilteredDogs);
-  };
+      setFilteredDogs(newFilteredDogs);
+    };
 
-  // const fetchPosts = useCallback(async () => {
-  //   // Fetch posts, filter them and set them to state
-  //   if (posts.length > 0) {
-  //     const filteredPosts = filterPostsPerPage(posts, PageName.Dogs);
-  //     setAllDogsPosts(filteredPosts);
-  //   } else {
-  //     try {
-  //       const response = await getAllPosts();
-  //       if (response) {
-  //         setPosts(response);
-  //         const filteredPosts = filterPostsPerPage(response, PageName.Dogs);
-  //         setAllDogsPosts(filteredPosts);
-  //       } else {
-  //         console.log("Inga inlägg");
-  //       }
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   fetchPosts();
-  // }, [fetchPosts]);
+    filterDogs();
+  }, [filters, unadoptedDogs]);
 
   useEffect(() => {
+    const filteredPosts = filterPostsPerPage(posts, PageName.Dogs);
+    setAllDogsPosts(filteredPosts);
     const unadoptedDogs: IDog[] = filterAdoptedDogs(dogs, false);
     setUnadoptedDogs(unadoptedDogs);
     setFilteredDogs(unadoptedDogs);
-  }, [dogs]);
+  }, [dogs, posts]);
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
