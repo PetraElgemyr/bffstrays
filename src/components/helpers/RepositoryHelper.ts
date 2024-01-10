@@ -107,7 +107,7 @@ export const getAllPosts = async (): Promise<IPost[]> => {
   }
 };
 
-export const getSlides = async (): Promise<ISlide[]> => {
+export const getAllSlides = async (): Promise<ISlide[]> => {
   try {
     const response: contentful.EntryCollection<
       contentful.EntrySkeletonType,
@@ -137,7 +137,7 @@ export const getSlides = async (): Promise<ISlide[]> => {
   }
 };
 
-export const getPageDescriptions = async (): Promise<IPostDescription[]> => {
+export const getAllDescriptions = async (): Promise<IPostDescription[]> => {
   try {
     const response: contentful.EntryCollection<
       contentful.EntrySkeletonType,

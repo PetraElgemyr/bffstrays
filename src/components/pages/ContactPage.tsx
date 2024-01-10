@@ -1,8 +1,7 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
-import { getAllPosts } from "../helpers/RepositoryHelper";
 import { IPost } from "../models/IPost";
 import { ISlide } from "../models/ISlide";
 import { ColStart } from "../../styled/Spain/Spain";
@@ -14,33 +13,14 @@ import { SlideCarousel } from "../SlideCarousel";
 import { ColCenteredButtonContainer } from "../../styled/Buttons/ColCenteredButtonContainer";
 
 export const ContactPage = () => {
-  const { posts, setPosts, slides } = useAppContext();
+  const { slides, posts } = useAppContext();
   const [contactPageSlides, setContactPageSlides] = useState<ISlide[]>([]);
   const [contactPosts, setContactPosts] = useState<IPost[]>([]);
   const navigate = useNavigate();
 
-  const fetchPosts = useCallback(async () => {
-    // Fetch posts, filter them and set them to state
-    if (posts.length > 0) {
-      const filteredPosts = filterPostsPerPage(posts, PageName.Contact);
-      setContactPosts(filteredPosts);
-    } else {
-      try {
-        const response = await getAllPosts();
-        if (response) {
-          setPosts(response);
-          const filteredPosts = filterPostsPerPage(response, PageName.Contact);
-          setContactPosts(filteredPosts);
-        } else {
-          console.log("Inga inlägg");
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }, []);
-
   useEffect(() => {
+    const filteredPosts = filterPostsPerPage(posts, PageName.Contact);
+    setContactPosts(filteredPosts);
     const contactSlides: ISlide[] = [];
     const slide = findSlide(slides, PageName.Contact);
     if (slide) {
@@ -48,8 +28,8 @@ export const ContactPage = () => {
       setContactPageSlides(contactSlides);
       console.log(slide);
     }
-    fetchPosts();
-  }, [fetchPosts, slides]);
+    // fetchPosts();
+  }, [slides, posts]);
 
   return (
     <>

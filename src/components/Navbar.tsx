@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Nav,
   Logo,
@@ -15,11 +15,9 @@ import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRound
 import { PageName } from "./enums/PageName";
 import "../scss/navbar.scss";
 import { useAppContext } from "./contexts/AppContext";
-import { getLogo } from "./helpers/RepositoryHelper";
-import { ILogo } from "./models/ILogo";
 
 export const Navbar = () => {
-  const { logo, setLogo } = useAppContext();
+  const { logo } = useAppContext();
   const [toggled, setToggled] = useState(false);
   const [dropDownToShow, setDropDownToShow] = useState<string>("");
   const [dropDownLinks, setDropDownLinks] = useState<JSX.Element>(<></>);
@@ -134,25 +132,6 @@ export const Navbar = () => {
 
   const imageUrl =
     `https:${logo?.logoImg?.fields?.file?.url?.toString()}` || "";
-
-  const fetchLogo = useCallback(async () => {
-    if (!logo) {
-      try {
-        const fetchedLogo: ILogo | null = await getLogo();
-        if (fetchedLogo) {
-          setLogo(fetchedLogo as ILogo);
-          console.log(fetchedLogo);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchLogo();
-  }, [fetchLogo]);
-
   return (
     <Nav style={{ zIndex: 999 }}>
       <Logo

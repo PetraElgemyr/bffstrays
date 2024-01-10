@@ -1,8 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
-import { filterPostsPerPage } from "../helpers/FilterHelper";
-import { getAllPosts } from "../helpers/RepositoryHelper";
+import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
 import { IPost } from "../models/IPost";
 import { StyledDiv } from "../../styled/AllDogs/DogCard";
 import { ColCentered } from "../../styled/Common/Common";
@@ -17,48 +16,37 @@ import {
   TextContainer,
 } from "../../styled/Home/DescriptiveCard";
 import "../../scss/home.scss";
+import { ISlide } from "../models/ISlide";
+import { SlideCarousel } from "../SlideCarousel";
+import { MainHeadline } from "../../styled/Fonts/MainHeadline";
 
 export const DonatePage = () => {
-  const { posts, setPosts } = useAppContext();
+  const { posts, slides } = useAppContext();
   const [donatePosts, setDonatePosts] = useState<IPost[]>([]);
-
-  const fetchPosts = useCallback(async () => {
-    // Fetch posts, filter them and set them to state
-    if (posts.length > 0) {
-      const filteredPosts = filterPostsPerPage(posts, PageName.Donate);
-      setDonatePosts(filteredPosts);
-    } else {
-      try {
-        const response = await getAllPosts();
-        if (response) {
-          setPosts(response);
-          const filteredPosts = filterPostsPerPage(response, PageName.Donate);
-          setDonatePosts(filteredPosts);
-        } else {
-          console.log("Inga inlägg");
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }, []);
+  const [donateSlides, setDonateSlides] = useState<ISlide[]>([]);
 
   useEffect(() => {
-    fetchPosts();
-  }, [fetchPosts]);
+    const filteredPosts = filterPostsPerPage(posts, PageName.Donate);
+    setDonatePosts(filteredPosts);
+    const donateSlides: ISlide[] = [];
+    const slide = findSlide(slides, PageName.Donate);
+    if (slide) {
+      donateSlides.push(slide);
+      setDonateSlides(donateSlides);
+    }
+  }, [posts, slides]);
 
   return (
     <>
+      <SlideCarousel slides={donateSlides} />
       <StyledDiv>
         <ColCentered>
-          {/* <ColStart> */}
-          <h2>Donera</h2>
+          <MainHeadline>Hjälp oss att hjälpa</MainHeadline>
           <p style={{ width: "85%" }}>
             Alla bidrag är oerhört välkomna, stora som små! Om du inte har
             möjlighet att adoptera en hund just nu så kan du hjälpa oss på flera
             olika sätt. Nedan kan du läsa mer om hur du kan göra skillnad.
           </p>
-          {/* </ColStart> */}
         </ColCentered>{" "}
       </StyledDiv>
 
