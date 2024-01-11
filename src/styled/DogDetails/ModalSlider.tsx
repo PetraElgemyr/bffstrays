@@ -26,7 +26,7 @@ export const ModalSlider = styled(StyledDogSlider)`
   }
 `;
 
-export const DogModalSliderImage = styled(StyledDogSliderImage)`
+export const ModalSliderImage = styled(StyledDogSliderImage)`
   height: auto;
   height: 50vh;
   position: relative;

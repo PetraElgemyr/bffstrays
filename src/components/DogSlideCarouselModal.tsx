@@ -1,7 +1,7 @@
 import { CCarouselItem } from "@coreui/react";
 import {
-  DogModalSlider,
-  DogModalSliderImage,
+  ModalSlider,
+  ModalSliderImage,
 } from "../styled/DogDetails/ModalSlider";
 import { IDogSlide } from "./pages/DogDetails";
 
@@ -15,7 +15,7 @@ export const DogSlideCarouselModal = ({
   handleClose,
 }: IDogSlideCarouselModalProps) => {
   return (
-    <DogModalSlider controls indicators>
+    <ModalSlider controls indicators>
       {slides.map((slide, index) => {
         return (
           <CCarouselItem
@@ -27,7 +27,7 @@ export const DogSlideCarouselModal = ({
               maxHeight: "80%",
             }}
           >
-            <DogModalSliderImage
+            <ModalSliderImage
               className="d-block w-100"
               src={slide.url}
               alt={slide.imgName}
@@ -36,6 +36,6 @@ export const DogSlideCarouselModal = ({
           </CCarouselItem>
         );
       })}
-    </DogModalSlider>
+    </ModalSlider>
   );
 };

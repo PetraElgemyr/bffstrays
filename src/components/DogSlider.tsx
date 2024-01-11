@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { ImageModal } from "./ImageModal";
 import {
   ModalSlider,
-  DogModalSliderImage,
+  ModalSliderImage,
 } from "../styled/DogDetails/ModalSlider";
 import "./DogModal.scss";
 
@@ -52,7 +52,7 @@ export const DogSlider = ({ slides, isDogModal }: IDogSliderProps) => {
                 padding: 0,
               }}
             >
-              <DogModalSliderImage src={slide.url} alt={slide.imgName} />
+              <ModalSliderImage src={slide.url} alt={slide.imgName} />
             </div>
           </CCarouselItem>
         ))}
@@ -76,7 +76,7 @@ export const DogSlider = ({ slides, isDogModal }: IDogSliderProps) => {
                 padding: 0,
               }}
             >
-              <DogModalSliderImage src={slide.url} alt={slide.imgName} />
+              <ModalSliderImage src={slide.url} alt={slide.imgName} />
             </div>
           </CCarouselItem>
         ))}
