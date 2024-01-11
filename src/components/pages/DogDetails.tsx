@@ -114,7 +114,7 @@ export const DogDetails = () => {
               Gör en intresseanmälan
             </SecondaryButton>
             {images.length > 0 ? (
-              <DogSlider slides={images}></DogSlider>
+              <DogSlider isDogModal={false} slides={images}></DogSlider>
             ) : (
               <SmallHeadline>Fler bilder kommer snart</SmallHeadline>
             )}
