@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
 import { IPost } from "../models/IPost";
@@ -12,6 +11,7 @@ import { ColCenteredButtonContainer } from "../../styled/Buttons/ColCenteredButt
 import { SecondaryButton } from "../../styled/Buttons/SecondaryButton";
 import { SlideCarousel } from "../SlideCarousel";
 import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
+import { useAppContext } from "../hooks/useAppContext";
 
 export const SpainPage = () => {
   const { posts, slides } = useAppContext();

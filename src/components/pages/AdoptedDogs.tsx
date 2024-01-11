@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAppContext } from "../contexts/AppContext";
+import { useAppContext } from "../hooks/useAppContext";
 import { filterAdoptedDogs } from "../helpers/FilterHelper";
 import { IDog } from "../models/IDog";
 import {

@@ -40,7 +40,7 @@ import { PageName } from "../enums/PageName";
 import { IDog } from "../models/IDog";
 import { Filter } from "../enums/Filter";
 import { useNavigate } from "react-router";
-import { useAppContext } from "../contexts/AppContext";
+import { useAppContext } from "../hooks/useAppContext";
 import { filterPostsPerPage, filterAdoptedDogs } from "../helpers/FilterHelper";
 import { IPost } from "../models/IPost";
 import ClearRoundedIcon from "@mui/icons-material/ClearRounded";

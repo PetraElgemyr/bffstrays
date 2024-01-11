@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
 import { IPost } from "../models/IPost";
@@ -11,6 +10,7 @@ import { ColCentered } from "../../styled/Common/Common";
 import { ColStart } from "../../styled/Spain/Spain";
 import { SlideCarousel } from "../SlideCarousel";
 import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
+import { useAppContext } from "../hooks/useAppContext";
 
 export const AboutPage = () => {
   const { posts, slides } = useAppContext();

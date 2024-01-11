@@ -1,4 +1,4 @@
-import { useAppContext } from "../contexts/AppContext";
+import { useAppContext } from "../hooks/useAppContext";
 import { PageName } from "../enums/PageName";
 import "../../scss/home.scss";
 import {

@@ -6,7 +6,7 @@ import { ColCenteredButtonContainer } from "../../styled/Buttons/ColCenteredButt
 import { ColCentered } from "../../styled/Common/Common";
 import { ColStart } from "../../styled/Spain/Spain";
 import { SlideCarousel } from "../SlideCarousel";
-import { useAppContext } from "../contexts/AppContext";
+import { useAppContext } from "../hooks/useAppContext";
 import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
 import { IPost } from "../models/IPost";
 import { ISlide } from "../models/ISlide";

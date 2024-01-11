@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { ColCentered } from "../../styled/Common/Common";
 import { ColStart } from "../../styled/Spain/Spain";
 import { SlideCarousel } from "../SlideCarousel";
-import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
 import { IPost } from "../models/IPost";
 import { ISlide } from "../models/ISlide";
+import { useAppContext } from "../hooks/useAppContext";
 
 export const WorkEthicsPage = () => {
   const { posts, slides } = useAppContext();

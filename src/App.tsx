@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import { router } from "./Router";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { IPost } from "./components/models/IPost";
 import { IDog } from "./components/models/IDog";
 import { AppContext } from "./components/contexts/AppContext";
@@ -15,6 +15,7 @@ import {
 import { ISlide } from "./components/models/ISlide";
 import { IPostDescription } from "./components/models/IPostDescription";
 import { ILogo } from "./components/models/ILogo";
+import { LoaderContext } from "./components/contexts/LoaderContext";
 
 function App() {
   const [posts, setPosts] = useState<IPost[]>([]);
@@ -23,8 +24,9 @@ function App() {
   const [slides, setSlides] = useState<ISlide[]>([]);
   const [descriptions, setDescriptions] = useState<IPostDescription[]>([]);
   const [logo, setLogo] = useState<ILogo>({} as ILogo);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const contextValue = {
+  const appContextValue = {
     posts,
     setPosts,
     dogs,
@@ -39,76 +41,103 @@ function App() {
     setLogo,
   };
 
+  const loaderContextValue = {
+    isLoading,
+    setIsLoading,
+  };
+
+  const getDogs = useCallback(async () => {
+    setIsLoading(true);
+    const response = await getAllDogs();
+    setDogs(response);
+    setIsLoading(false);
+  }, []);
+
   useEffect(() => {
     if (dogs.length > 0) return;
-
-    const getDogs = async () => {
-      const response = await getAllDogs();
-      setDogs(response);
-    };
-
     if (dogs.length === 0) {
       getDogs();
     }
   });
 
+  const getPosts = useCallback(async () => {
+    setIsLoading(true);
+    const response = await getAllPosts();
+    setPosts(response);
+    setIsLoading(false);
+  }, []);
+
   useEffect(() => {
     if (posts.length > 0) return;
-
-    const getPosts = async () => {
-      const response = await getAllPosts();
-      setPosts(response);
-    };
-
     if (posts.length === 0) {
       getPosts();
     }
   });
 
+  const getSlides = useCallback(async () => {
+    setIsLoading(true);
+    const response = await getAllSlides();
+    setSlides(response);
+    setIsLoading(false);
+  }, []);
+
   useEffect(() => {
     if (slides.length > 0) return;
-
-    const getSlides = async () => {
-      const response = await getAllSlides();
-      setSlides(response);
-    };
-
     if (slides.length === 0) {
       getSlides();
     }
   });
 
+  const getDescriptions = useCallback(async () => {
+    setIsLoading(true);
+    const response = await getAllDescriptions();
+    setDescriptions(response);
+    setIsLoading(false);
+  }, []);
+
   useEffect(() => {
     if (descriptions.length > 0) return;
-
-    const getDescriptions = async () => {
-      const response = await getAllDescriptions();
-      setDescriptions(response);
-    };
-
     if (descriptions.length === 0) {
       getDescriptions();
     }
-  });
+  }, [descriptions, getDescriptions]);
 
-  useEffect(() => {
-    const getNavLogo = async () => {
-      const fetchedLogo = await getLogo();
-      setLogo(fetchedLogo as ILogo);
-    };
-
-    getNavLogo();
+  const getNavLogo = useCallback(async () => {
+    setIsLoading(true);
+    const fetchedLogo = await getLogo();
+    setLogo(fetchedLogo as ILogo);
+    setIsLoading(false);
   }, []);
 
+  useEffect(() => {
+    getDogs();
+    getPosts();
+    getSlides();
+    getDescriptions();
+    getNavLogo();
+  }, [getDogs, getPosts, getSlides, getDescriptions, getNavLogo]);
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 2500);
+  // }, []);
+
+  // if (isLoading) {
+  //   return <LoadingOverlay></LoadingOverlay>;
+  // } else {
   return (
     <>
-      <AppContext.Provider value={contextValue}>
-        <Router>
-          <Routes>{router}</Routes>
-        </Router>
-      </AppContext.Provider>
+      <LoaderContext.Provider value={loaderContextValue}>
+        <AppContext.Provider value={appContextValue}>
+          <Router>
+            <Routes>{router}</Routes>
+          </Router>
+        </AppContext.Provider>
+      </LoaderContext.Provider>
     </>
   );
+  // }
 }
 
 export default App;
