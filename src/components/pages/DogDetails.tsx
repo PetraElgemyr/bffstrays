@@ -3,36 +3,48 @@ import { useNavigate, useParams } from "react-router";
 import { IDog } from "../models/IDog";
 import { useAppContext } from "../contexts/AppContext";
 import {
-  Carousel,
   DogImg,
   DogImgContainer1,
 } from "../../styled/DogDetails/DogImgContainer";
 import { DogInfoContainer } from "../../styled/DogDetails/DogInfoContainer";
 import { DogFactsContainer } from "../../styled/DogDetails/DogFactsContainer";
-import { Col } from "../../styled/Common/Common";
 import {
   DogFactTextBold,
   DogFactText,
-  DogDescription,
 } from "../../styled/DogDetails/DogFactText";
 import { CardTitle } from "../../styled/AllDogs/DogCard";
-import { CCarouselItem, CImage } from "@coreui/react";
 import "@coreui/coreui/dist/css/coreui.min.css";
-import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import { SecondaryButton } from "../../styled/Buttons/SecondaryButton";
+import { DogSlider } from "../DogSlider";
+import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
+import { CommonText } from "../../styled/Fonts/CommonText";
+import { ColStartDogDetails } from "../../styled/DogDetails/StyledDogSlider";
+import { ColCentered } from "../../styled/Common/Common";
+import { GoBack } from "../GoBack";
+
+export interface IDogSlide {
+  url: string;
+  imgName: string;
+}
 
 export const DogDetails = () => {
   const { dogs, setDogs } = useAppContext();
   const { id } = useParams();
   const [dog, setDog] = useState<IDog>();
   const navigate = useNavigate();
-  const [images, setImages] = useState<string[]>([]);
+  const [images, setImages] = useState<IDogSlide[]>([]);
 
   const findImages = (dogExists: IDog) => {
-    const urls: string[] = [];
-    dogExists.medias.map((imgObject) => {
-      urls.push(`https:${imgObject.fields.file.url}`);
-      setImages(urls);
+    const createdSlides: IDogSlide[] = [];
+
+    dogExists.medias.map((imgObject, index) => {
+      const newSlide: IDogSlide = {
+        url: imgObject.fields.file.url,
+        imgName: `${dogExists.name}-${index.toString()}`,
+      };
+
+      createdSlides.push(newSlide);
+      setImages(createdSlides);
     });
   };
 
@@ -51,19 +63,7 @@ export const DogDetails = () => {
     <>
       {dog ? (
         <>
-          <DogFactTextBold
-            style={{
-              cursor: "pointer",
-              position: "relative",
-              left: "2%",
-              margin: "5%",
-            }}
-            onClick={() => {
-              navigate(-1);
-            }}
-          >
-            <ArrowBackIosNewRoundedIcon></ArrowBackIosNewRoundedIcon> Tillbaka
-          </DogFactTextBold>
+          <GoBack></GoBack>
           <div
             style={{
               width: "100vw",
@@ -102,9 +102,9 @@ export const DogDetails = () => {
                 </DogFactTextBold>
               </DogFactsContainer>
             </DogInfoContainer>
-            <Col style={{ alignItems: "center" }}>
-              <DogDescription>{dog.description}</DogDescription>
-            </Col>
+            <ColStartDogDetails>
+              <CommonText>{dog.description}</CommonText>
+            </ColStartDogDetails>
             <SecondaryButton
               selected={false}
               onClick={() => {
@@ -114,24 +114,22 @@ export const DogDetails = () => {
               Gör en intresseanmälan
             </SecondaryButton>
             {images.length > 0 ? (
-              <Carousel controls indicators>
-                {images.map((imgUrl, index) => (
-                  <CCarouselItem key={index}>
-                    <CImage
-                      className="d-block w-100"
-                      src={imgUrl}
-                      alt={dog.name + index}
-                    />{" "}
-                  </CCarouselItem>
-                ))}
-              </Carousel>
+              <DogSlider slides={images}></DogSlider>
             ) : (
-              <p>Fler bilder kommer snart</p>
+              <SmallHeadline>Fler bilder kommer snart</SmallHeadline>
             )}
           </div>
         </>
       ) : (
-        <p className="black">Hunden du söker finns inte</p>
+        <ColCentered style={{ margin: "15%" }}>
+          {" "}
+          <SmallHeadline>
+            Hoppsan! Hunden du söker finns tyvärr inte
+          </SmallHeadline>
+          <SecondaryButton onClick={() => navigate(-1)} selected={false}>
+            <GoBack></GoBack>
+          </SecondaryButton>
+        </ColCentered>
       )}
     </>
   );

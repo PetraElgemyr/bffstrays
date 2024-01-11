@@ -23,11 +23,23 @@ export const DogImgContainer1 = styled.div`
 export const DogImg = styled.img`
   width: 100%;
   border-radius: 15px;
+  max-height: 50vh;
+  position: relative;
+  object-fit: cover;
+  object-position: center 30%;
+
+  @media screen and (${devices.mobileL}) {
+    max-height: 60vh;
+  }
 
   @media screen and (${devices.tablet}) {
-    width: 100%;
+    max-height: 70vh;
     margin: 0;
     border-radius: 0;
+  }
+
+  @media screen and (${devices.laptop}) {
+    max-height: 75vh;
   }
 `;
 

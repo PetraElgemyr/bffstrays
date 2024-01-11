@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
-export const MainHeadline = styled.h2`
+export const CommonText = styled.span`
+  line-height: 30px;
   font-family: "Korolev light", sans-serif;
-  font-weight: 600;
-  color: black;
+  margin: 10%;
 `;
