@@ -113,7 +113,7 @@ export const Image = styled.img`
 `;
 
 export const CardTitle = styled.h4`
-  font-family: "Korolev Medium", sans-serif;
+  font-family: "Korolev Medium", "Trebuchet MS", Helvetica, sans-serif;
   font-size: 1.5rem;
   margin: 5%;
 `;

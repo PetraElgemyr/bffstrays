@@ -1,19 +1,19 @@
 import { Route } from "react-router-dom";
-import { Layout } from "./Layout";
-import { HomePage } from "./pages/HomePage";
-import { DogDetails } from "./pages/DogDetails";
-import { ContactPage } from "./pages/ContactPage";
-import { AboutPage } from "./pages/AboutPage";
-import { AdoptedDogsPage } from "./pages/AdoptedDogs";
-import { DonatePage } from "./pages/DonatePage";
-import { RegisterInterestPage } from "./pages/RegisterInterestPage";
-import { SpainPage } from "./pages/SpainPage";
-import { AdoptionPage } from "./pages/AdoptionPage";
-import { RequirementsForAdoptionPage } from "./pages/RequirementsForAdoptionPage";
-import { DiseasesPage } from "./pages/DiseasesPage";
-import { MythPage } from "./pages/MythPage";
-import { WorkEthicsPage } from "./pages/WorkEthicsPage";
-import { AllDogsPage } from "./pages/AllDogsPage";
+import { Layout } from "./components/Layout";
+import { HomePage } from "./components/pages/HomePage";
+import { DogDetails } from "./components/pages/DogDetails";
+import { ContactPage } from "./components/pages/ContactPage";
+import { AboutPage } from "./components/pages/AboutPage";
+import { AdoptedDogsPage } from "./components/pages/AdoptedDogs";
+import { DonatePage } from "./components/pages/DonatePage";
+import { RegisterInterestPage } from "./components/pages/RegisterInterestPage";
+import { SpainPage } from "./components/pages/SpainPage";
+import { AdoptionPage } from "./components/pages/AdoptionPage";
+import { RequirementsForAdoptionPage } from "./components/pages/RequirementsForAdoptionPage";
+import { DiseasesPage } from "./components/pages/DiseasesPage";
+import { MythPage } from "./components/pages/MythPage";
+import { WorkEthicsPage } from "./components/pages/WorkEthicsPage";
+import { AllDogsPage } from "./components/pages/AllDogsPage";
 
 export const router = [
   <Route path="/" element={<Layout />}>

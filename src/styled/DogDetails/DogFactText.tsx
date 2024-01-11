@@ -2,13 +2,13 @@ import { styled } from "styled-components";
 import { devices } from "../devices";
 
 export const DogFactText = styled.span`
-  font-family: "Korolev light", sans-serif;
+  font-family: "Korolev Medium", "Trebuchet MS", Helvetica, sans-serif;
   font-weight: lighter;
   font-style: italic;
 `;
 
 export const DogFactTextBold = styled.p`
-  font-family: "Korolev Medium", sans-serif;
+  font-family: "Korolev Medium", "Trebuchet MS", Helvetica, sans-serif;
   font-weight: bold;
   font-size: 1rem;
   margin: 2%;
@@ -27,6 +27,6 @@ export const DogFactTextBold = styled.p`
 export const DogDescription = styled.article`
   width: 85%;
   margin: 10%;
-  font-family: "Korolev Medium", sans-serif;
+  font-family: "Korolev Medium", "Trebuchet MS", Helvetica, sans-serif;
   line-height: 30px;
 `;

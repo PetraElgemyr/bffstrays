@@ -13,7 +13,7 @@ export const PrimaryButton = styled.button<IFilterButtonProps>`
   background-color: ${colors.secondary_green};
   min-height: 48px;
   color: ${colors.primary_green};
-  font-family: "Korolev Medium", sans-serif;
+  font-family: "Korolev Medium", "Trebuchet MS", Helvetica, sans-serif;
   font-size: 1rem;
   font-style: normal;
   font-weight: 700;

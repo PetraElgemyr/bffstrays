@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
-import { router } from "./components/Router";
+import { router } from "./Router";
 import { useEffect, useState } from "react";
 import { IPost } from "./components/models/IPost";
 import { IDog } from "./components/models/IDog";
