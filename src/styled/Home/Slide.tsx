@@ -83,7 +83,7 @@ export const SlideTitleContainer = styled.div`
 `;
 
 export const SlideTitleText = styled.h5`
-  font-family: "Korolev Medium", sans-serif;
+  font-family: "Korolev Medium", "Trebuchet MS", Helvetica, sans-serif;
   color: black;
   font-size: 1.2rem;
   font-style: normal;

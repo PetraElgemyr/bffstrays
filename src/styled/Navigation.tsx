@@ -97,7 +97,7 @@ export const Menu = styled.div`
 `;
 
 export const DropDownMenu = styled.div<IToggled>`
-  font-family: "Julius Sans One", sans-serif;
+  font-family: "Korolev Medium", "Trebuchet MS", Helvetica, sans-serif;
   display: flex;
   transition: top 1s;
   top: ${({ toggled }) => (toggled ? "0" : "-800px")};

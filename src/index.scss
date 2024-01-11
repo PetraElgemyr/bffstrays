@@ -1,11 +1,12 @@
 :root {
-  font-family: "Korolev Medium", sans-serif;
+  font-family: "Korolev Medium", "Trebuchet MS", Helvetica, sans-serif;
   margin: 0;
   padding: 0;
 }
 
 * {
-  font-family: "Korolev light", sans-serif; //TODO! Välj mellan light eller medium
+  //TODO! Välj mellan light eller medium
+  font-family: "Korolev light", "Trebuchet MS", Helvetica, sans-serif;
   letter-spacing: 1px;
 }
 
