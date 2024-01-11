@@ -20,7 +20,8 @@ import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
 import { CommonText } from "../../styled/Fonts/CommonText";
 import { ColStartDogDetails } from "../../styled/DogDetails/StyledDogSlider";
 import { ColCentered } from "../../styled/Common/Common";
-import { GoBack } from "../GoBack";
+import { GoBackButton } from "../GoBackButton";
+import { makeFoundImagesToSlides } from "../helpers/ImageHelper";
 
 export interface IDogSlide {
   url: string;
@@ -34,27 +35,17 @@ export const DogDetails = () => {
   const navigate = useNavigate();
   const [images, setImages] = useState<IDogSlide[]>([]);
 
-  const findImages = (dogExists: IDog) => {
-    const createdSlides: IDogSlide[] = [];
-
-    dogExists.medias.map((imgObject, index) => {
-      const newSlide: IDogSlide = {
-        url: imgObject.fields.file.url,
-        imgName: `${dogExists.name}-${index.toString()}`,
-      };
-
-      createdSlides.push(newSlide);
-      setImages(createdSlides);
-    });
-  };
-
   useEffect(() => {
     if (id && dogs.length > 0) {
       const dogExists = dogs.find((dog) => dog.id === id);
       setDog(dogExists);
 
       if (dogExists && dogExists.medias) {
-        findImages(dogExists);
+        const createdSlides: IDogSlide[] = makeFoundImagesToSlides(
+          dogExists,
+          true
+        );
+        setImages(createdSlides);
       }
     }
   }, [id, dogs, setDogs]);
@@ -63,7 +54,7 @@ export const DogDetails = () => {
     <>
       {dog ? (
         <>
-          <GoBack></GoBack>
+          <GoBackButton></GoBackButton>
           <div
             style={{
               width: "100vw",
@@ -127,7 +118,7 @@ export const DogDetails = () => {
             Hoppsan! Hunden du söker finns tyvärr inte
           </SmallHeadline>
           <SecondaryButton onClick={() => navigate(-1)} selected={false}>
-            <GoBack></GoBack>
+            <GoBackButton></GoBackButton>
           </SecondaryButton>
         </ColCentered>
       )}

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import { DogFactTextBold } from "../styled/DogDetails/DogFactText";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 
-export const GoBack = () => {
+export const GoBackButton = () => {
   const navigate = useNavigate();
 
   return (

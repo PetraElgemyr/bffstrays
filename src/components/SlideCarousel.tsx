@@ -7,7 +7,7 @@ import {
   StyledCarouselCaption,
   StyledSlideImage,
   CarouselCaptionLower,
-} from "../styled/Home/Slide";
+} from "../styled/SlideCarousel/Slide";
 import { useNavigate } from "react-router";
 import { PageName } from "./enums/PageName";
 

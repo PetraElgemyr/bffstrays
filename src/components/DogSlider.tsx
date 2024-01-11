@@ -5,7 +5,7 @@ import {
 } from "../styled/DogDetails/StyledDogSlider";
 import { IDogSlide } from "./pages/DogDetails";
 import { useEffect, useState } from "react";
-import { BigImageModal } from "./BigImageModal";
+import { ImageModal } from "./ImageModal";
 import {
   ModalSlider,
   DogModalSliderImage,
@@ -19,7 +19,6 @@ export interface IDogSliderProps {
 
 export const DogSlider = ({ slides, isDogModal }: IDogSliderProps) => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [carousel, setCarousel] = useState<JSX.Element>(<></>);
 
   const toggleModalIsOpen = () => {
     setModalIsOpen(!modalIsOpen);
@@ -27,58 +26,83 @@ export const DogSlider = ({ slides, isDogModal }: IDogSliderProps) => {
 
   useEffect(() => {
     if (isDogModal) {
-      setCarousel(
-        <ModalSlider controls indicators className="carousel-not-inner">
-          {slides.map((slide, index) => (
-            <CCarouselItem className="haaaaajjj" key={index}>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  width: "80vw",
-                  height: "100%",
-                  objectFit: "contain",
-                  objectPosition: "center",
-                  margin: 0,
-                  padding: 0,
-                }}
-              >
-                <DogModalSliderImage src={slide.url} alt={slide.imgName} />
-              </div>
-            </CCarouselItem>
-          ))}
-        </ModalSlider>
-      );
-    } else {
-      setCarousel(
-        <>
-          <StyledDogSlider controls indicators>
-            {slides.map((slide, index) => {
-              return (
-                <CCarouselItem key={index}>
-                  <StyledDogSliderImage
-                    className="d-block w-100"
-                    src={slide.url}
-                    alt={slide.imgName}
-                    onClick={() => {
-                      toggleModalIsOpen();
-                    }}
-                  />
-                  <BigImageModal
-                    modalIsOpen={modalIsOpen}
-                    setModalIsOpen={setModalIsOpen}
-                    startUrl={slide.url}
-                    slides={slides}
-                  ></BigImageModal>
-                </CCarouselItem>
-              );
-            })}
-          </StyledDogSlider>
-        </>
-      );
+      setModalIsOpen(true);
     }
-  }, [isDogModal, modalIsOpen, slides, toggleModalIsOpen]);
+  }, [isDogModal]);
 
-  return <>{carousel}</>;
+  // useEffect(() => {
+  //   setModalIsOpen(isDogModal);
+  // }, [isDogModal]);
+
+  if (isDogModal && slides.length > 1) {
+    return (
+      <ModalSlider controls indicators>
+        {slides.map((slide, index) => (
+          <CCarouselItem key={index}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "80vw",
+                height: "100%",
+                objectFit: "contain",
+                objectPosition: "center",
+                margin: 0,
+                padding: 0,
+              }}
+            >
+              <DogModalSliderImage src={slide.url} alt={slide.imgName} />
+            </div>
+          </CCarouselItem>
+        ))}
+      </ModalSlider>
+    );
+  } else if (isDogModal && slides.length === 1) {
+    return (
+      <ModalSlider controls={false} interval={false}>
+        {slides.map((slide, index) => (
+          <CCarouselItem key={index}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "80vw",
+                height: "100%",
+                objectFit: "contain",
+                objectPosition: "center",
+                margin: 0,
+                padding: 0,
+              }}
+            >
+              <DogModalSliderImage src={slide.url} alt={slide.imgName} />
+            </div>
+          </CCarouselItem>
+        ))}
+      </ModalSlider>
+    );
+  } else {
+    return (
+      <StyledDogSlider controls indicators>
+        {slides.map((slide, index) => (
+          <CCarouselItem key={index}>
+            <StyledDogSliderImage
+              className="d-block w-100"
+              src={slide.url}
+              alt={slide.imgName}
+              onClick={toggleModalIsOpen}
+            />
+            <ImageModal
+              modalIsOpen={modalIsOpen}
+              setModalIsOpen={setModalIsOpen}
+              startUrl={slide.url}
+              slides={slides}
+              adoptedDogsBackground={false}
+            />
+          </CCarouselItem>
+        ))}
+      </StyledDogSlider>
+    );
+  }
 };
