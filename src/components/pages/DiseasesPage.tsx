@@ -3,17 +3,18 @@ import { SecondaryButton } from "../../styled/Buttons/SecondaryButton";
 import { PageName } from "../enums/PageName";
 import { useState, useEffect } from "react";
 import { ColCenteredButtonContainer } from "../../styled/Buttons/ColCenteredButtonContainer";
-import { ColCentered } from "../../styled/Common/Common";
-import { ColStart } from "../../styled/Spain/Spain";
+import { ColCentered, ColStart } from "../../styled/Common/Common";
 import { SlideCarousel } from "../SlideCarousel";
-import { useAppContext } from "../contexts/AppContext";
 import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
 import { IPost } from "../models/IPost";
 import { ISlide } from "../models/ISlide";
 import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
-import { DiseaseDropDown } from "../DiseaseDropDown";
+import { DiseaseDropDown } from "../../styled/Spain/DiseaseDropDown";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
+import { useAppContext } from "../hooks/useAppContext";
+import { MainHeadline } from "../../styled/Fonts/MainHeadline";
+import { CommonText } from "../../styled/Fonts/CommonText";
 
 interface IToggleDropDown {
   show: boolean;
@@ -71,14 +72,14 @@ export const DiseasesPage = () => {
       <SlideCarousel slides={diseasesPageSlides} />
       <ColCentered>
         <ColStart>
-          <h2>Sjukdomar</h2>
+          <MainHeadline>{PageName.Diseases}</MainHeadline>
         </ColStart>
         {diseasesDropDowns.map((post: IToggleDropDown, index) => {
           if (index === 0) {
             return (
               <ColStart key={index}>
                 <SmallHeadline>{post?.title}</SmallHeadline>
-                <p>{post.postContent}</p>
+                <CommonText>{post.postContent}</CommonText>
               </ColStart>
             );
           } else {
@@ -97,14 +98,16 @@ export const DiseasesPage = () => {
                   </span>
                 </DiseaseDropDown>
                 {post.show && (
-                  <p style={{ margin: "3%" }}>{post.postContent}</p>
+                  <CommonText style={{ margin: "3%" }}>
+                    {post.postContent}
+                  </CommonText>
                 )}
               </ColStart>
             );
           }
         })}
         <ColCenteredButtonContainer>
-          <p>Vill du läsa mer om hundarna vi räddar?</p>
+          <CommonText>Vill du läsa mer om hundarna vi räddar?</CommonText>
           <SecondaryButton
             selected={false}
             onClick={() => navigate("/situationen-i-spanien")}

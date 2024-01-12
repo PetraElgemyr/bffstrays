@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
 import { IPost } from "../models/IPost";
@@ -19,6 +18,8 @@ import "../../scss/home.scss";
 import { ISlide } from "../models/ISlide";
 import { SlideCarousel } from "../SlideCarousel";
 import { MainHeadline } from "../../styled/Fonts/MainHeadline";
+import { useAppContext } from "../hooks/useAppContext";
+import { CommonText } from "../../styled/Fonts/CommonText";
 
 export const DonatePage = () => {
   const { posts, slides } = useAppContext();
@@ -42,11 +43,11 @@ export const DonatePage = () => {
       <StyledDiv>
         <ColCentered>
           <MainHeadline>Hjälp oss att hjälpa</MainHeadline>
-          <p style={{ width: "85%" }}>
+          <CommonText>
             Alla bidrag är oerhört välkomna, stora som små! Om du inte har
             möjlighet att adoptera en hund just nu så kan du hjälpa oss på flera
             olika sätt. Nedan kan du läsa mer om hur du kan göra skillnad.
-          </p>
+          </CommonText>
         </ColCentered>{" "}
       </StyledDiv>
 

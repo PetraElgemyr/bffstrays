@@ -2,7 +2,7 @@ import { IDogSlide } from "./pages/DogDetails";
 import { useEffect, useState } from "react";
 import { DogSlider } from "./DogSlider";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import { CloseModalItem, Modal, ModalContent } from "../styled/Home/Modal";
+import { CloseModalItem, Modal, ModalContent } from "../styled/Common/Modal";
 
 interface IImageModalProps {
   modalIsOpen: boolean;

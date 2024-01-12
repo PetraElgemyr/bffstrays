@@ -129,10 +129,6 @@ export const DescriptiveCardTitle = styled.p`
 export const DescriptiveCardText = styled.p`
   font-size: 1rem;
 
-  @media screen and (${devices.laptop}) {
-    /* font-size: 1.2rem; */
-  }
-
   @media screen and (${devices.laptopL}) {
     font-size: 1.5rem;
   }

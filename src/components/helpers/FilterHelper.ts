@@ -3,11 +3,10 @@ import { IPost } from "../models/IPost";
 import { ISlide } from "../models/ISlide";
 
 export const filterPostsPerPage = (allPosts: IPost[], pageName: string) => {
-  // Filter posts to display on each page
   const postsToDisplay: IPost[] = allPosts.filter(
     (post: IPost) => post.pageId.toLowerCase() === pageName.toLowerCase()
   );
-  // const reversedArray = postsToDisplay.slice().reverse();
+
   postsToDisplay.sort((a, b) => a.id - b.id);
   return postsToDisplay;
 };

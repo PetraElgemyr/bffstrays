@@ -27,7 +27,6 @@ export const ColContainer = styled(Col)`
     justify-content: space-evenly;
     flex-wrap: wrap;
     width: 95%;
-    /* justify-content: flex-start; */
     padding: 0;
   }
   @media screen and (${devices.laptop}) {
@@ -80,7 +79,6 @@ export const DogCard = styled(Col)`
 
 export const ImageContainer = styled.div`
   width: 100%;
-  /* height: 65%; */
   margin: 0;
   padding: 0;
   object-fit: cover;

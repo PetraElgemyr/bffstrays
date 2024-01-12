@@ -14,7 +14,7 @@ export const StyledFooter = styled.footer`
   @media screen and (${devices.tablet}) {
     flex-direction: row;
     align-items: center;
-    /* padding-left: 2%; */
+
     padding-left: 0;
     padding-top: 3%;
     padding-bottom: 3%;

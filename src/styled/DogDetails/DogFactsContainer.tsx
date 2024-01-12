@@ -7,7 +7,6 @@ export const DogFactsContainer = styled(Col)`
   outline: 3px solid ${colors.primary_green};
   width: 100%;
   border-radius: 15px;
-  /* height: 100%; */
   align-items: center;
   padding-bottom: 5%;
 

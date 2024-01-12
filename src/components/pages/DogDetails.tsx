@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { IDog } from "../models/IDog";
-import { useAppContext } from "../contexts/AppContext";
 import {
   DogImg,
-  DogImgContainer1,
+  DogImgContainer,
 } from "../../styled/DogDetails/DogImgContainer";
 import { DogInfoContainer } from "../../styled/DogDetails/DogInfoContainer";
 import { DogFactsContainer } from "../../styled/DogDetails/DogFactsContainer";
@@ -22,6 +21,7 @@ import { ColStartDogDetails } from "../../styled/DogDetails/StyledDogSlider";
 import { ColCentered } from "../../styled/Common/Common";
 import { GoBackButton } from "../GoBackButton";
 import { makeFoundImagesToSlides } from "../helpers/ImageHelper";
+import { useAppContext } from "../hooks/useAppContext";
 
 export interface IDogSlide {
   url: string;
@@ -65,12 +65,12 @@ export const DogDetails = () => {
             }}
           >
             <DogInfoContainer>
-              <DogImgContainer1>
+              <DogImgContainer>
                 <DogImg
                   src={`https:${dog.img[0].fields.file.url}`}
                   alt={dog.name}
                 ></DogImg>
-              </DogImgContainer1>
+              </DogImgContainer>
               <DogFactsContainer>
                 <CardTitle>{dog.name}</CardTitle>
                 <DogFactTextBold>

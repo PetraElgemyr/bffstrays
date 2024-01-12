@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import { StyledDogSlider, StyledDogSliderImage } from "./StyledDogSlider";
+import {
+  StyledDogSlider,
+  StyledDogSliderImage,
+} from "../DogDetails/StyledDogSlider";
 import { devices } from "../devices";
 
 export const ModalSlider = styled(StyledDogSlider)`

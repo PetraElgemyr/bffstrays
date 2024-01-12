@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
 import { IPost } from "../models/IPost";
 import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
@@ -7,9 +6,11 @@ import { useNavigate } from "react-router";
 import { ISlide } from "../models/ISlide";
 import { ColCenteredButtonContainer } from "../../styled/Buttons/ColCenteredButtonContainer";
 import { SecondaryButton } from "../../styled/Buttons/SecondaryButton";
-import { ColCentered } from "../../styled/Common/Common";
-import { ColStart } from "../../styled/Spain/Spain";
+import { ColCentered, ColStart } from "../../styled/Common/Common";
 import { SlideCarousel } from "../SlideCarousel";
+import { MainHeadline } from "../../styled/Fonts/MainHeadline";
+import { useAppContext } from "../hooks/useAppContext";
+import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
 
 export const AdoptionPage = () => {
   const { posts, slides } = useAppContext();
@@ -33,7 +34,7 @@ export const AdoptionPage = () => {
       <SlideCarousel slides={adoptionPageSlides} />
       <ColCentered>
         <ColStart>
-          <h2>Adoption via Bff Strays</h2>
+          <MainHeadline>{PageName.Adoption}</MainHeadline>
         </ColStart>
         {adoptionPosts.map((post, index) => {
           return (
@@ -46,7 +47,9 @@ export const AdoptionPage = () => {
           );
         })}
         <ColCenteredButtonContainer>
-          <p>Klicka här för att läsa mer om de krav vi har på adoptörer</p>
+          <SmallHeadline>
+            Klicka här för att läsa mer om de krav vi har på adoptörer
+          </SmallHeadline>
           <SecondaryButton
             selected={false}
             onClick={() => navigate("/krav-pa-adoptorer")}

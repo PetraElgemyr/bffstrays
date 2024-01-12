@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
 import { IPost } from "../models/IPost";
 import { ISlide } from "../models/ISlide";
 import { ColCenteredButtonContainer } from "../../styled/Buttons/ColCenteredButtonContainer";
 import { SecondaryButton } from "../../styled/Buttons/SecondaryButton";
-import { ColCentered } from "../../styled/Common/Common";
-import { ColStart } from "../../styled/Spain/Spain";
+import { ColCentered, ColStart } from "../../styled/Common/Common";
 import { SlideCarousel } from "../SlideCarousel";
 import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
+import { useAppContext } from "../hooks/useAppContext";
+import { MainHeadline } from "../../styled/Fonts/MainHeadline";
+import { CommonText } from "../../styled/Fonts/CommonText";
 
 export const AboutPage = () => {
   const { posts, slides } = useAppContext();
@@ -34,7 +35,7 @@ export const AboutPage = () => {
       <SlideCarousel slides={aboutPageSlides} />
       <ColCentered>
         <ColStart>
-          <h2>Om oss</h2>
+          <MainHeadline>{PageName.About}</MainHeadline>
         </ColStart>
         {aboutPosts.map((post, index) => {
           return (
@@ -44,7 +45,7 @@ export const AboutPage = () => {
               >
                 {post.title}
               </SmallHeadline>
-              <p>{post.postText}</p>
+              <CommonText>{post.postText}</CommonText>
             </ColStart>
           );
         })}

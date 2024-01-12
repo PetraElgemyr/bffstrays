@@ -9,7 +9,6 @@ export const PrimaryButton = styled.button<IFilterButtonProps>`
   align-items: center;
   border: none;
   border-radius: 25px;
-  /* border-radius: 5px; */
   background-color: ${colors.secondary_green};
   min-height: 48px;
   color: ${colors.primary_green};

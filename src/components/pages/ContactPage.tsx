@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
-import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
 import { IPost } from "../models/IPost";
 import { ISlide } from "../models/ISlide";
-import { ColStart } from "../../styled/Spain/Spain";
-import { ColCentered, DividerLine } from "../../styled/Common/Common";
+import { ColCentered, ColStart, DividerLine } from "../../styled/Common/Common";
 import { SecondaryButton } from "../../styled/Buttons/SecondaryButton";
 import { useNavigate } from "react-router";
 import { DogFactTextBold } from "../../styled/DogDetails/DogFactText";
 import { SlideCarousel } from "../SlideCarousel";
 import { ColCenteredButtonContainer } from "../../styled/Buttons/ColCenteredButtonContainer";
+import { useAppContext } from "../hooks/useAppContext";
+import { CommonText } from "../../styled/Fonts/CommonText";
+import { MainHeadline } from "../../styled/Fonts/MainHeadline";
 
 export const ContactPage = () => {
   const { slides, posts } = useAppContext();
@@ -26,9 +27,7 @@ export const ContactPage = () => {
     if (slide) {
       contactSlides.push(slide);
       setContactPageSlides(contactSlides);
-      console.log(slide);
     }
-    // fetchPosts();
   }, [slides, posts]);
 
   return (
@@ -38,39 +37,39 @@ export const ContactPage = () => {
         {contactPosts.map((post, index) => (
           <ColStart key={index}>
             {post.title.toLowerCase() === PageName.Contact.toLowerCase() ? (
-              <h2>{post.title}</h2>
+              <MainHeadline>{post.title}</MainHeadline>
             ) : (
               <DogFactTextBold style={{ marginLeft: 0 }}>
                 {post.title}
               </DogFactTextBold>
             )}
-            <p>{post.postText}</p>
+            <CommonText>{post.postText}</CommonText>
           </ColStart>
         ))}
         <DividerLine style={{ width: "85%" }}></DividerLine>
 
         <ColCenteredButtonContainer>
-          <p>Mer info om oss och hundarna här</p>
+          <CommonText>Mer info om oss och hundarna här</CommonText>
           <SecondaryButton
             selected={false}
             onClick={() => navigate("/hundar-som-soker-hem")}
           >
-            Hundar som söker hem
+            {PageName.Dogs}
           </SecondaryButton>
           <SecondaryButton selected={false} onClick={() => navigate("/om-oss")}>
-            Om föreningen
+            {PageName.About}
           </SecondaryButton>
           <SecondaryButton
             selected={false}
             onClick={() => navigate("/intresseanmalan")}
           >
-            Intresseanmälan{" "}
+            {PageName.RegisterInterest}
           </SecondaryButton>
           <SecondaryButton
             selected={false}
             onClick={() => navigate("/situationen-i-spanien")}
           >
-            Situationen i Spanien
+            {PageName.Spain}
           </SecondaryButton>
         </ColCenteredButtonContainer>
       </ColCentered>
