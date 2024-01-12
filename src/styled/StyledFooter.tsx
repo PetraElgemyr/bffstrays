@@ -14,10 +14,14 @@ export const StyledFooter = styled.footer`
   @media screen and (${devices.tablet}) {
     flex-direction: row;
     align-items: center;
-
     padding-left: 0;
     padding-top: 3%;
     padding-bottom: 3%;
+  }
+
+  @media screen and (${devices.laptop}) {
+    padding-top: 2%;
+    padding-bottom: 2%;
   }
 `;
 
@@ -42,6 +46,15 @@ export const FooterColumn = styled.div`
   justify-content: center;
   align-items: flex-start;
   padding: 0;
+  margin: 8%;
+
+  @media screen and (${devices.tablet}) {
+    margin: 4%;
+  }
+
+  @media screen and (${devices.laptop}) {
+    margin: 2%;
+  }
 `;
 
 export const StyledLink = styled.a`
