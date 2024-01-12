@@ -7,7 +7,7 @@ export const StyledCarousel = styled(CCarousel)`
   margin-bottom: 10%;
 
   @media screen and (${devices.tablet}) {
-    margin-bottom: 5%;
+    margin-bottom: 8%;
   }
 `;
 export const StyledCarouselCaption = styled(CCarouselCaption)`

@@ -49,7 +49,9 @@ export const ContactPage = () => {
         <DividerLine style={{ width: "85%" }}></DividerLine>
 
         <ColCenteredButtonContainer>
-          <CommonText>Mer info om oss och hundarna här</CommonText>
+          <ColCentered>
+            <CommonText>Mer info om oss och hundarna här</CommonText>
+          </ColCentered>
           <SecondaryButton
             selected={false}
             onClick={() => navigate("/hundar-som-soker-hem")}

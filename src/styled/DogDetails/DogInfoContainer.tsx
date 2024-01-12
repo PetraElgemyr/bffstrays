@@ -8,6 +8,7 @@ export const DogInfoContainer = styled(Col)`
   align-items: center;
   gap: 15px;
   width: 85vw;
+  margin-bottom: 5%;
 
   @media screen and (${devices.tablet}) {
     width: 100vw;
@@ -17,7 +18,6 @@ export const DogInfoContainer = styled(Col)`
     gap: 0;
     background-color: ${colors.primary_green};
     padding: 0;
-    margin: 0;
   }
 
   @media screen and (${devices.laptop}) {

@@ -18,6 +18,7 @@ export const ColStart = styled(Col)`
   margin-bottom: 5%;
 
   @media screen and (${devices.tablet}) {
+    margin-top: 0;
     margin-bottom: 2%;
     width: 70%;
   }

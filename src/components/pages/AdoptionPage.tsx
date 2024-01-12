@@ -11,6 +11,7 @@ import { SlideCarousel } from "../SlideCarousel";
 import { MainHeadline } from "../../styled/Fonts/MainHeadline";
 import { useAppContext } from "../hooks/useAppContext";
 import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
+import { CommonText } from "../../styled/Fonts/CommonText";
 
 export const AdoptionPage = () => {
   const { posts, slides } = useAppContext();
@@ -39,10 +40,8 @@ export const AdoptionPage = () => {
         {adoptionPosts.map((post, index) => {
           return (
             <ColStart key={index}>
-              <p style={{ fontFamily: "Korolev medium, sans-serif" }}>
-                {post.title}
-              </p>
-              <p>{post.postText}</p>
+              <SmallHeadline>{post.title}</SmallHeadline>
+              <CommonText>{post.postText}</CommonText>
             </ColStart>
           );
         })}

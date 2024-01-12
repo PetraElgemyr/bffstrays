@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
 import { IPost } from "../models/IPost";
-import { StyledDiv } from "../../styled/AllDogs/DogCard";
-import { ColCentered } from "../../styled/Common/Common";
+import { ColCentered, ColStart } from "../../styled/Common/Common";
 import {
   CardContainer,
   DescriptiveCard,
@@ -40,18 +39,19 @@ export const DonatePage = () => {
   return (
     <>
       <SlideCarousel slides={donateSlides} />
-      <StyledDiv>
-        <ColCentered>
+
+      <ColCentered>
+        <ColStart>
           <MainHeadline>Hjälp oss att hjälpa</MainHeadline>
-          <CommonText>
+          <CommonText style={{ width: "100%" }}>
             Alla bidrag är oerhört välkomna, stora som små! Om du inte har
             möjlighet att adoptera en hund just nu så kan du hjälpa oss på flera
             olika sätt. Nedan kan du läsa mer om hur du kan göra skillnad.
           </CommonText>
-        </ColCentered>{" "}
-      </StyledDiv>
+        </ColStart>
+      </ColCentered>
 
-      <StyledDivCardContainer style={{ marginTop: "3%" }}>
+      <StyledDivCardContainer style={{ marginTop: "2%" }}>
         <CardContainer>
           {donatePosts.map((post, key) => (
             <DescriptiveCard

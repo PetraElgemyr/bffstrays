@@ -48,7 +48,6 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { colors } from "../../styled/colors";
 import { useAppContext } from "../hooks/useAppContext";
 import { MainHeadline } from "../../styled/Fonts/MainHeadline";
-import { CommonText } from "../../styled/Fonts/CommonText";
 
 type Anchor = "left" | "right";
 
@@ -246,9 +245,7 @@ export const AllDogsPage = () => {
               return (
                 <ColCenteredResponsive key={index}>
                   <MainHeadline>{post.title}</MainHeadline>
-                  <CommonText style={{ marginTop: "2%" }}>
-                    {post.postText}
-                  </CommonText>
+                  <SmallHeadline>{post.postText}</SmallHeadline>
                 </ColCenteredResponsive>
               );
             }

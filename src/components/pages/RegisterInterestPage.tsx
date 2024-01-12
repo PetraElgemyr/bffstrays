@@ -43,7 +43,7 @@ export const RegisterInterestPage = () => {
               <ColStart key={key}>
                 <SmallHeadline>{post.title}</SmallHeadline>
                 <CommonText>{post.postText}</CommonText>
-                <div>{renderedContent}</div>
+                <div style={{ width: "95%" }}>{renderedContent}</div>
               </ColStart>
             );
           } else {

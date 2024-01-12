@@ -17,8 +17,7 @@ import { SecondaryButton } from "../../styled/Buttons/SecondaryButton";
 import { DogSlider } from "../DogSlider";
 import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
 import { CommonText } from "../../styled/Fonts/CommonText";
-import { ColStartDogDetails } from "../../styled/DogDetails/StyledDogSlider";
-import { ColCentered } from "../../styled/Common/Common";
+import { ColCentered, ColStart } from "../../styled/Common/Common";
 import { GoBackButton } from "../GoBackButton";
 import { makeFoundImagesToSlides } from "../helpers/ImageHelper";
 import { useAppContext } from "../hooks/useAppContext";
@@ -54,62 +53,64 @@ export const DogDetails = () => {
     <>
       {dog ? (
         <>
-          <GoBackButton></GoBackButton>
-          <div
-            style={{
-              width: "100vw",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <DogInfoContainer>
-              <DogImgContainer>
-                <DogImg
-                  src={`https:${dog.img[0].fields.file.url}`}
-                  alt={dog.name}
-                ></DogImg>
-              </DogImgContainer>
-              <DogFactsContainer>
-                <CardTitle>{dog.name}</CardTitle>
-                <DogFactTextBold>
-                  Ålder: <DogFactText>{dog.age}</DogFactText>{" "}
-                </DogFactTextBold>{" "}
-                <DogFactTextBold>
-                  Kön: <DogFactText>{dog.gender}</DogFactText>
-                </DogFactTextBold>
-                <DogFactTextBold>
-                  Ras: <DogFactText>{dog.breed}</DogFactText>
-                </DogFactTextBold>
-                <DogFactTextBold>
-                  Kastrerad:<DogFactText>{dog.isNeutered}</DogFactText>{" "}
-                </DogFactTextBold>
-                <DogFactTextBold>
-                  Storlek:<DogFactText> {dog.size}</DogFactText>
-                </DogFactTextBold>
-                <DogFactTextBold>
-                  Vikt: <DogFactText>{dog.weight} kg </DogFactText>
-                </DogFactTextBold>
-              </DogFactsContainer>
-            </DogInfoContainer>
-            <ColStartDogDetails>
-              <CommonText>{dog.description}</CommonText>
-            </ColStartDogDetails>
-            <SecondaryButton
-              selected={false}
-              onClick={() => {
-                navigate("/intresseanmalan");
+          <GoBackButton></GoBackButton>{" "}
+          <ColCentered>
+            <div
+              style={{
+                width: "100vw",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
-              Gör en intresseanmälan
-            </SecondaryButton>
-            {images.length > 0 ? (
-              <DogSlider isDogModal={false} slides={images}></DogSlider>
-            ) : (
-              <SmallHeadline>Fler bilder kommer snart</SmallHeadline>
-            )}
-          </div>
+              <DogInfoContainer>
+                <DogImgContainer>
+                  <DogImg
+                    src={`https:${dog.img[0].fields.file.url}`}
+                    alt={dog.name}
+                  ></DogImg>
+                </DogImgContainer>
+                <DogFactsContainer>
+                  <CardTitle>{dog.name}</CardTitle>
+                  <DogFactTextBold>
+                    Ålder: <DogFactText>{dog.age}</DogFactText>{" "}
+                  </DogFactTextBold>{" "}
+                  <DogFactTextBold>
+                    Kön: <DogFactText>{dog.gender}</DogFactText>
+                  </DogFactTextBold>
+                  <DogFactTextBold>
+                    Ras: <DogFactText>{dog.breed}</DogFactText>
+                  </DogFactTextBold>
+                  <DogFactTextBold>
+                    Kastrerad:<DogFactText>{dog.isNeutered}</DogFactText>{" "}
+                  </DogFactTextBold>
+                  <DogFactTextBold>
+                    Storlek:<DogFactText> {dog.size}</DogFactText>
+                  </DogFactTextBold>
+                  <DogFactTextBold>
+                    Vikt: <DogFactText>{dog.weight} kg </DogFactText>
+                  </DogFactTextBold>
+                </DogFactsContainer>
+              </DogInfoContainer>
+              <ColStart>
+                <CommonText>{dog.description}</CommonText>
+              </ColStart>
+              <SecondaryButton
+                selected={false}
+                onClick={() => {
+                  navigate("/intresseanmalan");
+                }}
+              >
+                Gör en intresseanmälan
+              </SecondaryButton>
+              {images.length > 0 ? (
+                <DogSlider isDogModal={false} slides={images}></DogSlider>
+              ) : (
+                <SmallHeadline>Fler bilder kommer snart</SmallHeadline>
+              )}
+            </div>
+          </ColCentered>
         </>
       ) : (
         <ColCentered style={{ margin: "15%" }}>
