@@ -69,18 +69,18 @@ export const Footer = () => {
       <FooterColumn>
         <FooterRow>
           <StyledLink href={footerInfo?.facebook.toString()}>
-            Facebook
             <i>
               <FacebookIcon />{" "}
-            </i>
+            </i>{" "}
+            Facebook
           </StyledLink>
         </FooterRow>
         <FooterRow>
           <StyledLink href={footerInfo?.instagram.toString()}>
-            Instagram{" "}
             <i>
               <InstagramIcon />
-            </i>
+            </i>{" "}
+            Instagram{" "}
           </StyledLink>
         </FooterRow>
         <FooterRow>{footerInfo?.email.toString()}</FooterRow>
