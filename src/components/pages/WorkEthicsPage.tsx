@@ -6,9 +6,9 @@ import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
 import { IPost } from "../models/IPost";
 import { ISlide } from "../models/ISlide";
 import { useAppContext } from "../hooks/useAppContext";
-import { MainHeadline } from "../../styled/Fonts/MainHeadline";
-import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
-import { CommonText } from "../../styled/Fonts/CommonText";
+import { MainHeadline } from "../../styled/FontStyles/MainHeadline";
+import { SmallHeadline } from "../../styled/FontStyles/SmallHeadline";
+import { CommonText } from "../../styled/FontStyles/CommonText";
 
 export const WorkEthicsPage = () => {
   const { posts, slides } = useAppContext();

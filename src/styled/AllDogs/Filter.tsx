@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Col, Row } from "../Common/Common";
-import { colors } from "../colors";
-import { devices } from "../devices";
+import { colors } from "../Variables/colors";
+import { devices } from "../Variables/devices";
 
 export interface IFilterButtonProps {
   selected: boolean;

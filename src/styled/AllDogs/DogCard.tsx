@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
-import { colors } from "../colors";
+import { colors } from "../Variables/colors";
 import { Col, Row } from "../Common/Common";
-import { devices } from "../devices";
+import { devices } from "../Variables/devices";
 
 export const StyledDiv = styled(Col)`
   justify-content: space-evenly;

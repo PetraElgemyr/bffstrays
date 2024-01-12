@@ -6,9 +6,9 @@ import { ISlide } from "../models/ISlide";
 import { ColCentered, ColStart } from "../../styled/Common/Common";
 import { SlideCarousel } from "../SlideCarousel";
 import { useAppContext } from "../hooks/useAppContext";
-import { MainHeadline } from "../../styled/Fonts/MainHeadline";
-import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
-import { CommonText } from "../../styled/Fonts/CommonText";
+import { MainHeadline } from "../../styled/FontStyles/MainHeadline";
+import { SmallHeadline } from "../../styled/FontStyles/SmallHeadline";
+import { CommonText } from "../../styled/FontStyles/CommonText";
 
 export const RequirementsForAdoptionPage = () => {
   const { posts, slides } = useAppContext();

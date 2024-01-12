@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { Col } from "../Common/Common";
-import { devices } from "../devices";
-import { colors } from "../colors";
+import { devices } from "../Variables/devices";
+import { colors } from "../Variables/colors";
 
 export const DogInfoContainer = styled(Col)`
   justify-content: space-evenly;

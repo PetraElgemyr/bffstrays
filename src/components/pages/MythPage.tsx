@@ -9,9 +9,9 @@ import { ColCentered, ColStart } from "../../styled/Common/Common";
 import { SlideCarousel } from "../SlideCarousel";
 import { ColCenteredButtonContainer } from "../../styled/Buttons/ColCenteredButtonContainer";
 import { useAppContext } from "../hooks/useAppContext";
-import { MainHeadline } from "../../styled/Fonts/MainHeadline";
-import { CommonText } from "../../styled/Fonts/CommonText";
-import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
+import { MainHeadline } from "../../styled/FontStyles/MainHeadline";
+import { CommonText } from "../../styled/FontStyles/CommonText";
+import { SmallHeadline } from "../../styled/FontStyles/SmallHeadline";
 
 export const MythPage = () => {
   const navigate = useNavigate();

@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { devices } from "../devices";
+import { devices } from "../Variables/devices";
 
 export const CommonText = styled.span`
   line-height: 30px;

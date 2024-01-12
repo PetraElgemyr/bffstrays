@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
-import { devices } from "../devices";
-import { colors } from "../colors";
+import { devices } from "../Variables/devices";
+import { colors } from "../Variables/colors";
 import { Row } from "../Common/Common";
 
 export const DiseaseDropDown = styled(Row)`

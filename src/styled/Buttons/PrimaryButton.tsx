@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { colors } from "../colors";
+import { colors } from "../Variables/colors";
 import { IFilterButtonProps } from "../AllDogs/Filter";
 
 export const PrimaryButton = styled.button<IFilterButtonProps>`

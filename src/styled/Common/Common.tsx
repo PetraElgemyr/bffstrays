@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { devices } from "../devices";
+import { devices } from "../Variables/devices";
 
 export const Col = styled.div`
   display: flex;

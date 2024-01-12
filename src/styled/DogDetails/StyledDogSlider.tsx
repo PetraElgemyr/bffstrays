@@ -1,6 +1,6 @@
 import { CCarousel, CImage } from "@coreui/react";
 import { styled } from "styled-components";
-import { devices } from "../devices";
+import { devices } from "../Variables/devices";
 
 export const StyledDogSlider = styled(CCarousel)`
   display: flex;

@@ -16,9 +16,9 @@ import {
 import "../../scss/home.scss";
 import { ISlide } from "../models/ISlide";
 import { SlideCarousel } from "../SlideCarousel";
-import { MainHeadline } from "../../styled/Fonts/MainHeadline";
+import { MainHeadline } from "../../styled/FontStyles/MainHeadline";
 import { useAppContext } from "../hooks/useAppContext";
-import { CommonText } from "../../styled/Fonts/CommonText";
+import { CommonText } from "../../styled/FontStyles/CommonText";
 
 export const DonatePage = () => {
   const { posts, slides } = useAppContext();

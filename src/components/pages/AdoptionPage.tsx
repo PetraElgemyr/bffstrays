@@ -8,10 +8,10 @@ import { ColCenteredButtonContainer } from "../../styled/Buttons/ColCenteredButt
 import { SecondaryButton } from "../../styled/Buttons/SecondaryButton";
 import { ColCentered, ColStart } from "../../styled/Common/Common";
 import { SlideCarousel } from "../SlideCarousel";
-import { MainHeadline } from "../../styled/Fonts/MainHeadline";
+import { MainHeadline } from "../../styled/FontStyles/MainHeadline";
 import { useAppContext } from "../hooks/useAppContext";
-import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
-import { CommonText } from "../../styled/Fonts/CommonText";
+import { SmallHeadline } from "../../styled/FontStyles/SmallHeadline";
+import { CommonText } from "../../styled/FontStyles/CommonText";
 
 export const AdoptionPage = () => {
   const { posts, slides } = useAppContext();

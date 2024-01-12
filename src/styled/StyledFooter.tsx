@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
-import { devices } from "./devices";
-import { colors } from "./colors";
+import { devices } from "./Variables/devices";
+import { colors } from "./Variables/colors";
 
 export const StyledFooter = styled.footer`
   width: 100vw;

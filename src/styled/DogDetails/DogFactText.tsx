@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { devices } from "../devices";
+import { devices } from "../Variables/devices";
 
 export const DogFactText = styled.span`
   font-family: "Korolev Medium", "Trebuchet MS", Helvetica, sans-serif;

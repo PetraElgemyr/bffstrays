@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import { Col } from "../Common/Common";
-import { colors } from "../colors";
+import { colors } from "../Variables/colors";
 
 export const LinkCard = styled(Col)`
   justify-content: flex-start;

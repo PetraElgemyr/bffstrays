@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { devices } from "../devices";
+import { devices } from "../Variables/devices";
 import { CCarousel } from "@coreui/react";
 
 export const DogImgContainer = styled.div`

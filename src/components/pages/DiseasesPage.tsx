@@ -8,13 +8,13 @@ import { SlideCarousel } from "../SlideCarousel";
 import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
 import { IPost } from "../models/IPost";
 import { ISlide } from "../models/ISlide";
-import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
+import { SmallHeadline } from "../../styled/FontStyles/SmallHeadline";
 import { DiseaseDropDown } from "../../styled/Spain/DiseaseDropDown";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
 import { useAppContext } from "../hooks/useAppContext";
-import { MainHeadline } from "../../styled/Fonts/MainHeadline";
-import { CommonText } from "../../styled/Fonts/CommonText";
+import { MainHeadline } from "../../styled/FontStyles/MainHeadline";
+import { CommonText } from "../../styled/FontStyles/CommonText";
 
 interface IToggleDropDown {
   show: boolean;

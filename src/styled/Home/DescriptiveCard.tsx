@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { Col } from "../Common/Common";
-import { colors } from "../colors";
-import { devices } from "../devices";
+import { colors } from "../Variables/colors";
+import { devices } from "../Variables/devices";
 import { CardTextContainer, ImageContainer } from "../AllDogs/DogCard";
 
 interface IDogCardProps {

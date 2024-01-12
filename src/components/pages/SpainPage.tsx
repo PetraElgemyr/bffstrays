@@ -9,7 +9,7 @@ import { ColCentered, ColStart } from "../../styled/Common/Common";
 import { ColCenteredButtonContainer } from "../../styled/Buttons/ColCenteredButtonContainer";
 import { SecondaryButton } from "../../styled/Buttons/SecondaryButton";
 import { SlideCarousel } from "../SlideCarousel";
-import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
+import { SmallHeadline } from "../../styled/FontStyles/SmallHeadline";
 import { useAppContext } from "../hooks/useAppContext";
 
 export const SpainPage = () => {

@@ -8,9 +8,9 @@ import { SlideCarousel } from "../SlideCarousel";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { Document } from "@contentful/rich-text-types";
 import { useAppContext } from "../hooks/useAppContext";
-import { MainHeadline } from "../../styled/Fonts/MainHeadline";
-import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
-import { CommonText } from "../../styled/Fonts/CommonText";
+import { MainHeadline } from "../../styled/FontStyles/MainHeadline";
+import { SmallHeadline } from "../../styled/FontStyles/SmallHeadline";
+import { CommonText } from "../../styled/FontStyles/CommonText";
 
 export const RegisterInterestPage = () => {
   const { posts, slides } = useAppContext();

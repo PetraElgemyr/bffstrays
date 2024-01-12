@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { devices } from "../devices";
+import { devices } from "../Variables/devices";
 import { PrimaryButton } from "./PrimaryButton";
 
 export const SecondaryButton = styled(PrimaryButton)`

@@ -3,7 +3,7 @@ import {
   StyledDogSlider,
   StyledDogSliderImage,
 } from "../DogDetails/StyledDogSlider";
-import { devices } from "../devices";
+import { devices } from "../Variables/devices";
 
 export const ModalSlider = styled(StyledDogSlider)`
   display: flex;

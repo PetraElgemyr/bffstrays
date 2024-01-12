@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { devices } from "../devices";
+import { devices } from "../Variables/devices";
 import { CCarousel, CCarouselCaption, CImage } from "@coreui/react";
 
 export const StyledCarousel = styled(CCarousel)`
