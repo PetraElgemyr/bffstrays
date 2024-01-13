@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { devices } from "../devices";
+import { devices } from "../Variables/devices";
 import { CCarousel, CCarouselCaption, CImage } from "@coreui/react";
 
 export const StyledCarousel = styled(CCarousel)`
@@ -7,7 +7,7 @@ export const StyledCarousel = styled(CCarousel)`
   margin-bottom: 10%;
 
   @media screen and (${devices.tablet}) {
-    margin-bottom: 5%;
+    margin-bottom: 8%;
   }
 `;
 export const StyledCarouselCaption = styled(CCarouselCaption)`
@@ -59,7 +59,6 @@ export const StyledSlideImage = styled(CImage)`
 `;
 
 export const SlideTitleContainer = styled.div`
-  /* border-radius: 40px; */
   background: rgba(236, 236, 236, 0.4);
   width: 100vw;
   height: 50px;

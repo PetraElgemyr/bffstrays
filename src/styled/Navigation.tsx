@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { devices } from "./devices";
+import { devices } from "./Variables/devices";
 
 interface IToggled {
   toggled: number;
@@ -110,7 +110,7 @@ export const DropDownMenu = styled.div<IToggled>`
   align-items: center;
   padding-top: 50px;
   padding-bottom: 50px;
-  max-height: 100vh; /* or any other value that suits your needs */
+  max-height: 100vh;
   overflow-y: auto;
 
   & > ul {

@@ -1,15 +1,17 @@
 import { useNavigate } from "react-router";
 import { SecondaryButton } from "../../styled/Buttons/SecondaryButton";
 import { useState, useEffect } from "react";
-import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
 import { IPost } from "../models/IPost";
 import { ISlide } from "../models/ISlide";
-import { ColCentered } from "../../styled/Common/Common";
+import { ColCentered, ColStart } from "../../styled/Common/Common";
 import { SlideCarousel } from "../SlideCarousel";
-import { ColStart } from "../../styled/Spain/Spain";
 import { ColCenteredButtonContainer } from "../../styled/Buttons/ColCenteredButtonContainer";
+import { useAppContext } from "../hooks/useAppContext";
+import { MainHeadline } from "../../styled/FontStyles/MainHeadline";
+import { CommonText } from "../../styled/FontStyles/CommonText";
+import { SmallHeadline } from "../../styled/FontStyles/SmallHeadline";
 
 export const MythPage = () => {
   const navigate = useNavigate();
@@ -33,30 +35,28 @@ export const MythPage = () => {
       <SlideCarousel slides={mythPageSlides} />
       <ColCentered>
         <ColStart>
-          <h2>Myter om gatuhundar</h2>
+          <MainHeadline>{PageName.Myths}</MainHeadline>
         </ColStart>
 
         {mythPosts.map((post, index) => (
           <ColStart key={index}>
-            <p style={{ fontFamily: "Korolev medium, sans-serif" }}>
-              {post.title}
-            </p>
-            <p>{post.postText}</p>
+            <SmallHeadline>{post.title}</SmallHeadline>
+            <CommonText>{post.postText}</CommonText>
           </ColStart>
         ))}
         <ColCenteredButtonContainer>
-          <p>Vill du läsa mer om hundarna vi räddar?</p>
+          <CommonText>Vill du läsa mer om hundarna vi räddar?</CommonText>
           <SecondaryButton
             selected={false}
             onClick={() => navigate("/situationen-i-spanien")}
           >
-            Siutationen i Spanien
+            {PageName.Spain}
           </SecondaryButton>
           <SecondaryButton
             selected={false}
             onClick={() => navigate("/sjukdomar")}
           >
-            Sjukdomar
+            {PageName.Diseases}
           </SecondaryButton>
         </ColCenteredButtonContainer>
       </ColCentered>

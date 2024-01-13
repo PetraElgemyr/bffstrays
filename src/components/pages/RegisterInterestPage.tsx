@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
-import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
 import { IPost } from "../models/IPost";
 import { ISlide } from "../models/ISlide";
-import { ColCentered } from "../../styled/Common/Common";
-import { ColStart } from "../../styled/Spain/Spain";
+import { ColCentered, ColStart } from "../../styled/Common/Common";
 import { SlideCarousel } from "../SlideCarousel";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { Document } from "@contentful/rich-text-types";
+import { useAppContext } from "../hooks/useAppContext";
+import { MainHeadline } from "../../styled/FontStyles/MainHeadline";
+import { SmallHeadline } from "../../styled/FontStyles/SmallHeadline";
+import { CommonText } from "../../styled/FontStyles/CommonText";
 
 export const RegisterInterestPage = () => {
   const { posts, slides } = useAppContext();
@@ -31,7 +33,7 @@ export const RegisterInterestPage = () => {
       <SlideCarousel slides={interestPageSlides} />
       <ColCentered>
         <ColStart>
-          <h2>Intresseanmälan</h2>
+          <MainHeadline>{PageName.RegisterInterest}</MainHeadline>
         </ColStart>
         {intrerestPosts.map((post, key) => {
           if (post.list) {
@@ -39,20 +41,16 @@ export const RegisterInterestPage = () => {
             const renderedContent = documentToReactComponents(richTextDocument);
             return (
               <ColStart key={key}>
-                <p style={{ fontFamily: "Korolev medium, sans-serif" }}>
-                  {post.title}
-                </p>
-                <p>{post.postText}</p>
-                <div>{renderedContent}</div>
+                <SmallHeadline>{post.title}</SmallHeadline>
+                <CommonText>{post.postText}</CommonText>
+                <div style={{ width: "95%" }}>{renderedContent}</div>
               </ColStart>
             );
           } else {
             return (
               <ColStart key={key}>
-                <p style={{ fontFamily: "Korolev medium, sans-serif" }}>
-                  {post.title}
-                </p>
-                <p>{post.postText}</p>
+                <SmallHeadline>{post.title}</SmallHeadline>
+                <CommonText>{post.postText}</CommonText>
               </ColStart>
             );
           }

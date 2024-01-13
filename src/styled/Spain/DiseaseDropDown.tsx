@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
-import { devices } from "../styled/devices";
-import { colors } from "../styled/colors";
-import { Row } from "../styled/Common/Common";
+import { devices } from "../Variables/devices";
+import { colors } from "../Variables/colors";
+import { Row } from "../Common/Common";
 
 export const DiseaseDropDown = styled(Row)`
   justify-content: space-between;

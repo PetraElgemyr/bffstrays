@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { Col } from "../Common/Common";
-import { colors } from "../colors";
-import { devices } from "../devices";
+import { colors } from "../Variables/colors";
+import { devices } from "../Variables/devices";
 import { CardTextContainer, ImageContainer } from "../AllDogs/DogCard";
 
 interface IDogCardProps {
@@ -128,10 +128,6 @@ export const DescriptiveCardTitle = styled.p`
 
 export const DescriptiveCardText = styled.p`
   font-size: 1rem;
-
-  @media screen and (${devices.laptop}) {
-    /* font-size: 1.2rem; */
-  }
 
   @media screen and (${devices.laptopL}) {
     font-size: 1.5rem;

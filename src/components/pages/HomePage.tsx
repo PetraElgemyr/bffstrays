@@ -1,4 +1,3 @@
-import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
 import "../../scss/home.scss";
 import {
@@ -16,6 +15,7 @@ import { findSlide } from "../helpers/FilterHelper";
 import { ISlide } from "../models/ISlide";
 import { SlideCarousel } from "../SlideCarousel";
 import { useNavigate } from "react-router";
+import { useAppContext } from "../hooks/useAppContext";
 
 export const HomePage = () => {
   const { slides, descriptions } = useAppContext();

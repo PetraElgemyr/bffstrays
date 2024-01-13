@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useAppContext } from "../contexts/AppContext";
 import { filterAdoptedDogs } from "../helpers/FilterHelper";
 import { IDog } from "../models/IDog";
 import {
@@ -15,9 +14,11 @@ import {
 import { ColCentered, ColCenteredResponsive } from "../../styled/Common/Common";
 import { makeFoundImagesToSlides } from "../helpers/ImageHelper";
 import { IDogSlide } from "./DogDetails";
-import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
-import { MainHeadline } from "../../styled/Fonts/MainHeadline";
+import { SmallHeadline } from "../../styled/FontStyles/SmallHeadline";
+import { MainHeadline } from "../../styled/FontStyles/MainHeadline";
 import { ImageModal } from "../ImageModal";
+import { useAppContext } from "../hooks/useAppContext";
+import { PageName } from "../enums/PageName";
 
 export const AdoptedDogsPage = () => {
   const { dogs } = useAppContext();
@@ -48,7 +49,7 @@ export const AdoptedDogsPage = () => {
       <StyledDiv>
         <ColCentered>
           <ColCenteredResponsive>
-            <MainHeadline>Adopterade hundar</MainHeadline>
+            <MainHeadline>{PageName.DogsAdopted}</MainHeadline>
             <SmallHeadline>
               Här är de hundar som har adopterats via BFF Strays.
             </SmallHeadline>

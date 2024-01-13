@@ -14,7 +14,7 @@ import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownR
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
 import { PageName } from "./enums/PageName";
 import "../scss/navbar.scss";
-import { useAppContext } from "./contexts/AppContext";
+import { useAppContext } from "./hooks/useAppContext";
 
 export const Navbar = () => {
   const { logo } = useAppContext();
@@ -186,11 +186,6 @@ export const Navbar = () => {
           {dropDownToShow === PageName.Dogs.toLowerCase()
             ? dropDownLinks
             : null}
-          {/* <li>
-            <Link to="/om-oss" onClick={() => setToggled(!toggled)}>
-              {PageName.About}
-            </Link>
-          </li> */}
           <li
             onClick={() => {
               if (dropDownToShow === PageName.About.toLowerCase()) {

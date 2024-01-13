@@ -1,8 +1,5 @@
 import { CCarouselItem } from "@coreui/react";
-import {
-  ModalSlider,
-  ModalSliderImage,
-} from "../styled/DogDetails/ModalSlider";
+import { ModalSlider, ModalSliderImage } from "../styled/Common/ModalSlider";
 import { IDogSlide } from "./pages/DogDetails";
 
 interface IDogSlideCarouselModalProps {

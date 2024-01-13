@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
-import { ColCentered } from "../../styled/Common/Common";
-import { ColStart } from "../../styled/Spain/Spain";
+import { ColCentered, ColStart } from "../../styled/Common/Common";
 import { SlideCarousel } from "../SlideCarousel";
-import { useAppContext } from "../contexts/AppContext";
 import { PageName } from "../enums/PageName";
 import { filterPostsPerPage, findSlide } from "../helpers/FilterHelper";
 import { IPost } from "../models/IPost";
 import { ISlide } from "../models/ISlide";
+import { useAppContext } from "../hooks/useAppContext";
+import { MainHeadline } from "../../styled/FontStyles/MainHeadline";
+import { SmallHeadline } from "../../styled/FontStyles/SmallHeadline";
+import { CommonText } from "../../styled/FontStyles/CommonText";
 
 export const WorkEthicsPage = () => {
   const { posts, slides } = useAppContext();
@@ -29,15 +31,13 @@ export const WorkEthicsPage = () => {
       <SlideCarousel slides={ethicsPageSlides} />
       <ColCentered>
         <ColStart>
-          <h2>Vårt arbetssätt</h2>
+          <MainHeadline>{PageName.WorkEthics}</MainHeadline>
         </ColStart>
         {workEthicsPosts.map((post, index) => {
           return (
             <ColStart key={index}>
-              <p style={{ fontFamily: "Korolev medium, sans-serif" }}>
-                {post.title}
-              </p>
-              <p>{post.postText}</p>
+              <SmallHeadline>{post.title}</SmallHeadline>
+              <CommonText>{post.postText}</CommonText>
             </ColStart>
           );
         })}

@@ -25,6 +25,7 @@ import {
   Col,
   DividerLine,
   Row,
+  ColStart,
 } from "../../styled/Common/Common";
 import {
   CardContainer,
@@ -35,18 +36,18 @@ import {
   DescriptiveCardTitle,
   DescriptiveCardText,
 } from "../../styled/Home/DescriptiveCard";
-import { ColStart } from "../../styled/Spain/Spain";
 import { PageName } from "../enums/PageName";
 import { IDog } from "../models/IDog";
 import { Filter } from "../enums/Filter";
 import { useNavigate } from "react-router";
-import { useAppContext } from "../contexts/AppContext";
 import { filterPostsPerPage, filterAdoptedDogs } from "../helpers/FilterHelper";
 import { IPost } from "../models/IPost";
 import ClearRoundedIcon from "@mui/icons-material/ClearRounded";
-import { SmallHeadline } from "../../styled/Fonts/SmallHeadline";
+import { SmallHeadline } from "../../styled/FontStyles/SmallHeadline";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import { colors } from "../../styled/colors";
+import { colors } from "../../styled/Variables/colors";
+import { useAppContext } from "../hooks/useAppContext";
+import { MainHeadline } from "../../styled/FontStyles/MainHeadline";
 
 type Anchor = "left" | "right";
 
@@ -58,7 +59,6 @@ export const AllDogsPage = () => {
   const navigate = useNavigate();
   const { dogs, posts } = useAppContext();
   const [filters, setFilters] = useState<string[]>([]);
-  //   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [filteredDogs, setFilteredDogs] = useState<IDog[]>([]);
   const [allDogsPosts, setAllDogsPosts] = useState<IPost[]>([]);
   const [unadoptedDogs, setUnadoptedDogs] = useState<IDog[]>([]);
@@ -244,8 +244,8 @@ export const AllDogsPage = () => {
             if (post.title.toLowerCase() === PageName.Dogs.toLowerCase()) {
               return (
                 <ColCenteredResponsive key={index}>
-                  <h2>{post.title}</h2>
-                  <p style={{ marginTop: "2%" }}>{post.postText}</p>
+                  <MainHeadline>{post.title}</MainHeadline>
+                  <SmallHeadline>{post.postText}</SmallHeadline>
                 </ColCenteredResponsive>
               );
             }

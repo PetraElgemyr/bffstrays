@@ -1,7 +1,6 @@
 import { CCarousel, CImage } from "@coreui/react";
 import { styled } from "styled-components";
-import { devices } from "../devices";
-import { Col } from "../Common/Common";
+import { devices } from "../Variables/devices";
 
 export const StyledDogSlider = styled(CCarousel)`
   display: flex;
@@ -30,20 +29,4 @@ export const StyledDogSliderImage = styled(CImage)`
   object-fit: cover;
   object-position: center 40%;
   height: 100%;
-`;
-
-export const ColStartDogDetails = styled(Col)`
-  justify-content: center;
-  align-items: flex-start;
-  width: 90%;
-  margin-bottom: 5%;
-
-  @media screen and (${devices.tablet}) {
-    margin-bottom: 2%;
-    width: 80%;
-  }
-
-  @media screen and (${devices.laptop}) {
-    width: 70%;
-  }
 `;

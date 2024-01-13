@@ -1,6 +1,9 @@
 import styled from "styled-components";
-import { StyledDogSlider, StyledDogSliderImage } from "./StyledDogSlider";
-import { devices } from "../devices";
+import {
+  StyledDogSlider,
+  StyledDogSliderImage,
+} from "../DogDetails/StyledDogSlider";
+import { devices } from "../Variables/devices";
 
 export const ModalSlider = styled(StyledDogSlider)`
   display: flex;

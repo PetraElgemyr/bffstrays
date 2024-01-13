@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext } from "react";
 import { IDog } from "../models/IDog";
 import { IPost } from "../models/IPost";
 import { ISlide } from "../models/ISlide";
@@ -20,4 +20,3 @@ export type AppState = {
 };
 
 export const AppContext = createContext<AppState>({} as AppState);
-export const useAppContext = () => useContext(AppContext);

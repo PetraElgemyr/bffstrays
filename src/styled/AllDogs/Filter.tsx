@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Col, Row } from "../Common/Common";
-import { colors } from "../colors";
-import { devices } from "../devices";
+import { colors } from "../Variables/colors";
+import { devices } from "../Variables/devices";
 
 export interface IFilterButtonProps {
   selected: boolean;
@@ -18,7 +18,6 @@ export const FilterButton = styled.button<IFilterButtonProps>`
   padding-left: 10%;
   display: flex;
   flex-direction: row;
-  /* border-radius: 25px; */
   border-radius: 5px;
   justify-content: center;
   box-shadow: ${({ selected }) =>
@@ -70,40 +69,3 @@ export const FilterOptionsContainers = styled(Col)`
     width: 500px;
   }
 `;
-
-// export const FilterOptionsContainers = styled(Col)`
-//   background-color: ${colors.secondary_green};
-//   padding: 15%;
-//   border-radius: 15px;
-//   width: 100%;
-//   max-height: 40vh;
-//   overflow: scroll;
-//   overflow-x: hidden;
-//   margin-top: 5%;
-//   position: fixed; // position it fixed to the viewport
-//   z-index: 1000; // make sure it's on top of other content
-//   top: 0; // position it at the top of the viewport
-//   left: 0; // position it at the left of the viewport
-//   width: 100%; // make it span the full width
-//   height: 100%; // make it span the full height
-//   background: rgba(0, 0, 0, 0.5); // add a semi-transparent background
-//   display: flex; // to center the content
-//   justify-content: center; // center content horizontally
-//   align-items: center; // center content vertically
-// `;
-
-// export const FilterOptionsContainers = styled.div`
-//   padding: 15%;
-//   border-radius: 15px;
-//   max-height: 40vh;
-//   overflow: scroll;
-//   overflow-x: hidden;
-//   margin-top: 5%;
-//   position: fixed; // position it fixed to the viewport
-//   z-index: 1000; // make sure it's on top of other content
-//   top: 0; // position it at the top of the viewport
-//   left: 0; // position it at the left of the viewport
-//   width: 100%; // make it span the full width
-//   height: 100%; // make it span the full height
-//   background-color: ${colors.secondary_green}; // set the background color
-// `;

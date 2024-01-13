@@ -1,9 +1,8 @@
 import { styled } from "styled-components";
-import { devices } from "../devices";
+import { devices } from "../Variables/devices";
 import { CCarousel } from "@coreui/react";
-// import { CImage } from "@coreui/react";
 
-export const DogImgContainer1 = styled.div`
+export const DogImgContainer = styled.div`
   width: 100%;
   flex-shrink: 0;
   display: flex;
@@ -42,10 +41,6 @@ export const DogImg = styled.img`
     max-height: 75vh;
   }
 `;
-
-// export const CarouselImage = styled(CImage)`
-//   border-radius: 15px;
-// `;
 
 export const Carousel = styled(CCarousel)`
   width: 90%;

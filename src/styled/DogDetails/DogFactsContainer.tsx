@@ -1,13 +1,12 @@
 import { styled } from "styled-components";
 import { Col } from "../Common/Common";
-import { colors } from "../colors";
-import { devices } from "../devices";
+import { colors } from "../Variables/colors";
+import { devices } from "../Variables/devices";
 
 export const DogFactsContainer = styled(Col)`
   outline: 3px solid ${colors.primary_green};
   width: 100%;
   border-radius: 15px;
-  /* height: 100%; */
   align-items: center;
   padding-bottom: 5%;
 

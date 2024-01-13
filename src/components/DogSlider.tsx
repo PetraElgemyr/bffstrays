@@ -6,11 +6,8 @@ import {
 import { IDogSlide } from "./pages/DogDetails";
 import { useEffect, useState } from "react";
 import { ImageModal } from "./ImageModal";
-import {
-  ModalSlider,
-  ModalSliderImage,
-} from "../styled/DogDetails/ModalSlider";
-import "./DogModal.scss";
+import { ModalSlider, ModalSliderImage } from "../styled/Common/ModalSlider";
+import "./../scss/modal.scss";
 
 export interface IDogSliderProps {
   slides: IDogSlide[];
@@ -29,10 +26,6 @@ export const DogSlider = ({ slides, isDogModal }: IDogSliderProps) => {
       setModalIsOpen(true);
     }
   }, [isDogModal]);
-
-  // useEffect(() => {
-  //   setModalIsOpen(isDogModal);
-  // }, [isDogModal]);
 
   if (isDogModal && slides.length > 1) {
     return (
