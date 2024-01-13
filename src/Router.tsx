@@ -18,16 +18,22 @@ import { AllDogsPage } from "./components/pages/AllDogsPage";
 export const router = [
   <Route path="/" element={<Layout />}>
     <Route index element={<HomePage />} />
-    <Route path="hundar-som-soker-hem/" element={<AllDogsPage />} />
-    <Route path="adopterade-hundar" element={<AdoptedDogsPage />} />
-    <Route path="hundar-som-soker-hem/:id" element={<DogDetails />} />
+    <Route path="hundarna/hundar-som-soker-hem/" element={<AllDogsPage />} />
+    <Route path="hundarna/adopterade-hundar" element={<AdoptedDogsPage />} />
+    <Route path="hundarna/hundar-som-soker-hem/:id" element={<DogDetails />} />
     <Route path="om-oss" element={<AboutPage />} />
     <Route path="situationen-i-spanien" element={<SpainPage />} />
-    <Route path="myter-om-gatuhundar" element={<MythPage />} />
-    <Route path="sjukdomar" element={<DiseasesPage />} />
-    <Route path="adoption" element={<AdoptionPage />} />
-    <Route path="krav-pa-adoptorer" element={<RequirementsForAdoptionPage />} />
-    <Route path="vart-arbetssatt" element={<WorkEthicsPage />} />
+    <Route
+      path="situationen-i-spanien/myter-om-gatuhundar"
+      element={<MythPage />}
+    />
+    <Route path="situationen-i-spanien/sjukdomar" element={<DiseasesPage />} />
+    <Route path="om-adoption" element={<AdoptionPage />} />
+    <Route
+      path="om-adoption/krav-pa-adoptorer"
+      element={<RequirementsForAdoptionPage />}
+    />
+    <Route path="om-oss/vart-arbetssatt" element={<WorkEthicsPage />} />
     <Route path="donera" element={<DonatePage />} />
     <Route path="intresseanmalan" element={<RegisterInterestPage />} />
     <Route path="kontakt" element={<ContactPage />} />

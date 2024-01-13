@@ -48,6 +48,7 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { colors } from "../../styled/Variables/colors";
 import { useAppContext } from "../hooks/useAppContext";
 import { MainHeadline } from "../../styled/FontStyles/MainHeadline";
+import { Sorting } from "../enums/Sorting";
 
 type Anchor = "left" | "right";
 
@@ -62,7 +63,9 @@ export const AllDogsPage = () => {
   const [filteredDogs, setFilteredDogs] = useState<IDog[]>([]);
   const [allDogsPosts, setAllDogsPosts] = useState<IPost[]>([]);
   const [unadoptedDogs, setUnadoptedDogs] = useState<IDog[]>([]);
-
+  const [sortedAlphabetical, setSortedAlphabetical] = useState<string>(
+    Sorting.NoSorting
+  );
   const allFilters = [
     "TIK",
     "HANE",
@@ -88,6 +91,14 @@ export const AllDogsPage = () => {
         return [...prevFilters, option];
       }
     });
+  };
+
+  const sortDogs = (alphabeticalOrder: boolean) => {
+    if (alphabeticalOrder) {
+      filteredDogs.sort((a, b) => (a.name > b.name ? 1 : -1));
+    } else {
+      filteredDogs.sort((a, b) => (b.name > a.name ? 1 : -1));
+    }
   };
 
   useEffect(() => {
@@ -176,7 +187,7 @@ export const AllDogsPage = () => {
       setState({ ...state, [anchor]: open });
     };
 
-  const list = () => (
+  const filterDrawer = () => (
     <FilterOptionsContainers onKeyDown={toggleDrawer("left", false)}>
       <Row
         onClick={toggleDrawer("left", false)}
@@ -236,6 +247,38 @@ export const AllDogsPage = () => {
     </FilterOptionsContainers>
   );
 
+  const sortingDrawer = () => (
+    <FilterOptionsContainers onKeyDown={toggleDrawer("right", false)}>
+      <SmallHeadline>Sortera</SmallHeadline>
+      <FilterButtonContainer>
+        <FilterButton
+          selected={
+            sortedAlphabetical === Sorting.AlphabeticalOrder ? true : false
+          }
+          onClick={() => {
+            sortDogs(true);
+            setSortedAlphabetical(Sorting.AlphabeticalOrder);
+          }}
+        >
+          A till Ö{" "}
+        </FilterButton>
+        <FilterButton
+          selected={
+            sortedAlphabetical === Sorting.AlphabeticalOrderReverse
+              ? true
+              : false
+          }
+          onClick={() => {
+            sortDogs(false);
+            setSortedAlphabetical(Sorting.AlphabeticalOrderReverse);
+          }}
+        >
+          Ö till A
+        </FilterButton>
+      </FilterButtonContainer>
+    </FilterOptionsContainers>
+  );
+
   return (
     <div>
       <StyledDiv>
@@ -263,7 +306,8 @@ export const AllDogsPage = () => {
             <Col>
               <PrimaryButton
                 style={{ boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.25)" }}
-                selected={false}
+                selected={state.right}
+                onClick={toggleDrawer("right", true)}
               >
                 Sortera <SortRoundedIcon />{" "}
               </PrimaryButton>
@@ -274,7 +318,7 @@ export const AllDogsPage = () => {
             {filteredDogs.map((dog: IDog, index) => (
               <DogCard
                 onClick={() => {
-                  navigate(`/hundar-som-soker-hem/${dog.id}`);
+                  navigate(`/hundarna/hundar-som-soker-hem/${dog.id}`);
                 }}
                 key={index}
               >
@@ -303,7 +347,7 @@ export const AllDogsPage = () => {
                       style={{ position: "relative", bottom: 0, right: 0 }}
                       selected={false}
                       onClick={() => {
-                        navigate(`/hundar-som-soker-hem/${dog.id}`);
+                        navigate(`/hundarna/hundar-som-soker-hem/${dog.id}`);
                       }}
                     >
                       Mer om {dog.name}
@@ -324,7 +368,7 @@ export const AllDogsPage = () => {
                     onClick={() => {
                       switch (post.title.toLowerCase()) {
                         case PageName.Requirements.toLowerCase():
-                          navigate("/krav-pa-adoptorer");
+                          navigate("/om-adoption/krav-pa-adoptorer");
                           break;
                         case PageName.RegisterInterest.toLowerCase():
                           navigate("/intresseanmalan");
@@ -382,7 +426,14 @@ export const AllDogsPage = () => {
         open={state["left"]}
         onClose={toggleDrawer("left", false)}
       >
-        {list()}
+        {filterDrawer()}
+      </Drawer>
+      <Drawer
+        anchor="right"
+        open={state["right"]}
+        onClose={toggleDrawer("right", false)}
+      >
+        {sortingDrawer()}
       </Drawer>
     </div>
   );

@@ -54,7 +54,7 @@ export const MythPage = () => {
           </SecondaryButton>
           <SecondaryButton
             selected={false}
-            onClick={() => navigate("/sjukdomar")}
+            onClick={() => navigate("/situationen-i-spanien/sjukdomar")}
           >
             {PageName.Diseases}
           </SecondaryButton>

@@ -59,7 +59,7 @@ export const SlideCarousel = ({ slides }: ICarouselProps) => {
                       navigate("/donera");
                       break;
                     case PageName.Dogs.toLowerCase():
-                      navigate("/hundar-som-soker-hem");
+                      navigate("/situationen-i-spanien/hundar-som-soker-hem");
                       break;
                     case PageName.Spain.toLowerCase():
                       navigate("/situationen-i-spanien");

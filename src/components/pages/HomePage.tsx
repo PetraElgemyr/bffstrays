@@ -48,19 +48,19 @@ export const HomePage = () => {
                   onClick={() => {
                     switch (post.title.toLowerCase()) {
                       case PageName.Dogs.toLowerCase():
-                        navigate("/hundar-som-soker-hem");
+                        navigate("/hundarna/hundar-som-soker-hem");
                         break;
                       case PageName.Adoption.toLowerCase():
-                        navigate("/adoption");
+                        navigate("/om-adoption");
                         break;
                       case PageName.About.toLowerCase():
                         navigate("/om-oss");
                         break;
                       case PageName.WorkEthics.toLowerCase():
-                        navigate("/vart-arbetssatt");
+                        navigate("/om-oss/vart-arbetssatt");
                         break;
                       case PageName.Requirements.toLowerCase():
-                        navigate("/krav-pa-adoptorer");
+                        navigate("/om-adoption/krav-pa-adoptorer");
                         break;
                       case PageName.Donate.toLowerCase():
                         navigate("/donera");

@@ -29,7 +29,7 @@ export const Navbar = () => {
         <div className={"dropdown__content--active"}>
           <li>
             <Link
-              to="/hundar-som-soker-hem"
+              to="/hundarna/hundar-som-soker-hem"
               onClick={() => {
                 setToggled(!toggled);
               }}
@@ -38,7 +38,10 @@ export const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/adopterade-hundar" onClick={() => setToggled(!toggled)}>
+            <Link
+              to="/hundarna/adopterade-hundar"
+              onClick={() => setToggled(!toggled)}
+            >
               Adopterade hundar
             </Link>
           </li>
@@ -59,7 +62,7 @@ export const Navbar = () => {
           </li>
           <li>
             <Link
-              to="/myter-om-gatuhundar"
+              to="/situationen-i-spanien/myter-om-gatuhundar"
               onClick={() => {
                 setToggled(!toggled);
               }}
@@ -69,7 +72,10 @@ export const Navbar = () => {
           </li>
 
           <li>
-            <Link to="/sjukdomar" onClick={() => setToggled(!toggled)}>
+            <Link
+              to="/situationen-i-spanien/sjukdomar"
+              onClick={() => setToggled(!toggled)}
+            >
               Sjukdomar
             </Link>
           </li>
@@ -80,7 +86,7 @@ export const Navbar = () => {
         <div className={"dropdown__content--active"}>
           <li>
             <Link
-              to="/adoption"
+              to="/om-adoption"
               onClick={() => {
                 setToggled(!toggled);
               }}
@@ -90,7 +96,7 @@ export const Navbar = () => {
           </li>
           <li>
             <Link
-              to="/krav-pa-adoptorer"
+              to="/om-adoption/krav-pa-adoptorer"
               onClick={() => {
                 setToggled(!toggled);
               }}
@@ -115,7 +121,7 @@ export const Navbar = () => {
           </li>
           <li>
             <Link
-              to="/vart-arbetssatt"
+              to="/om-oss/vart-arbetssatt"
               onClick={() => {
                 setToggled(!toggled);
               }}

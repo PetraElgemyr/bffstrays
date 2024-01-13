@@ -51,7 +51,7 @@ export const AdoptionPage = () => {
           </SmallHeadline>
           <SecondaryButton
             selected={false}
-            onClick={() => navigate("/krav-pa-adoptorer")}
+            onClick={() => navigate("/om-adoption/krav-pa-adoptorer")}
           >
             {PageName.Requirements}
           </SecondaryButton>
