@@ -91,9 +91,9 @@ export const DiseasesPage = () => {
                   <SmallHeadline>{post?.title}</SmallHeadline>
                   <span>
                     {post.show ? (
-                      <KeyboardArrowDownRoundedIcon fontSize="large" />
-                    ) : (
                       <KeyboardArrowUpRoundedIcon fontSize="large" />
+                    ) : (
+                      <KeyboardArrowDownRoundedIcon fontSize="large" />
                     )}
                   </span>
                 </DiseaseDropDown>
@@ -116,7 +116,9 @@ export const DiseasesPage = () => {
           </SecondaryButton>
           <SecondaryButton
             selected={false}
-            onClick={() => navigate("/myter-om-gatuhundar")}
+            onClick={() =>
+              navigate("/situationen-i-spanien/myter-om-gatuhundar")
+            }
           >
             {PageName.Myths}
           </SecondaryButton>
