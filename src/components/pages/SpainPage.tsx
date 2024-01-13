@@ -44,13 +44,15 @@ export const SpainPage = () => {
         <ColCenteredButtonContainer>
           <SecondaryButton
             selected={false}
-            onClick={() => navigate("/myter-om-gatuhundar")}
+            onClick={() =>
+              navigate("/situationen-i-spanien/myter-om-gatuhundar")
+            }
           >
             {PageName.Myths}
           </SecondaryButton>
           <SecondaryButton
             selected={false}
-            onClick={() => navigate("/sjukdomar")}
+            onClick={() => navigate("/situationen-i-spanien/sjukdomar")}
           >
             {PageName.Diseases}
           </SecondaryButton>

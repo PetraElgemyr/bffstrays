@@ -318,7 +318,7 @@ export const AllDogsPage = () => {
             {filteredDogs.map((dog: IDog, index) => (
               <DogCard
                 onClick={() => {
-                  navigate(`/hundar-som-soker-hem/${dog.id}`);
+                  navigate(`/hundarna/hundar-som-soker-hem/${dog.id}`);
                 }}
                 key={index}
               >
@@ -347,7 +347,7 @@ export const AllDogsPage = () => {
                       style={{ position: "relative", bottom: 0, right: 0 }}
                       selected={false}
                       onClick={() => {
-                        navigate(`/hundar-som-soker-hem/${dog.id}`);
+                        navigate(`/hundarna/hundar-som-soker-hem/${dog.id}`);
                       }}
                     >
                       Mer om {dog.name}
@@ -368,7 +368,7 @@ export const AllDogsPage = () => {
                     onClick={() => {
                       switch (post.title.toLowerCase()) {
                         case PageName.Requirements.toLowerCase():
-                          navigate("/krav-pa-adoptorer");
+                          navigate("/om-adoption/krav-pa-adoptorer");
                           break;
                         case PageName.RegisterInterest.toLowerCase():
                           navigate("/intresseanmalan");

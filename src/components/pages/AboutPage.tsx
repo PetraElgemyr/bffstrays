@@ -55,7 +55,7 @@ export const AboutPage = () => {
           </SmallHeadline>
           <SecondaryButton
             selected={false}
-            onClick={() => navigate("/vart-arbetssatt")}
+            onClick={() => navigate("/om-oss/vart-arbetssatt")}
           >
             Vårt arbetssätt
           </SecondaryButton>

@@ -54,7 +54,7 @@ export const ContactPage = () => {
           </ColCentered>
           <SecondaryButton
             selected={false}
-            onClick={() => navigate("/hundar-som-soker-hem")}
+            onClick={() => navigate("/hundarna/hundar-som-soker-hem")}
           >
             {PageName.Dogs}
           </SecondaryButton>
