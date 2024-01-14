@@ -4,15 +4,15 @@ I decided to re-make the existing site [Bff Strays](https://bffstrays.se/) as my
 
 ## Tech stack
 
-This project is made with Vite and I use React and typescript. The styling is mainly styled components ~:nail_care: and some scss. For code structuring I use ESLint. I also use some components and icons from libraries such as Material UI, CoreUI, Bootstrap, and a font from Adobe.
+This project is made with Vite and I use React and typescript. The styling is mainly styled components and some scss. For code structuring I use ESLint. I also use some components and icons from libraries such as Material UI, CoreUI, Bootstrap, and the font "Korolev" from Adobe.
 
 [![Typescript](https://img.shields.io/badge/tech-typescript-blue)](https://www.typescriptlang.org/docs/)
 [![scss](https://img.shields.io/badge/tech-scss-pink)](https://sass-lang.com/guide)
 [![React](https://img.shields.io/badge/tech-react-orange)](https://react.dev/)
 [![Styled components](https://img.shields.io/badge/styled-components-pink)](https://styled-components.com/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+[@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 ## Installation
 
