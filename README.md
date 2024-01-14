@@ -2,6 +2,10 @@
 
 I decided to re-make the existing site [Bff Strays](https://bffstrays.se/) as my degree project at Medieinstitutet. Bff Strays is a non-profit organization that focuses on giving stray dogs from Spain new homes in Sweden.
 
+-
+
+You can view the project live [here](https://bffstrays.vercel.app/)
+
 ## Tech stack
 
 This project is made with Vite and I use React and typescript. The styling is mainly styled components and some scss. For code structuring I use ESLint. I also use some components and icons from libraries such as Material UI, CoreUI, Bootstrap, and the font "Korolev" from Adobe.
