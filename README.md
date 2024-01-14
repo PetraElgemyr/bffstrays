@@ -27,7 +27,7 @@ This project is made with Vite and I use React and typescript. The styling is ma
 
 All the media are taken from Pexels, Pixabay and Bff Strays and the rights and credit for these photos goes to the rightful owners, platforms and photographers.
 
-### The outcome
+## The outcome
 
 I aspire to always work with mobile first thinking. This is the mobile first look:
 
