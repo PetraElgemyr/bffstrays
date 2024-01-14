@@ -309,7 +309,8 @@ export const AllDogsPage = () => {
                 selected={state.right}
                 onClick={toggleDrawer("right", true)}
               >
-                Sortera <SortRoundedIcon />{" "}
+                Sortera
+                <SortRoundedIcon />{" "}
               </PrimaryButton>
             </Col>
           </ButtonContainer>{" "}
