@@ -2,8 +2,6 @@
 
 I decided to re-make the existing site [Bff Strays](https://bffstrays.se/) as my degree project at Medieinstitutet. Bff Strays is a non-profit organization that focuses on giving stray dogs from Spain new homes in Sweden.
 
--
-
 You can view the project live [here](https://bffstrays.vercel.app/)
 
 ## Tech stack
