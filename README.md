@@ -4,6 +4,11 @@ I decided to re-make the existing site [Bff Strays](https://bffstrays.se/) as my
 
 You can view the project live [here](https://bffstrays.vercel.app/)
 
+![Mobile first](./src/assets/mobile-first-homepage.png)
+![Mobile first](./src/assets/mobile-first-dogs.png)
+![Desktop](./src/assets/desktop-donate.png)
+![Desktop](./src/assets/desktop-filter-dogs.png)
+
 ## Tech stack
 
 This project is made with Vite and I use React and typescript. The styling is mainly styled components and some scss. For code structuring I use ESLint. I also use some components and icons from libraries such as Material UI, CoreUI, Bootstrap, and the font "Korolev" from Adobe.
