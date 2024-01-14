@@ -4,7 +4,7 @@ I decided to re-make the existing site [Bff Strays](https://bffstrays.se/) as my
 
 ## Tech stack
 
-This project is made with Vite and I use React and typescript. The styling is mainly styled components`:nail_care:` and some scss. For code structuring I use ESLint. I also use some components and icons from libraries such as Material UI, CoreUI, Bootstrap, and a font from Adobe.
+This project is made with Vite and I use React and typescript. The styling is mainly styled components :nail_care: and some scss. For code structuring I use ESLint. I also use some components and icons from libraries such as Material UI, CoreUI, Bootstrap, and a font from Adobe.
 
 [![Typescript](https://img.shields.io/badge/tech-typescript-blue)](https://www.typescriptlang.org/docs/)
 [![scss](https://img.shields.io/badge/tech-scss-pink)](https://sass-lang.com/guide)
