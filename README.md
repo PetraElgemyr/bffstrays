@@ -18,4 +18,7 @@ If you are developing a production application, we recommend updating the config
 
 ## Installation
 
-- Clone the repository with `bash git clone`
+- Clone the repository with `git clone`
+- Install all the dependencies by running `npm install`in the root of the project.
+- Before running the project, create a file named .env in the root of the project. To access the real data you need two keys in the .env file. One VITE_REACT_APP_SPACE_ID and one called VITE_REACT_APP_ACCESS_TOKEN. These are given from the Contentful cms. If your Contentful account has been invited to the Contentful project, you have access to the real data.
+- Run `npm run dev` to start the project to develop it. For preview, run `npm run preview`.
