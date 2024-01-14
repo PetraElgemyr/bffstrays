@@ -1,30 +1,40 @@
-# React + TypeScript + Vite
+# Bff Strays
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I decided to re-make the existing site [Bff Strays](https://bffstrays.se/) as my degree project at Medieinstitutet. Bff Strays is a non-profit organization that focuses on giving stray dogs from Spain new homes in Sweden.
 
-Currently, two official plugins are available:
+You can view the project live [here](https://bffstrays.vercel.app/)
+
+## Tech stack
+
+This project is made with Vite and I use React and typescript. The styling is mainly styled components and some scss. For code structuring I use ESLint. I also use some components and icons from libraries such as Material UI, CoreUI, Bootstrap, and the font "Korolev" from Adobe.
+
+[![Typescript](https://img.shields.io/badge/tech-typescript-blue)](https://www.typescriptlang.org/docs/)
+[![scss](https://img.shields.io/badge/tech-scss-pink)](https://sass-lang.com/guide)
+[![React](https://img.shields.io/badge/tech-react-orange)](https://react.dev/)
+[![Styled components](https://img.shields.io/badge/styled-components-pink)](https://styled-components.com/)
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Clone the repository with `git clone`
+- Install all the dependencies by running `npm install`in the root of the project.
+- Before running the project, create a file named .env in the root of the project. To access the real data you need two keys in the .env file. One VITE_REACT_APP_SPACE_ID and one called VITE_REACT_APP_ACCESS_TOKEN. These are given from the Contentful cms. If your Contentful account has been invited to the Contentful project, you have access to the real data.
+- Run `npm run dev` to start the project to develop it. For preview, run `npm run preview`.
 
-- Configure the top-level `parserOptions` property like this:
+## Medias
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+All the media are taken from Pexels, Pixabay and Bff Strays and the rights and credit for these photos goes to the rightful owners, platforms and photographers.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## The outcome
+
+I aspire to always work with mobile first thinking. This is the mobile first look:
+
+![Mobile first](./src/assets/mobile-first-homepage.png)
+![Mobile first](./src/assets/mobile-first-dogs.png)
+
+This is the desktop version:
+
+![Desktop](./src/assets/desktop-donate.png)
+![Desktop](./src/assets/desktop-filter-dogs.png)
